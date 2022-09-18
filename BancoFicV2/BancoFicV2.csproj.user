@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Telas\OpcoesDeConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Telas\Opcoesiniciais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Telas\CriarContaCorrente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Telas\CriarContaPoupanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Telas\LoginCorrente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Telas\LoginPoupanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
