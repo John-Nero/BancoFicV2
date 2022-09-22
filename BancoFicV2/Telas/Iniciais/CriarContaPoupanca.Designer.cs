@@ -55,6 +55,9 @@ namespace BancoFicV2
             this.TxtNome.Name = "TxtNome";
             this.TxtNome.Size = new System.Drawing.Size(233, 23);
             this.TxtNome.TabIndex = 1;
+            this.TxtNome.Enter += new System.EventHandler(this.TxtNome_Enter);
+            this.TxtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNome_KeyPress);
+            this.TxtNome.Leave += new System.EventHandler(this.TxtNome_Leave);
             // 
             // groupBox1
             // 
@@ -65,7 +68,8 @@ namespace BancoFicV2
             this.groupBox1.Controls.Add(this.TxtNome);
             this.groupBox1.Controls.Add(this.LbCpf);
             this.groupBox1.Controls.Add(this.LbNome);
-            this.groupBox1.Location = new System.Drawing.Point(246, 98);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox1.Location = new System.Drawing.Point(243, 104);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(245, 239);
             this.groupBox1.TabIndex = 2;
@@ -74,13 +78,14 @@ namespace BancoFicV2
             // 
             // Entrar
             // 
+            this.Entrar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Entrar.Location = new System.Drawing.Point(164, 210);
             this.Entrar.Name = "Entrar";
             this.Entrar.Size = new System.Drawing.Size(75, 23);
             this.Entrar.TabIndex = 6;
             this.Entrar.Text = "Entrar";
             this.Entrar.UseVisualStyleBackColor = true;
-            this.Entrar.Click += new System.EventHandler(this.BtEntrar);
+            this.Entrar.Click += new System.EventHandler(this.Entrar_Click);
             // 
             // LbEstado
             // 
@@ -97,13 +102,16 @@ namespace BancoFicV2
             this.SelecEstado.Items.AddRange(new object[] {
             "São Paulo",
             "Rio de Janeiro",
-            "Bahia"});
+            "Bahia",
+            "Ceará",
+            "Rio Grande do Sul",
+            "Santa Catarina"});
             this.SelecEstado.Location = new System.Drawing.Point(6, 160);
             this.SelecEstado.Name = "SelecEstado";
             this.SelecEstado.Size = new System.Drawing.Size(233, 23);
             this.SelecEstado.TabIndex = 3;
             this.SelecEstado.Text = "Selecione um Estado";
-            this.SelecEstado.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.SelecEstado.SelectedIndexChanged += new System.EventHandler(this.SelecEstado_SelectedIndexChanged);
             // 
             // TxtCpf
             // 
@@ -111,6 +119,9 @@ namespace BancoFicV2
             this.TxtCpf.Name = "TxtCpf";
             this.TxtCpf.Size = new System.Drawing.Size(233, 23);
             this.TxtCpf.TabIndex = 4;
+            this.TxtCpf.Enter += new System.EventHandler(this.TxtCpf_Enter);
+            this.TxtCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCpf_KeyPress);
+            this.TxtCpf.Leave += new System.EventHandler(this.TxtCpf_Leave);
             // 
             // LbCpf
             // 
@@ -125,11 +136,11 @@ namespace BancoFicV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
+            this.ClientSize = new System.Drawing.Size(754, 475);
             this.Controls.Add(this.groupBox1);
             this.Name = "CriarContaPoupanca";
             this.Text = "CriarContaPoupança";
-            this.Load += new System.EventHandler(this.CriarContaPoupanca_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

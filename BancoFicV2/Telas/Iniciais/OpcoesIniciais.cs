@@ -20,28 +20,37 @@ namespace BancoFicV2
 
         }
 
-        private void loginPoupanca_Click(object sender, EventArgs e)
+        private void LoginPoupanca_Click(object sender, EventArgs e)
         {
             var loginPoupanca = new LoginPoupanca();
             loginPoupanca.Show();
+            this.Visible = false;
         }
 
-        private void loginCorrente_Click(object sender, EventArgs e)
+        private void LoginCorrente_Click(object sender, EventArgs e)
         {
             var loginCorrente = new LoginCorrente();
             loginCorrente.Show();
+            this.Visible = false;
         }
 
-        private void criarPoupanca_Click(object sender, EventArgs e)
+        private void CriarPoupanca_Click(object sender, EventArgs e)
         {
             var criarPoupanca = new CriarContaPoupanca();
             criarPoupanca.Show();
+            this.Visible = false;
         }
 
-        private void criarCorrente_Click(object sender, EventArgs e)
+        private void CriarCorrente_Click(object sender, EventArgs e)
         {
             var criarCorrente = new CriarContaCorrente();
             criarCorrente.Show();
+            this.Visible = false;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

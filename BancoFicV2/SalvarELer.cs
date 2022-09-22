@@ -7,9 +7,11 @@ namespace BancoFicV2
 {
     class SalvarELer
     {
+        //ATENÇÃO Para o funcionamento correto do projeto é nescessario adaptar os caminhos dos arquivos.
+
         //Caminhos Para Local De Busca
-        internal const string CaminhoPoupanca = @"C:\temp\Teste\BancoFicV2\BancoFicV2\DadosClientes\DadosDosClientesPoupanca.txt";
-        internal const string CaminhoCorrente = @"C:\temp\Teste\BancoFicV2\BancoFicV2\DadosClientes\DadosDosClientesCorrente.txt";
+        internal const string CaminhoPoupanca = @"C:\temp\Teste\DadosClientes\DadosDosClientesPoupanca.txt";
+        internal const string CaminhoCorrente = @"C:\temp\Teste\DadosClientes\DadosDosClientesCorrente.txt";
 
         //Listas dos tipos de Conta
         public List<ContaPoupanca> LIstaDasPoupancas = new List<ContaPoupanca>();
@@ -17,17 +19,22 @@ namespace BancoFicV2
 
         //Metodos de Save e atualização da Conta Poupanca
         public List<ContaPoupanca> TxtParaPoupancas()
-        {   //Nome | Numero | CPF         | Saldo
-            //john | 4578   | 12345678914 | 100
+        {   //Nome | Agencia-Numero | CPF         | Saldo
+            //john | 1-4578         | 12345678914 | 100
             try
             {
                 string[] LeTexto = File.ReadAllLines(CaminhoPoupanca);
                 foreach (string s in LeTexto)
                 {
                     string[] ModeloInteiro = s.Split(" | ");
-                    LIstaDasPoupancas.Add(new ContaPoupanca(ModeloInteiro[0], int.Parse(ModeloInteiro[1]), decimal.Parse(ModeloInteiro[2]), double.Parse(ModeloInteiro[3])));
-                    //2147483648
-                      
+                    string[] AgenciaENumero = ModeloInteiro[1].Split("-");
+
+                    string Titular = ModeloInteiro[0];
+                    int Agencia = int.Parse(AgenciaENumero[0]);
+                    int Numero = int.Parse(AgenciaENumero[1]);
+                    decimal Cpf = decimal.Parse(ModeloInteiro[2]);
+                    double Saldo = double.Parse(ModeloInteiro[3]);
+                    LIstaDasPoupancas.Add(new ContaPoupanca(Titular, Agencia, Numero, Cpf, Saldo));
                 }
                 return LIstaDasPoupancas;
             }
@@ -46,7 +53,7 @@ namespace BancoFicV2
             }
             foreach (ContaPoupanca Conta in LIstaDasPoupancas)
             {
-                if (Poupanca.Cpf == Conta.Cpf && Poupanca.Numero == Conta.Numero)
+                if (Poupanca.Agencia == Conta.Agencia && Poupanca.Numero == Conta.Numero)
                 {
                     LIstaDasPoupancas.Remove(Conta);
                     break;
@@ -54,7 +61,7 @@ namespace BancoFicV2
             }
 
             using var file = File.AppendText(CaminhoPoupanca);
-            LIstaDasPoupancas.Add(new ContaPoupanca(Poupanca.Titular, Poupanca.Numero, Poupanca.Cpf, Poupanca.Saldo));
+            LIstaDasPoupancas.Add(new ContaPoupanca(Poupanca.Titular,Poupanca.Agencia, Poupanca.Numero, Poupanca.Cpf, Poupanca.Saldo));
             file.Close();
 
             SalvarListaContaPoupancaNoTxt();
@@ -68,25 +75,37 @@ namespace BancoFicV2
             foreach (ContaPoupanca Conta in LIstaDasPoupancas)
             {
                 string titular = Conta.Titular;
+                int agencia = Conta.Agencia;
                 int numero = Conta.Numero;
                 double saldo = Conta.Saldo;
                 decimal cpf = Conta.Cpf;
-                file.WriteLine($"{titular} | {numero} | {cpf} | {saldo.ToString("F2")}");
+                file.WriteLine($"{titular} | {agencia}-{numero} | {cpf} | {saldo.ToString("F2")}");
             }
             file.Close();
         }
 
         //Metodos de save e atualização da Conta corrente
-        internal List<ContaCorrente> TxtParaCorrentes()
-        {   //Nome | Numero | Cpf         | Saldo | Limite de emprestimo
-            //john | 4578   | 12345678912 | 100   | 500
+        public List<ContaCorrente> TxtParaCorrentes()
+        {   //Nome | Agencia-Numero | CPF         | Saldo | Limite
+            //john | 1-4578         | 12345678914 | 100   | 500
             try
             {
                 string[] LeTexto = File.ReadAllLines(CaminhoCorrente);
-                foreach (string s in LeTexto)
+                if (LeTexto.Length != 0)
                 {
-                    string[] ModeloInteiro = s.Split(" | ");
-                    LIstaDasCorrentes.Add(new ContaCorrente(ModeloInteiro[0], int.Parse(ModeloInteiro[1]), int.Parse(ModeloInteiro[2]), double.Parse(ModeloInteiro[3]), double.Parse(ModeloInteiro[4])));
+                    foreach (string s in LeTexto)
+                    {
+                        string[] ModeloInteiro = s.Split(" | ");
+                        string[] AgenciaENumero = ModeloInteiro[1].Split("-");
+
+                        string Titular = ModeloInteiro[0];
+                        int Agencia = int.Parse(AgenciaENumero[0]);
+                        int Numero = int.Parse(AgenciaENumero[1]);
+                        decimal Cpf = decimal.Parse(ModeloInteiro[2]);
+                        double Saldo = double.Parse(ModeloInteiro[3]);
+                        double Limite = double.Parse(ModeloInteiro[4]);
+                        LIstaDasCorrentes.Add(new ContaCorrente(Titular, Agencia, Numero, Cpf, Saldo, Limite));
+                    }
                 }
                 return LIstaDasCorrentes;
             }
@@ -96,15 +115,16 @@ namespace BancoFicV2
                 throw;
             }
         }
-        public void AtualizarContaCorrente(ContaCorrente corrente)
+        public void AtualizarContaCorrente(ContaCorrente Corrente)
         {
+
             if (LIstaDasCorrentes.Count == 0)
             {
-                TxtParaPoupancas();
+                TxtParaCorrentes();
             }
             foreach (ContaCorrente Conta in LIstaDasCorrentes)
             {
-                if (corrente.Titular == Conta.Titular && corrente.Numero == Conta.Numero)
+                if (Corrente.Agencia == Conta.Agencia && Corrente.Numero == Conta.Numero)
                 {
                     LIstaDasCorrentes.Remove(Conta);
                     break;
@@ -112,7 +132,7 @@ namespace BancoFicV2
             }
 
             using var file = File.AppendText(CaminhoCorrente);
-            LIstaDasCorrentes.Add(new ContaCorrente(corrente.Titular, corrente.Numero, corrente.Cpf, corrente.Saldo, corrente.LimiteEmprestimo));
+            LIstaDasCorrentes.Add(new ContaCorrente(Corrente.Titular, Corrente.Agencia, Corrente.Numero, Corrente.Cpf, Corrente.Saldo,Corrente.LimiteEmprestimo));
             file.Close();
 
             SalvarListaContaCorrenteNoTxt();
@@ -125,7 +145,13 @@ namespace BancoFicV2
 
             foreach (ContaCorrente Conta in LIstaDasCorrentes)
             {
-                file.WriteLine($"{Conta.Titular} | {Conta.Numero} | {Conta.Cpf} | {Conta.Saldo.ToString("F2")} | {Conta.LimiteEmprestimo}");
+                string titular = Conta.Titular;
+                int agencia = Conta.Agencia;
+                int numero = Conta.Numero;
+                decimal cpf = Conta.Cpf;
+                double saldo = Conta.Saldo;
+                double limite = Conta.LimiteEmprestimo;
+                file.WriteLine($"{titular} | {agencia}-{numero} | {cpf} | {saldo.ToString("F2")} | {limite}");
             }
             file.Close();
         }

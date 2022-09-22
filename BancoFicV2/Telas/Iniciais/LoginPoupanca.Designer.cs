@@ -1,7 +1,7 @@
 ﻿
 namespace BancoFicV2
 {
-    partial class LoginCorrente
+    partial class LoginPoupanca
     {
         /// <summary>
         /// Required designer variable.
@@ -30,27 +30,51 @@ namespace BancoFicV2
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numAgencia = new System.Windows.Forms.NumericUpDown();
             this.txtNumerodeconta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtAgenica = new System.Windows.Forms.TextBox();
-            this.BTNntrar = new System.Windows.Forms.Button();
+            this.BtEntrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAgencia)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.numAgencia);
             this.groupBox1.Controls.Add(this.txtNumerodeconta);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtAgenica);
-            this.groupBox1.Controls.Add(this.BTNntrar);
-            this.groupBox1.Location = new System.Drawing.Point(219, 144);
+            this.groupBox1.Controls.Add(this.BtEntrar);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox1.Location = new System.Drawing.Point(182, 142);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(362, 163);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Login conta corrente";
+            this.groupBox1.Text = "Login conta poupança";
+            // 
+            // numAgencia
+            // 
+            this.numAgencia.Location = new System.Drawing.Point(18, 42);
+            this.numAgencia.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numAgencia.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numAgencia.Name = "numAgencia";
+            this.numAgencia.Size = new System.Drawing.Size(120, 23);
+            this.numAgencia.TabIndex = 5;
+            this.numAgencia.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // txtNumerodeconta
             // 
@@ -58,6 +82,8 @@ namespace BancoFicV2
             this.txtNumerodeconta.Name = "txtNumerodeconta";
             this.txtNumerodeconta.Size = new System.Drawing.Size(338, 23);
             this.txtNumerodeconta.TabIndex = 4;
+            this.txtNumerodeconta.Enter += new System.EventHandler(this.txtNumerodeconta_Enter);
+            this.txtNumerodeconta.Leave += new System.EventHandler(this.txtNumerodeconta_Leave);
             // 
             // label2
             // 
@@ -77,33 +103,31 @@ namespace BancoFicV2
             this.label1.TabIndex = 2;
             this.label1.Text = "agência";
             // 
-            // txtAgenica
+            // BtEntrar
             // 
-            this.txtAgenica.Location = new System.Drawing.Point(18, 41);
-            this.txtAgenica.Name = "txtAgenica";
-            this.txtAgenica.Size = new System.Drawing.Size(338, 23);
-            this.txtAgenica.TabIndex = 1;
+            this.BtEntrar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtEntrar.Location = new System.Drawing.Point(281, 134);
+            this.BtEntrar.Name = "BtEntrar";
+            this.BtEntrar.Size = new System.Drawing.Size(75, 23);
+            this.BtEntrar.TabIndex = 0;
+            this.BtEntrar.Text = "Entrar";
+            this.BtEntrar.UseVisualStyleBackColor = true;
+            this.BtEntrar.Click += new System.EventHandler(this.BtEntrar_Click);
             // 
-            // BTNntrar
-            // 
-            this.BTNntrar.Location = new System.Drawing.Point(281, 134);
-            this.BTNntrar.Name = "BTNntrar";
-            this.BTNntrar.Size = new System.Drawing.Size(75, 23);
-            this.BTNntrar.TabIndex = 0;
-            this.BTNntrar.Text = "Entrar";
-            this.BTNntrar.UseVisualStyleBackColor = true;
-            // 
-            // LoginCorrente
+            // LoginPoupanca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
+            this.ClientSize = new System.Drawing.Size(754, 475);
             this.Controls.Add(this.groupBox1);
-            this.Name = "LoginCorrente";
-            this.Text = "LoginCorrente";
-            this.Load += new System.EventHandler(this.LoginCorrente_Load);
+            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Name = "LoginPoupanca";
+            this.Text = "LoginPoupanca";
+            this.Load += new System.EventHandler(this.LoginPoupanca_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAgencia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -111,10 +135,10 @@ namespace BancoFicV2
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.NumericUpDown numAgencia;
         private System.Windows.Forms.TextBox txtNumerodeconta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtAgenica;
-        private System.Windows.Forms.Button BTNntrar;
+        private System.Windows.Forms.Button BtEntrar;
     }
 }

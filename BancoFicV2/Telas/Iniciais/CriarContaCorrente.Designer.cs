@@ -18,7 +18,7 @@ namespace BancoFicV2
             {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            base.Close();
         }
 
         #region Windows Form Designer generated code
@@ -49,7 +49,8 @@ namespace BancoFicV2
             this.groupBox1.Controls.Add(this.TxtNome);
             this.groupBox1.Controls.Add(this.LbCpf);
             this.groupBox1.Controls.Add(this.LbNome);
-            this.groupBox1.Location = new System.Drawing.Point(278, 106);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox1.Location = new System.Drawing.Point(254, 110);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(245, 239);
             this.groupBox1.TabIndex = 3;
@@ -58,13 +59,14 @@ namespace BancoFicV2
             // 
             // BtEntrar
             // 
+            this.BtEntrar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtEntrar.Location = new System.Drawing.Point(164, 210);
             this.BtEntrar.Name = "BtEntrar";
             this.BtEntrar.Size = new System.Drawing.Size(75, 23);
             this.BtEntrar.TabIndex = 7;
             this.BtEntrar.Text = "Entrar";
             this.BtEntrar.UseVisualStyleBackColor = true;
-            this.BtEntrar.Click += new System.EventHandler(this.button1_Click);
+            this.BtEntrar.Click += new System.EventHandler(this.BtEntrar_Click);
             // 
             // LbEstado
             // 
@@ -81,26 +83,39 @@ namespace BancoFicV2
             this.SelecEstado.Items.AddRange(new object[] {
             "São Paulo",
             "Rio de Janeiro",
-            "Bahia"});
+            "Bahia",
+            "Ceará",
+            "Rio Grande do Sul",
+            "Santa Catarina"});
             this.SelecEstado.Location = new System.Drawing.Point(6, 160);
             this.SelecEstado.Name = "SelecEstado";
             this.SelecEstado.Size = new System.Drawing.Size(233, 23);
             this.SelecEstado.TabIndex = 3;
             this.SelecEstado.Text = "Selecione um Estado";
+            this.SelecEstado.SelectedIndexChanged += new System.EventHandler(this.SelecEstado_SelectedIndexChanged);
             // 
             // TxtCpf
             // 
             this.TxtCpf.Location = new System.Drawing.Point(6, 95);
             this.TxtCpf.Name = "TxtCpf";
+            this.TxtCpf.PlaceholderText = "digite apenas numeros";
             this.TxtCpf.Size = new System.Drawing.Size(233, 23);
             this.TxtCpf.TabIndex = 4;
+            this.TxtCpf.Enter += new System.EventHandler(this.TxtCpf_Enter);
+            this.TxtCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCpf_KeyPress);
+            this.TxtCpf.Leave += new System.EventHandler(this.TxtCpf_Leave);
             // 
             // TxtNome
             // 
+            this.TxtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.TxtNome.Location = new System.Drawing.Point(6, 36);
+            this.TxtNome.MaxLength = 15;
             this.TxtNome.Name = "TxtNome";
             this.TxtNome.Size = new System.Drawing.Size(233, 23);
             this.TxtNome.TabIndex = 1;
+            this.TxtNome.Enter += new System.EventHandler(this.TxtNome_Enter);
+            this.TxtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNome_KeyPress);
+            this.TxtNome.Leave += new System.EventHandler(this.TxtNome_Leave);
             // 
             // LbCpf
             // 
@@ -124,7 +139,8 @@ namespace BancoFicV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
+            this.ClientSize = new System.Drawing.Size(754, 475);
             this.Controls.Add(this.groupBox1);
             this.Name = "CriarContaCorrente";
             this.Text = "CriarContaCorrente";

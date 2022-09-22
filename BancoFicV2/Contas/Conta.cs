@@ -2,22 +2,28 @@
 
 namespace BancoFicV2
 {
-    class Conta
+    public abstract class Conta
     {
-        public string Titular { get; private set; }
-        public int Numero { get; private set; }
-        public decimal Cpf { get; private set; }
+        public string Titular { get; internal set; }
+        public int Numero { get; internal set; }
+        public int Agencia { get; internal set; }
+        public decimal Cpf { get; internal set; }
         public double Saldo { get; internal set; }
+        public int Id { get; internal set; }
 
         public Conta() { }
-        public Conta(string titular, int numero, decimal cpf) { Titular = titular; Numero = numero; Cpf = cpf; }
+        public Conta(string titular, int agencia, int numero, decimal cpf) { Titular = titular; Agencia = agencia; Numero = numero; Cpf = cpf; }
 
-        public void setNumero(int numero) { Numero = numero; }
-
-        public void setTitular(string titular) { Titular = titular; }
-
-        public void setCpf(decimal cpf) { Cpf = cpf; }
-
+        public void SetId(int id) { Id = id; }
+        public  void SetConta(string titular, int agencia, int numero, decimal cpf, double saldo, int id)
+        {
+            Titular = titular;
+            Agencia = agencia;
+            Numero = numero;
+            Cpf = cpf;
+            Saldo = saldo;
+            Id = id;
+        }
         public void Depositar(double valor) { Saldo += valor; }
 
         public virtual void Sacar(double valor)

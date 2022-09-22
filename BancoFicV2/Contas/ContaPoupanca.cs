@@ -9,11 +9,11 @@ namespace BancoFicV2
         public ContaPoupanca() { }
 
 
-        public ContaPoupanca(string titular, int numero,decimal cpf , double saldo) : base(titular, numero, cpf) { Saldo = saldo; }
+        public ContaPoupanca(string titular,int agencia, int numero,decimal cpf , double saldo) : base(titular, agencia, numero, cpf) { Saldo = saldo; }
 
-        public double Render()
+        public double Render(double saldo)
         {
-            return Saldo * TaxaDeRentabilidade;
+            return saldo * TaxaDeRentabilidade;
         }
     }
 }
