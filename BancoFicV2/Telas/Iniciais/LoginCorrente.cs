@@ -77,7 +77,12 @@ namespace BancoFicV2
             }
         }
 
-        
+        private void BtVoltar_Click(object sender, EventArgs e)
+        {
+            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
+            opcoesiniciais.Show();
+            this.Visible = false;
+        }
     }
     
 }

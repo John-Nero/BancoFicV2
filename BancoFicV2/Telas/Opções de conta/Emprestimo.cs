@@ -49,8 +49,12 @@ namespace BancoFicV2
             }
         }
 
-        private void Emprestimo_Load(object sender, EventArgs e)
+        private void BtVoltar_Click(object sender, EventArgs e)
         {
+            Corrente.SetConta(Corrente.Titular, Corrente.Agencia, Corrente.Numero, Corrente.Cpf, Corrente.Saldo, 2);
+            OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Corrente, Corrente.LimiteEmprestimo);
+            opcoesDeConta.Show();
+            this.Visible = false;
 
         }
     }

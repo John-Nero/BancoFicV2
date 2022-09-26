@@ -33,6 +33,7 @@ namespace BancoFicV2
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BtDepositar = new System.Windows.Forms.Button();
+            this.BtVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,12 +77,23 @@ namespace BancoFicV2
             this.BtDepositar.UseVisualStyleBackColor = true;
             this.BtDepositar.Click += new System.EventHandler(this.BtDepositar_Click);
             // 
+            // BtVoltar
+            // 
+            this.BtVoltar.Location = new System.Drawing.Point(12, 12);
+            this.BtVoltar.Name = "BtVoltar";
+            this.BtVoltar.Size = new System.Drawing.Size(75, 23);
+            this.BtVoltar.TabIndex = 1;
+            this.BtVoltar.Text = "Voltar";
+            this.BtVoltar.UseVisualStyleBackColor = true;
+            this.BtVoltar.Click += new System.EventHandler(this.BtVoltar_Click);
+            // 
             // Deposito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Name = "Deposito";
             this.Text = "Deposito";
@@ -97,5 +109,6 @@ namespace BancoFicV2
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtDepositar;
+        private System.Windows.Forms.Button BtVoltar;
     }
 }

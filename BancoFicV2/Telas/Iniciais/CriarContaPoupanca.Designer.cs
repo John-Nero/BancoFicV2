@@ -37,6 +37,7 @@ namespace BancoFicV2
             this.SelecEstado = new System.Windows.Forms.ComboBox();
             this.TxtCpf = new System.Windows.Forms.TextBox();
             this.LbCpf = new System.Windows.Forms.Label();
+            this.BtVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,12 +133,23 @@ namespace BancoFicV2
             this.LbCpf.TabIndex = 3;
             this.LbCpf.Text = "CPF";
             // 
+            // BtVoltar
+            // 
+            this.BtVoltar.Location = new System.Drawing.Point(13, 13);
+            this.BtVoltar.Name = "BtVoltar";
+            this.BtVoltar.Size = new System.Drawing.Size(75, 23);
+            this.BtVoltar.TabIndex = 3;
+            this.BtVoltar.Text = "Voltar";
+            this.BtVoltar.UseVisualStyleBackColor = true;
+            this.BtVoltar.Click += new System.EventHandler(this.BtVoltar_Click);
+            // 
             // CriarContaPoupanca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(754, 475);
+            this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Name = "CriarContaPoupanca";
             this.Text = "CriarContaPoupança";
@@ -157,5 +169,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Label LbEstado;
         private System.Windows.Forms.ComboBox SelecEstado;
         private System.Windows.Forms.Button Entrar;
+        private System.Windows.Forms.Button BtVoltar;
     }
 }

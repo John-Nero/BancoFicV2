@@ -70,9 +70,22 @@ namespace BancoFicV2
             }
         }
 
-        private void Saque_Load(object sender, EventArgs e)
+        private void BtVoltar_Click(object sender, EventArgs e)
         {
-
+            if (Conta.Id == 1)
+            {
+                Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 1);
+                OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Poupanca, 0);
+                opcoesDeConta.Show();
+                this.Visible = false;
+            }
+            else
+            {
+                Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 2);
+                OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Corrente, Corrente.LimiteEmprestimo);
+                opcoesDeConta.Show();
+                this.Visible = false;
+            }
         }
     }
 }
