@@ -71,7 +71,7 @@ namespace BancoFicV2
             this.BtRender.Name = "BtRender";
             this.BtRender.Size = new System.Drawing.Size(151, 52);
             this.BtRender.TabIndex = 4;
-            this.BtRender.Text = "Render(APENAS PARA CONTA POUPANÇA)";
+            this.BtRender.Text = "Render";
             this.BtRender.UseVisualStyleBackColor = true;
             this.BtRender.Click += new System.EventHandler(this.BtRender_Click);
             // 
@@ -82,7 +82,7 @@ namespace BancoFicV2
             this.BtEmprestimo.Name = "BtEmprestimo";
             this.BtEmprestimo.Size = new System.Drawing.Size(151, 52);
             this.BtEmprestimo.TabIndex = 3;
-            this.BtEmprestimo.Text = "Emprestimo(APENAS PARA CONTA CORRENTE)";
+            this.BtEmprestimo.Text = "Emprestimo";
             this.BtEmprestimo.UseVisualStyleBackColor = true;
             this.BtEmprestimo.Click += new System.EventHandler(this.BtEmprestimos_Click);
             // 

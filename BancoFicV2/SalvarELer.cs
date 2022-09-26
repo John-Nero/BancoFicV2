@@ -10,8 +10,8 @@ namespace BancoFicV2
         //ATENÇÃO Para o funcionamento correto do projeto é nescessario adaptar os caminhos dos arquivos.
 
         //Caminhos Para Local De Busca
-        internal const string CaminhoPoupanca = @"C:\temp\Teste\DadosClientes\DadosDosClientesPoupanca.txt";
-        internal const string CaminhoCorrente = @"C:\temp\Teste\DadosClientes\DadosDosClientesCorrente.txt";
+        internal const string CaminhoPoupanca = @"C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\DadosDosClientesPoupanca.txt";
+        internal const string CaminhoCorrente = @"C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\DadosDosClientesCorrente.txt";
 
         //Listas dos tipos de Conta
         public List<ContaPoupanca> LIstaDasPoupancas = new List<ContaPoupanca>();

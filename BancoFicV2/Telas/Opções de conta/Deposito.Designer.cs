@@ -85,7 +85,6 @@ namespace BancoFicV2
             this.Controls.Add(this.groupBox1);
             this.Name = "Deposito";
             this.Text = "Deposito";
-            this.Load += new System.EventHandler(this.Deposito_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

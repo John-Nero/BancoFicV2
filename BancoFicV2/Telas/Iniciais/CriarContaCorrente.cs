@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BancoFicV2
 {
     public partial class CriarContaCorrente : Form
     {
-        int NumeroAgencia;
+        int Agencia;
         SalvarELer Salvar = new SalvarELer();
         ContaCorrente Corrente = new ContaCorrente();
-        int confirmação;
+
         public CriarContaCorrente()
         {
             InitializeComponent();
@@ -29,7 +25,7 @@ namespace BancoFicV2
                 Salvar.TxtParaCorrentes();
                 foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
                 {
-                    if (Conta.Numero == numero && numero.ToString().Length != 4)
+                    if (Conta.Numero == numero && Conta.Agencia == Agencia)
                     {
                         goto retornarNumero;
                     }
@@ -42,7 +38,7 @@ namespace BancoFicV2
                         "Nome muito curto ou muito longo",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
-                    confirmação++;
+                    goto avacoDeErro;
                 }
 
                 if (TxtCpf.Text.Length != 11)
@@ -51,33 +47,42 @@ namespace BancoFicV2
                         "CPF invalido",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
-                    confirmação++;
+                    goto avacoDeErro;
                 }
-                if (confirmação != 2)
-                {
-                    foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
-                    {
 
-                        if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
-                        {
-                            MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
-                                "Esse CPF já consta no sistema",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning);
-                        }
+                if (Agencia == 0)
+                {
+                    MessageBox.Show("Selecione um estado para prosseguir",
+                                    $"Campo ESTADO vazio  ",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                    goto avacoDeErro;
+                }
+                foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
+                {
+
+                    if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
+                    {
+                        MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
+                                        "Esse CPF já consta no sistema",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                        goto avacoDeErro;
                     }
 
-                    Corrente.SetConta(TxtNome.Text, NumeroAgencia, numero, decimal.Parse(TxtCpf.Text), 0, 2);
-                    Salvar.AtualizarContaCorrente(Corrente);
-
-                    MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
-                                "Conta criada com sucesso!",
-                            MessageBoxButtons.OK);
-                    OpcoesDeConta Opcoes = new OpcoesDeConta(Corrente, 500);
-                    Opcoes.Show();
-                    this.Visible = false;
                 }
-                confirmação = 0;
+
+                Corrente.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 2);
+                Salvar.AtualizarContaCorrente(Corrente);
+
+                MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
+                            "Conta criada com sucesso!",
+                        MessageBoxButtons.OK);
+                OpcoesDeConta Opcoes = new OpcoesDeConta(Corrente,500);
+                Opcoes.Show();
+                this.Visible = false;
+
+            avacoDeErro:;
             }
             catch (Exception ex)
             {
@@ -93,27 +98,27 @@ namespace BancoFicV2
             switch (SelecEstado.Text)
             {
                 case "São Paulo":
-                NumeroAgencia = 1;
+                Agencia = 1;
                 break;
 
-                case "Rio de Janeiro ":
-                NumeroAgencia = 2;
+                case "Rio de Janeiro":
+                Agencia = 2;
                 break;
 
                 case "Bahia":
-                NumeroAgencia = 3;
+                Agencia = 3;
                 break;
 
                 case "Ceará":
-                NumeroAgencia = 4;
+                Agencia = 4;
                 break;
 
                 case "Rio Grande do Sul":
-                NumeroAgencia = 5;
+                Agencia = 5;
                 break;
 
                 case "Santa Catarina":
-                NumeroAgencia = 6;
+                Agencia = 6;
                 break;
             }
         }

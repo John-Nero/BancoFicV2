@@ -75,6 +75,7 @@ namespace BancoFicV2
             0,
             0,
             0});
+            this.numAgencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numAgencia_KeyPress);
             // 
             // txtNumerodeconta
             // 
@@ -83,6 +84,7 @@ namespace BancoFicV2
             this.txtNumerodeconta.Size = new System.Drawing.Size(338, 23);
             this.txtNumerodeconta.TabIndex = 4;
             this.txtNumerodeconta.Enter += new System.EventHandler(this.txtNumerodeconta_Enter);
+            this.txtNumerodeconta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerodeconta_KeyPress);
             this.txtNumerodeconta.Leave += new System.EventHandler(this.txtNumerodeconta_Leave);
             // 
             // label2
