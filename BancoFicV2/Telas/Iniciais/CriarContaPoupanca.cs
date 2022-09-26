@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BancoFicV2
 {
     public partial class CriarContaPoupanca : Form
     {
-        int NumeroAgencia;
+        int Agencia;
         SalvarELer Salvar = new SalvarELer();
         ContaPoupanca Poupanca = new ContaPoupanca();
-        int confirmação;
+        
         public CriarContaPoupanca()
         {
             InitializeComponent();
@@ -30,7 +26,7 @@ namespace BancoFicV2
                     Salvar.TxtParaPoupancas();
                     foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
                     {
-                        if (Conta.Numero == numero && numero.ToString().Length != 4)
+                        if (Conta.Numero == numero && Conta.Agencia == Agencia)
                         {
                             goto retornarNumero;
                         }
@@ -43,7 +39,7 @@ namespace BancoFicV2
                             "Nome muito curto ou muito longo",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
-                        confirmação++;
+                        goto avacoDeErro;
                     }
 
                     if (TxtCpf.Text.Length != 11)
@@ -52,33 +48,42 @@ namespace BancoFicV2
                             "CPF invalido",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
-                        confirmação++;
+                        goto avacoDeErro;
                     }
-                    if (confirmação != 2)
+
+                    if (Agencia == 0)
                     {
-                        foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
-                        {
-
-                            if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
-                            {
-                                MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
-                                    "Esse CPF já consta no sistema",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                            }
-                        }
-
-                        Poupanca.SetConta(TxtNome.Text, NumeroAgencia, numero, decimal.Parse(TxtCpf.Text), 0, 2);
-                        Salvar.AtualizarContaPoupanca(Poupanca);
-
-                        MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
-                                    "Conta criada com sucesso!",
-                                MessageBoxButtons.OK);
-                        OpcoesDeConta Opcoes = new OpcoesDeConta(Poupanca, 500);
-                        Opcoes.Show();
-                        this.Visible = false;
+                        MessageBox.Show("Selecione um estado para prosseguir",
+                                        $"Campo ESTADO vazio  ",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                        goto avacoDeErro;
                     }
-                    confirmação = 0;
+                    foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
+                    {
+
+                        if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
+                        {
+                            MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
+                                            "Esse CPF já consta no sistema",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                            goto avacoDeErro;
+                        }
+                       
+                    }
+
+                    Poupanca.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 1);
+                    Salvar.AtualizarContaPoupanca(Poupanca);
+
+                    MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
+                                "Conta criada com sucesso!",
+                            MessageBoxButtons.OK);
+                    OpcoesDeConta Opcoes = new OpcoesDeConta(Poupanca, 0);
+                    Opcoes.Show();
+                    this.Visible = false;
+
+                avacoDeErro:;
                 }
                 catch (Exception ex)
                 {
@@ -96,27 +101,27 @@ namespace BancoFicV2
             switch (SelecEstado.Text)
             {
                 case "São Paulo":
-                NumeroAgencia = 1;
+                Agencia = 1;
                 break;
 
-                case "Rio de Janeiro ":
-                NumeroAgencia = 2;
+                case "Rio de Janeiro":
+                Agencia = 2;
                 break;
 
                 case "Bahia":
-                NumeroAgencia = 3;
+                Agencia = 3;
                 break;
 
                 case "Ceará":
-                NumeroAgencia = 4;
+                Agencia = 4;
                 break;
 
                 case "Rio Grande do Sul":
-                NumeroAgencia = 5;
+                Agencia = 5;
                 break;
 
                 case "Santa Catarina":
-                NumeroAgencia = 6;
+                Agencia = 6;
                 break;
             }
         }
@@ -159,11 +164,5 @@ namespace BancoFicV2
 
             }
         }
-        private void CriarContaPoupanca_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

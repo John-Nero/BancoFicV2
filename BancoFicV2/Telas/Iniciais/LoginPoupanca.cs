@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BancoFicV2
@@ -66,9 +62,24 @@ namespace BancoFicV2
             txtNumerodeconta.BackColor = Color.White;
         }
 
-        private void LoginPoupanca_Load(object sender, EventArgs e)
+        private void numAgencia_KeyPress(object sender, KeyPressEventArgs e)
         {
+            int tecla = (int)e.KeyChar;
+            if (!char.IsDigit(e.KeyChar) && tecla != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show("Caracter invalido");
+            }
+        }
 
+        private void txtNumerodeconta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int tecla = (int)e.KeyChar;
+            if (!char.IsDigit(e.KeyChar) && tecla != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show("Caracter invalido");
+            }
         }
     }
 }

@@ -1,40 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BancoFicV2
 {
     public partial class Deposito : Form
     {
-        Conta conta;
+        Conta Conta;
+        double Limite;
         ContaCorrente Corrente = new ContaCorrente();
         ContaPoupanca Poupanca = new ContaPoupanca();
         SalvarELer Salvar = new SalvarELer();
 
-        public Deposito(Conta conta1)
+        public Deposito(Conta conta, double limite)
         {
-            conta = conta1;
+            Limite = limite;
+            Conta = conta;
             InitializeComponent();
         }
         private void BtDepositar_Click(object sender, EventArgs e)
         {
-            if (conta.Id == 1)
+            if (Conta.Id == 1)
             {
                 try
                 {
-                    Poupanca.SetConta(conta.Titular, conta.Agencia, conta.Numero,conta.Cpf, conta.Saldo, 1);
+                    Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 1);
                     Poupanca.Depositar(double.Parse(txtValor.Text));
                     Salvar.AtualizarContaPoupanca(Poupanca);
                     MessageBox.Show("Clique em OK para retornar a tela de opções",
                            "Deposito concluido",
                            MessageBoxButtons.OK,
                            MessageBoxIcon.None);
-                    conta = null;
-                    OpcoesDeConta opcoes = new OpcoesDeConta(Poupanca,0);
+                    Conta = null;
+                    OpcoesDeConta opcoes = new OpcoesDeConta(Poupanca, 0);
                     opcoes.Show();
                     this.Visible = false;
                 }
@@ -46,19 +43,20 @@ namespace BancoFicV2
                            MessageBoxIcon.Error);
                 }
             }
-            else if (conta.Id == 2)
+            else if (Conta.Id == 2)
             {
                 try
                 {
-                    Corrente.SetConta(conta.Titular, conta.Agencia, conta.Numero, conta.Cpf,conta.Saldo, conta.Id);
+                    Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Id);
+                    Corrente.SetLimitEmprestimo(Limite);
                     Corrente.Depositar(double.Parse(txtValor.Text));
                     Salvar.AtualizarContaCorrente(Corrente);
                     MessageBox.Show("Clique em OK para retornar a tela de opções",
                                "Deposito concluido",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.None);
-                    conta = null;
-                    OpcoesDeConta opcoes = new OpcoesDeConta(Corrente,Corrente.LimiteEmprestimo);
+                    Conta = null;
+                    OpcoesDeConta opcoes = new OpcoesDeConta(Corrente, Corrente.LimiteEmprestimo);
                     opcoes.Show();
                     this.Visible = false;
                 }
@@ -70,11 +68,6 @@ namespace BancoFicV2
                            MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void Deposito_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -45,7 +45,6 @@ C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoF
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\bin\Debug\netcoreapp3.1\BancoFicV2.runtimeconfig.dev.json
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\bin\Debug\netcoreapp3.1\BancoFicV2.dll
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\bin\Debug\netcoreapp3.1\BancoFicV2.pdb
-C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.csproj.AssemblyReference.cache
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.CriarContaCorrente.resources
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.CriarContaPoupanca.resources
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.LoginCorrente.resources
@@ -64,3 +63,4 @@ C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoF
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.pdb
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.genruntimeconfig.cache
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.Properties.Resources.resources
+C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\UpdateGit\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.csproj.AssemblyReference.cache

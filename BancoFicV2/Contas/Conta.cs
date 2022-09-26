@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Windows.Forms;
 
 namespace BancoFicV2
 {
@@ -34,7 +34,10 @@ namespace BancoFicV2
             }
             else
             {
-                Console.WriteLine("SALDO INDISPONIVEL PARA OPERAÇÂO");
+                MessageBox.Show("Saldo indisponivel",
+                               "Saque não efetuado",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.None);
             }
         }
     }
