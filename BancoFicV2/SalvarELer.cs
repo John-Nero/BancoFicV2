@@ -61,7 +61,7 @@ namespace BancoFicV2
             }
 
             using var file = File.AppendText(CaminhoPoupanca);
-            LIstaDasPoupancas.Add(new ContaPoupanca(Poupanca.Titular,Poupanca.Agencia, Poupanca.Numero, Poupanca.Cpf, Poupanca.Saldo));
+            LIstaDasPoupancas.Add(new ContaPoupanca(Poupanca.Titular, Poupanca.Agencia, Poupanca.Numero, Poupanca.Cpf, Poupanca.Saldo));
             file.Close();
 
             SalvarListaContaPoupancaNoTxt();
@@ -132,7 +132,7 @@ namespace BancoFicV2
             }
 
             using var file = File.AppendText(CaminhoCorrente);
-            LIstaDasCorrentes.Add(new ContaCorrente(Corrente.Titular, Corrente.Agencia, Corrente.Numero, Corrente.Cpf, Corrente.Saldo,Corrente.LimiteEmprestimo));
+            LIstaDasCorrentes.Add(new ContaCorrente(Corrente.Titular, Corrente.Agencia, Corrente.Numero, Corrente.Cpf, Corrente.Saldo, Corrente.LimiteEmprestimo));
             file.Close();
 
             SalvarListaContaCorrenteNoTxt();
