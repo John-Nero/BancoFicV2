@@ -69,7 +69,6 @@ namespace BancoFicV2
                         MessageBoxIcon.Warning);
                         goto avacoDeErro;
                     }
-
                 }
 
                 Corrente.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 2);
@@ -124,22 +123,10 @@ namespace BancoFicV2
         }
 
         //Personalização do campo de texto
-        private void TxtNome_Enter(object sender, EventArgs e)
-        {
-            TxtNome.BackColor = Color.LightBlue;
-        }
-        private void TxtNome_Leave(object sender, EventArgs e)
-        {
-            TxtNome.BackColor = Color.White;
-        }
-        private void TxtCpf_Enter(object sender, EventArgs e)
-        {
-            TxtCpf.BackColor = Color.LightBlue;
-        }
-        private void TxtCpf_Leave(object sender, EventArgs e)
-        {
-            TxtCpf.BackColor = Color.White;
-        }
+        private void TxtNome_Enter(object sender, EventArgs e){TxtNome.BackColor = Color.LightBlue;}
+        private void TxtNome_Leave(object sender, EventArgs e){TxtNome.BackColor = Color.White;}
+        private void TxtCpf_Enter(object sender, EventArgs e){TxtCpf.BackColor = Color.LightBlue;}
+        private void TxtCpf_Leave(object sender, EventArgs e){TxtCpf.BackColor = Color.White;}
 
         //Validação de tipo de caracter
         private void TxtCpf_KeyPress(object sender, KeyPressEventArgs e)
@@ -159,13 +146,14 @@ namespace BancoFicV2
             {
                 e.Handled = true;
                 MessageBox.Show("Caracter invalido, digite apenas letras");
-
             }
         }
 
-        private void CriarContaCorrente_Load(object sender, EventArgs e)
+        private void BtVoltar_Click(object sender, EventArgs e)
         {
-
+            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
+            opcoesiniciais.Show();
+            this.Visible = false;
         }
     }
 }

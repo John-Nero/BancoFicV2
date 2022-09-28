@@ -35,6 +35,7 @@ namespace BancoFicV2
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtEntrar = new System.Windows.Forms.Button();
+            this.BtVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAgencia)).BeginInit();
             this.SuspendLayout();
@@ -116,12 +117,24 @@ namespace BancoFicV2
             this.BtEntrar.UseVisualStyleBackColor = true;
             this.BtEntrar.Click += new System.EventHandler(this.BtEntrar_Click);
             // 
+            // BtVoltar
+            // 
+            this.BtVoltar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtVoltar.Location = new System.Drawing.Point(13, 13);
+            this.BtVoltar.Name = "BtVoltar";
+            this.BtVoltar.Size = new System.Drawing.Size(75, 23);
+            this.BtVoltar.TabIndex = 6;
+            this.BtVoltar.Text = "Voltar";
+            this.BtVoltar.UseVisualStyleBackColor = true;
+            this.BtVoltar.Click += new System.EventHandler(this.BtVoltar_Click);
+            // 
             // LoginPoupanca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(754, 475);
+            this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Name = "LoginPoupanca";
@@ -141,5 +154,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtEntrar;
+        private System.Windows.Forms.Button BtVoltar;
     }
 }

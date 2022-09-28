@@ -4,12 +4,12 @@ namespace BancoFicV2
 {
     public abstract class Conta
     {
-        public string Titular { get; internal set; }
-        public int Numero { get; internal set; }
-        public int Agencia { get; internal set; }
-        public decimal Cpf { get; internal set; }
-        public double Saldo { get; internal set; }
-        public int Id { get; internal set; }
+        public string Titular {internal get;  set; }
+        public int Numero { internal get;  set; }
+        public int Agencia { internal get;  set; }
+        public decimal Cpf { internal get;  set; }
+        public double Saldo { internal get;  set; }
+        public int Id { internal get;  set; }
 
         public Conta() { }
         public Conta(string titular, int agencia, int numero, decimal cpf) { Titular = titular; Agencia = agencia; Numero = numero; Cpf = cpf; }

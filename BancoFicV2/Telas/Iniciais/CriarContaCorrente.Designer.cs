@@ -37,6 +37,7 @@ namespace BancoFicV2
             this.TxtNome = new System.Windows.Forms.TextBox();
             this.LbCpf = new System.Windows.Forms.Label();
             this.LbNome = new System.Windows.Forms.Label();
+            this.BtVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,16 +136,26 @@ namespace BancoFicV2
             this.LbNome.TabIndex = 0;
             this.LbNome.Text = "Nome";
             // 
+            // BtVoltar
+            // 
+            this.BtVoltar.Location = new System.Drawing.Point(13, 13);
+            this.BtVoltar.Name = "BtVoltar";
+            this.BtVoltar.Size = new System.Drawing.Size(75, 23);
+            this.BtVoltar.TabIndex = 4;
+            this.BtVoltar.Text = "Voltar";
+            this.BtVoltar.UseVisualStyleBackColor = true;
+            this.BtVoltar.Click += new System.EventHandler(this.BtVoltar_Click);
+            // 
             // CriarContaCorrente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(754, 475);
+            this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Name = "CriarContaCorrente";
             this.Text = "CriarContaCorrente";
-            this.Load += new System.EventHandler(this.CriarContaCorrente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -161,5 +172,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Label LbCpf;
         private System.Windows.Forms.Label LbNome;
         private System.Windows.Forms.Button BtEntrar;
+        private System.Windows.Forms.Button BtVoltar;
     }
 }
