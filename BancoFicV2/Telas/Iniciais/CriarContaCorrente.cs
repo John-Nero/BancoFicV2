@@ -17,19 +17,23 @@ namespace BancoFicV2
 
         private void BtEntrar_Click(object sender, EventArgs e)
         {
+
             try
             {
                 Random random = new Random();
             retornarNumero:
                 int numero = random.Next(1000, 10000);
-                Salvar.TxtParaCorrentes();
-                foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
+                Salvar.JsonParaCorrentes();
+                if (Salvar.LIstaDasCorrentes != null)
                 {
-                    if (Conta.Numero == numero && Conta.Agencia == Agencia)
+                    foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
                     {
-                        goto retornarNumero;
+                        if (Conta.Numero == numero && Conta.Agencia == Agencia)
+                        {
+                            goto retornarNumero;
+                        }
+                        else { break; }
                     }
-                    else { break; }
                 }
 
                 if (TxtNome.Text.Length < 3 || TxtNome.Text.Length >= 15)
@@ -60,7 +64,6 @@ namespace BancoFicV2
                 }
                 foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
                 {
-
                     if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
                     {
                         MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
@@ -77,7 +80,7 @@ namespace BancoFicV2
                 MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
                             "Conta criada com sucesso!",
                         MessageBoxButtons.OK);
-                OpcoesDeConta Opcoes = new OpcoesDeConta(Corrente,500);
+                OpcoesDeConta Opcoes = new OpcoesDeConta(Corrente, 500);
                 Opcoes.Show();
                 this.Visible = false;
 
@@ -91,6 +94,7 @@ namespace BancoFicV2
                            MessageBoxIcon.Error);
             }
         }
+
 
         private void SelecEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -123,10 +127,10 @@ namespace BancoFicV2
         }
 
         //Personalização do campo de texto
-        private void TxtNome_Enter(object sender, EventArgs e){TxtNome.BackColor = Color.LightBlue;}
-        private void TxtNome_Leave(object sender, EventArgs e){TxtNome.BackColor = Color.White;}
-        private void TxtCpf_Enter(object sender, EventArgs e){TxtCpf.BackColor = Color.LightBlue;}
-        private void TxtCpf_Leave(object sender, EventArgs e){TxtCpf.BackColor = Color.White;}
+        private void TxtNome_Enter(object sender, EventArgs e) { TxtNome.BackColor = Color.LightBlue; }
+        private void TxtNome_Leave(object sender, EventArgs e) { TxtNome.BackColor = Color.White; }
+        private void TxtCpf_Enter(object sender, EventArgs e) { TxtCpf.BackColor = Color.LightBlue; }
+        private void TxtCpf_Leave(object sender, EventArgs e) { TxtCpf.BackColor = Color.White; }
 
         //Validação de tipo de caracter
         private void TxtCpf_KeyPress(object sender, KeyPressEventArgs e)

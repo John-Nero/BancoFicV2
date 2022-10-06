@@ -151,7 +151,6 @@ namespace BancoFicV2
         private System.Windows.Forms.TextBox txtNumerodeconta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button BTNntrar;
         private System.Windows.Forms.NumericUpDown numAgencia;
         private System.Windows.Forms.Button BtEntrar;
         private System.Windows.Forms.Button BtVoltar;

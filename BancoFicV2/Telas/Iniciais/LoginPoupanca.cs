@@ -14,11 +14,12 @@ namespace BancoFicV2
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
-            Salvar.TxtParaPoupancas();
+            Salvar.JsonParaPoupancas();
             foreach (ContaPoupanca conta in Salvar.LIstaDasPoupancas)
             {
                 try
                 {
+
                     if (conta.Agencia == numAgencia.Value && conta.Numero == int.Parse(txtNumerodeconta.Text))
                     {
                         MessageBox.Show("Clique em OK para continuar",
@@ -43,9 +44,9 @@ namespace BancoFicV2
                 catch (FormatException ex)
                 {
                     MessageBox.Show(ex.Message,
-         $"Digite apenas numeros",
-         MessageBoxButtons.OK,
-         MessageBoxIcon.Error);
+                            $"Digite apenas numeros",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                     txtNumerodeconta.Focus();
                 }
             }

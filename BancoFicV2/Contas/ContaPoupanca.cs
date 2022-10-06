@@ -9,7 +9,7 @@ namespace BancoFicV2
         public ContaPoupanca() { }
 
 
-        public ContaPoupanca(string titular,int agencia, int numero,decimal cpf , double saldo) : base(titular, agencia, numero, cpf) { Saldo = saldo; }
+        public ContaPoupanca(string titular, int agencia, int numero, decimal cpf, double saldo, int id) : base(titular, agencia, numero, cpf, id) { Saldo = saldo; }
 
         public double Render(double saldo)
         {

@@ -14,7 +14,7 @@ namespace BancoFicV2
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
-            Salvar.TxtParaCorrentes();
+            Salvar.JsonParaCorrentes();
             foreach (ContaCorrente conta in Salvar.LIstaDasCorrentes)
             {
                 if (conta.Agencia == numAgencia.Value && conta.Numero == int.Parse(txtNumerodeconta.Text))

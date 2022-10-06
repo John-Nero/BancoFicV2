@@ -196,7 +196,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Label ExibirNome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label ExbirLimite;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button BtRender;
     }
 }
