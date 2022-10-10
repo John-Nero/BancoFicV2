@@ -17,13 +17,15 @@ namespace BancoFicV2
 
         private void Entrar_Click(object sender, EventArgs e)
         {
+
+            try
             {
-                try
+                Random random = new Random();
+            retornarNumero:
+                int numero = random.Next(1000, 10000);
+                Salvar.JsonParaPoupancas();
+                if (Salvar.LIstaDasPoupancas != null)
                 {
-                    Random random = new Random();
-                retornarNumero:
-                    int numero = random.Next(1000, 10000);
-                    Salvar.TxtParaPoupancas();
                     foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
                     {
                         if (Conta.Numero == numero && Conta.Agencia == Agencia)
@@ -32,67 +34,68 @@ namespace BancoFicV2
                         }
                         else { break; }
                     }
-
-                    if (TxtNome.Text.Length < 3 || TxtNome.Text.Length >= 15)
-                    {
-                        MessageBox.Show("Digite entre Três e quinze caracteres",
-                            "Nome muito curto ou muito longo",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                        goto avacoDeErro;
-                    }
-
-                    if (TxtCpf.Text.Length != 11)
-                    {
-                        MessageBox.Show("Confirme se digitou seu CPF corretamente",
-                            "CPF invalido",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                        goto avacoDeErro;
-                    }
-
-                    if (Agencia == 0)
-                    {
-                        MessageBox.Show("Selecione um estado para prosseguir",
-                                        $"Campo ESTADO vazio  ",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                        goto avacoDeErro;
-                    }
-                    foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
-                    {
-
-                        if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
-                        {
-                            MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
-                                            "Esse CPF já consta no sistema",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning);
-                            goto avacoDeErro;
-                        }
-                       
-                    }
-
-                    Poupanca.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 1);
-                    Salvar.AtualizarContaPoupanca(Poupanca);
-
-                    MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
-                                "Conta criada com sucesso!",
-                            MessageBoxButtons.OK);
-                    OpcoesDeConta Opcoes = new OpcoesDeConta(Poupanca, 0);
-                    Opcoes.Show();
-                    this.Visible = false;
-
-                avacoDeErro:;
                 }
-                catch (Exception ex)
+
+                if (TxtNome.Text.Length < 3 || TxtNome.Text.Length >= 15)
                 {
-                    MessageBox.Show(ex.Message,
-                               "Desculpe",
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Error);
+                    MessageBox.Show("Digite entre Três e quinze caracteres",
+                        "Nome muito curto ou muito longo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                    goto avacoDeErro;
                 }
+
+                if (TxtCpf.Text.Length != 11)
+                {
+                    MessageBox.Show("Confirme se digitou seu CPF corretamente",
+                        "CPF invalido",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                    goto avacoDeErro;
+                }
+
+                if (Agencia == 0)
+                {
+                    MessageBox.Show("Selecione um estado para prosseguir",
+                                    $"Campo ESTADO vazio  ",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                    goto avacoDeErro;
+                }
+                foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
+                {
+
+                    if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
+                    {
+                        MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
+                                        "Esse CPF já consta no sistema",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                        goto avacoDeErro;
+                    }
+
+                }
+
+                Poupanca.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 1);
+                Salvar.AtualizarContaPoupanca(Poupanca);
+
+                MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
+                            "Conta criada com sucesso!",
+                        MessageBoxButtons.OK);
+                OpcoesDeConta Opcoes = new OpcoesDeConta(Poupanca, 0);
+                Opcoes.Show();
+                this.Visible = false;
+
+            avacoDeErro:;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                           "Desculpe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Error);
+            }
+
         }
 
 

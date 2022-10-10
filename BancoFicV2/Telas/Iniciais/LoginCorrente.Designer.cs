@@ -137,7 +137,6 @@ namespace BancoFicV2
             this.Controls.Add(this.groupBox1);
             this.Name = "LoginCorrente";
             this.Text = "LoginCorrente";
-            this.Load += new System.EventHandler(this.LoginCorrente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAgencia)).EndInit();

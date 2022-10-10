@@ -9,12 +9,7 @@ namespace BancoFicV2
         {
             InitializeComponent();
         }
-
-        private void Opcoesiniciais_Load(object sender, EventArgs e)
-        {
-
-        }
-
+             
         private void LoginPoupanca_Click(object sender, EventArgs e)
         {
             var loginPoupanca = new LoginPoupanca();
@@ -43,9 +38,5 @@ namespace BancoFicV2
             this.Visible = false;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

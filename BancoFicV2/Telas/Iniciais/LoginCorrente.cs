@@ -14,7 +14,7 @@ namespace BancoFicV2
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
-            Salvar.TxtParaCorrentes();
+            Salvar.JsonParaCorrentes();
             foreach (ContaCorrente conta in Salvar.LIstaDasCorrentes)
             {
                 if (conta.Agencia == numAgencia.Value && conta.Numero == int.Parse(txtNumerodeconta.Text))
@@ -24,8 +24,8 @@ namespace BancoFicV2
                                MessageBoxButtons.OK,
                                MessageBoxIcon.None);
                     conta.SetId(2);
-  
-                    var opcoesdeconta = new OpcoesDeConta(conta,conta.LimiteEmprestimo);
+
+                    var opcoesdeconta = new OpcoesDeConta(conta, conta.LimiteEmprestimo);
                     opcoesdeconta.Show();
                     this.Visible = false;
                     break;
@@ -41,21 +41,17 @@ namespace BancoFicV2
             }
         }
 
+        private void BtVoltar_Click(object sender, EventArgs e)
+        {
+            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
+            opcoesiniciais.Show();
+            this.Visible = false;
+        }
+
         //Personalização do campo de texto
-        private void txtNumerodeconta_Enter(object sender, EventArgs e)
-        {
-            txtNumerodeconta.BackColor = Color.LightBlue;
-        }
-        private void txtNumerodeconta_Leave(object sender, EventArgs e)
-        {
-            txtNumerodeconta.BackColor = Color.White;
-
-        }
-
-        private void LoginCorrente_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void txtNumerodeconta_Enter(object sender, EventArgs e) { txtNumerodeconta.BackColor = Color.LightBlue; }
+       
+        private void txtNumerodeconta_Leave(object sender, EventArgs e) { txtNumerodeconta.BackColor = Color.White; }
 
         private void numAgencia_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -77,12 +73,7 @@ namespace BancoFicV2
             }
         }
 
-        private void BtVoltar_Click(object sender, EventArgs e)
-        {
-            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
-            opcoesiniciais.Show();
-            this.Visible = false;
-        }
+        
     }
     
 }

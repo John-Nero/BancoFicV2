@@ -7,13 +7,13 @@ namespace BancoFicV2
     class Agencia
     {
         int Numero;
-        
+
         public List<Agencia> LIstaDasAgencias = new List<Agencia>();
         const string CaminhoAgencia = @"C:\temp\Teste\BancoFicV2\BancoFicV2\Agencia\AgenciasDoPais.txt";
 
         public Agencia(int numero)
         {
-            
+
             Numero = numero;
         }
         public List<Agencia> TxtParaAgencias()

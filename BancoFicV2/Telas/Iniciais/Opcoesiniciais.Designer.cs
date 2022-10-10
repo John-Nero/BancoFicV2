@@ -51,7 +51,6 @@ namespace BancoFicV2
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selecione uma opção para avançar";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // criarCorrente
             // 
@@ -107,7 +106,6 @@ namespace BancoFicV2
             this.Name = "Opcoesiniciais";
             this.RightToLeftLayout = true;
             this.Text = "Opcoesiniciais";
-            this.Load += new System.EventHandler(this.Opcoesiniciais_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

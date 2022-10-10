@@ -22,14 +22,17 @@ namespace BancoFicV2
                 Random random = new Random();
             retornarNumero:
                 int numero = random.Next(1000, 10000);
-                Salvar.TxtParaCorrentes();
-                foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
+                Salvar.JsonParaCorrentes();
+                if (Salvar.LIstaDasCorrentes != null)
                 {
-                    if (Conta.Numero == numero && Conta.Agencia == Agencia)
+                    foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
                     {
-                        goto retornarNumero;
+                        if (Conta.Numero == numero && Conta.Agencia == Agencia)
+                        {
+                            goto retornarNumero;
+                        }
+                        else { break; }
                     }
-                    else { break; }
                 }
 
                 if (TxtNome.Text.Length < 3 || TxtNome.Text.Length >= 15)
@@ -60,7 +63,6 @@ namespace BancoFicV2
                 }
                 foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
                 {
-
                     if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
                     {
                         MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
@@ -77,7 +79,7 @@ namespace BancoFicV2
                 MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
                             "Conta criada com sucesso!",
                         MessageBoxButtons.OK);
-                OpcoesDeConta Opcoes = new OpcoesDeConta(Corrente,500);
+                OpcoesDeConta Opcoes = new OpcoesDeConta(Corrente, 500);
                 Opcoes.Show();
                 this.Visible = false;
 
