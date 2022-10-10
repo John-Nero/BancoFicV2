@@ -42,10 +42,10 @@ namespace BancoFicV2
         {
             try
             {
-                    ContaCorrente corrente = new ContaCorrente(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo,Limite);
-                    Emprestimo Emprestimo = new Emprestimo(corrente);
-                    Emprestimo.Show();
-                    this.Visible = false;
+                ContaCorrente corrente = new ContaCorrente(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Id, Conta.Saldo, Limite);
+                Emprestimo Emprestimo = new Emprestimo(corrente);
+                Emprestimo.Show();
+                this.Visible = false;
             }
             catch (Exception ex)
             {
