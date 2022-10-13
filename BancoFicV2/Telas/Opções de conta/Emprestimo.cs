@@ -23,7 +23,7 @@ namespace BancoFicV2
                 {
                     Corrente.SetConta(Corrente.Titular, Corrente.Agencia, Corrente.Numero, Corrente.Cpf, Corrente.Saldo,2);
                     Corrente.SolicitarEmprestimo(double.Parse(txtValor.Text));
-                    Salvar.AtualizarContaCorrente(Corrente);
+                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente,Corrente);
                     MessageBox.Show("Clique em OK para retornar a tela de opções",
                                "Deposito concluido",
                                MessageBoxButtons.OK,

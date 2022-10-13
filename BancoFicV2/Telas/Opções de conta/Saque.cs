@@ -26,7 +26,7 @@ namespace BancoFicV2
                 {
                     Poupanca.SetConta(Conta.Titular, Conta.Agencia,Conta.Numero , Conta.Cpf, Conta.Saldo, Conta.Id);
                     Poupanca.Sacar(double.Parse(txtValor.Text));
-                    Salvar.AtualizarContaPoupanca(Poupanca);
+                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca,Poupanca);
                     MessageBox.Show("Clique em OK para retornar a tela de opções",
                            "Saque concluido",
                            MessageBoxButtons.OK,
@@ -50,7 +50,7 @@ namespace BancoFicV2
                 {
                     Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Id);
                     Corrente.Sacar(double.Parse(txtValor.Text));
-                    Salvar.AtualizarContaCorrente(Corrente);
+                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente, Corrente);
                     MessageBox.Show("Clique em OK para retornar a tela de opções",
                                "Saque concluido",
                                MessageBoxButtons.OK,

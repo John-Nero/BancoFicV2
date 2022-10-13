@@ -14,7 +14,7 @@ namespace BancoFicV2
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
-            Salvar.JsonParaPoupancas();
+            Salvar.LerContas(TipoDeConta.ContaPoupanca);
             foreach (ContaPoupanca conta in Salvar.LIstaDasPoupancas)
             {
                 try
