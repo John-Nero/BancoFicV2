@@ -23,7 +23,7 @@ namespace BancoFicV2
                 Random random = new Random();
             retornarNumero:
                 int numero = random.Next(1000, 10000);
-                Salvar.JsonParaPoupancas();
+                Salvar.LerContas(TipoDeConta.ContaPoupanca);
                 if (Salvar.LIstaDasPoupancas != null)
                 {
                     foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
@@ -77,7 +77,7 @@ namespace BancoFicV2
                 }
 
                 Poupanca.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 1);
-                Salvar.AtualizarContaPoupanca(Poupanca);
+                Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca,Poupanca);
 
                 MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
                             "Conta criada com sucesso!",

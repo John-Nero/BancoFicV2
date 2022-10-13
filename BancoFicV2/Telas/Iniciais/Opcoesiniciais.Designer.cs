@@ -45,7 +45,7 @@ namespace BancoFicV2
             this.groupBox1.Controls.Add(this.loginCorrente);
             this.groupBox1.Controls.Add(this.loginPoupanca);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(235, 114);
+            this.groupBox1.Location = new System.Drawing.Point(427, 151);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(290, 252);
             this.groupBox1.TabIndex = 1;
@@ -101,7 +101,7 @@ namespace BancoFicV2
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(754, 475);
+            this.ClientSize = new System.Drawing.Size(1139, 549);
             this.Controls.Add(this.groupBox1);
             this.Name = "Opcoesiniciais";
             this.RightToLeftLayout = true;

@@ -22,7 +22,7 @@ namespace BancoFicV2
                 Random random = new Random();
             retornarNumero:
                 int numero = random.Next(1000, 10000);
-                Salvar.JsonParaCorrentes();
+                
                 if (Salvar.LIstaDasCorrentes != null)
                 {
                     foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
@@ -74,7 +74,7 @@ namespace BancoFicV2
                 }
 
                 Corrente.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 2);
-                Salvar.AtualizarContaCorrente(Corrente);
+                Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente, Corrente);
 
                 MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
                             "Conta criada com sucesso!",

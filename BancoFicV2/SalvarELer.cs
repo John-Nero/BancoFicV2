@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace BancoFicV2
 {
@@ -10,101 +11,144 @@ namespace BancoFicV2
         //ATENÇÃO Para o funcionamento correto do projeto é nescessario adaptar os caminhos dos arquivos.
 
         //Caminhos Para Local De Busca
-        internal const string CaminhoPoupanca = @"C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\DadosDosClientesPoupanca.json";
+        internal const string CaminhoPoupanca = @"C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\DadosDosClientesPoupancas.json";
         internal const string CaminhoCorrente = @"C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\DadosDosClientesCorrente.json";
 
         //Listas dos tipos de Conta
         public List<ContaPoupanca> LIstaDasPoupancas = new List<ContaPoupanca>();
         public List<ContaCorrente> LIstaDasCorrentes = new List<ContaCorrente>();
 
-        //Metodos de Save e atualização da Conta Poupanca
-        public List<ContaPoupanca> JsonParaPoupancas()
+        //Metodos de Save e atualização de Conta
+        
+        public void AtualizarDadosDeConta(TipoDeConta Tipo, Conta conta)
         {
             try
             {
-                string json = File.ReadAllText(CaminhoPoupanca);
-                LIstaDasPoupancas = JsonConvert.DeserializeObject<List<ContaPoupanca>>(json);
-                return LIstaDasPoupancas;
+                switch (Tipo)
+                {
+                    case TipoDeConta.ContaPoupanca:
+
+                    if (LIstaDasPoupancas.Count == 0) 
+                    {
+                        LerContas(TipoDeConta.ContaPoupanca); 
+                    } 
+                    if (LIstaDasPoupancas != null)
+                    {
+                        foreach (ContaPoupanca Conta in LIstaDasPoupancas)
+                        {
+                            if (conta.Agencia == Conta.Agencia && conta.Numero == Conta.Numero)
+                            {
+                                LIstaDasPoupancas.Remove(Conta);
+                                break;
+                            }
+                        }
+                    }
+                    LIstaDasPoupancas.Add((ContaPoupanca)conta);
+                    File.Delete(CaminhoPoupanca);
+                    ContaParaJson(TipoDeConta.ContaPoupanca);
+
+                    break;
+
+                    case TipoDeConta.ContaCorrente:
+
+                    if (LIstaDasCorrentes.Count == 0)
+                    {
+                        LerContas(TipoDeConta.ContaCorrente);
+                    }
+                    if (LIstaDasCorrentes != null)
+                    {
+                        foreach (ContaCorrente Conta in LIstaDasCorrentes)
+                        {
+                            if (conta.Agencia == Conta.Agencia && conta.Numero == Conta.Numero)
+                            {
+                                LIstaDasCorrentes.Remove(Conta);
+                                break;
+                            }
+                        }
+                    }
+                    LIstaDasCorrentes.Add((ContaCorrente)conta);
+                    File.Delete(CaminhoCorrente);
+                    ContaParaJson(TipoDeConta.ContaCorrente);
+
+                    break;
+                }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                MessageBox.Show(e.Message,
+                               "Desculpe",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
             }
         }
-        public void AtualizarContaPoupanca(ContaPoupanca Poupanca)
-        {
-            if (LIstaDasPoupancas.Count == 0) { JsonParaPoupancas(); }
-            {
-                foreach (ContaPoupanca Conta in LIstaDasPoupancas)
-                {
-                    if (Poupanca.Agencia == Conta.Agencia && Poupanca.Numero == Conta.Numero)
-                    {
-                        LIstaDasPoupancas.Remove(Conta);
-                        break;
-                    }
-                }
-            }
-            using var file = File.AppendText(CaminhoPoupanca);
-            LIstaDasPoupancas.Add(Poupanca);
-            file.Close();
 
-            PoupancaParaJson();
-        }
-        public void PoupancaParaJson()
-        {
-            File.Delete(CaminhoPoupanca);
-            using var file = File.AppendText(CaminhoPoupanca);
-            var listaParaJson = JsonConvert.SerializeObject(LIstaDasPoupancas, Formatting.Indented);
-
-            file.WriteLine(listaParaJson);
-
-        }
-
-        //Metodos de save e atualização da Conta corrente
-        public List<ContaCorrente> JsonParaCorrentes()
+        public void LerContas(TipoDeConta conta)
         {
             try
             {
-                string json = File.ReadAllText(CaminhoCorrente);
-                LIstaDasCorrentes = JsonConvert.DeserializeObject<List<ContaCorrente>>(json);
-                return LIstaDasCorrentes;
+                switch (conta)
+                {
+                    case TipoDeConta.ContaPoupanca:
+
+                    string JsonP = File.ReadAllText(CaminhoPoupanca);
+                    LIstaDasPoupancas = JsonConvert.DeserializeObject<List<ContaPoupanca>>(JsonP);
+                                        
+                    break;
+
+                    case TipoDeConta.ContaCorrente:
+
+                    string JsonC = File.ReadAllText(CaminhoCorrente);
+                    LIstaDasCorrentes = JsonConvert.DeserializeObject<List<ContaCorrente>>(JsonC);
+
+                    break;
+                }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                MessageBox.Show(e.Message,
+                               "Desculpe",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
             }
         }
-        public void AtualizarContaCorrente(ContaCorrente Corrente)
+
+        public void ContaParaJson(TipoDeConta conta)
         {
-            if (LIstaDasCorrentes.Count == 0) { JsonParaCorrentes(); }
-            JsonParaCorrentes();
-            if (LIstaDasCorrentes != null)
+            try
             {
-                foreach (ContaCorrente Conta in LIstaDasCorrentes)
+                using var fileP = File.AppendText(CaminhoPoupanca);
+                using var fileC = File.AppendText(CaminhoCorrente);
+                switch (conta)
                 {
-                    if (Corrente.Agencia == Conta.Agencia && Corrente.Numero == Conta.Numero)
-                    {
-                        LIstaDasCorrentes.Remove(Conta);
-                        break;
-                    }
+                    case TipoDeConta.ContaPoupanca:
+
+                    fileC.Close();
+                                        
+                    var listaPoupancaParaJson = JsonConvert.SerializeObject(LIstaDasPoupancas, Formatting.Indented);
+                    fileP.WriteLine(listaPoupancaParaJson);
+                    fileP.Close();
+                    
+                    break;
+
+                    case TipoDeConta.ContaCorrente:
+
+                    fileP.Close();
+
+                    var listaCorrenteParaJson = JsonConvert.SerializeObject(LIstaDasCorrentes, Formatting.Indented);
+                    fileC.WriteLine(listaCorrenteParaJson);
+                    fileC.Close();
+
+                    break;
                 }
             }
-            using var file = File.AppendText(CaminhoCorrente);
-            LIstaDasCorrentes.Add(Corrente);
-            file.Close();
-
-            CorrenteParaJson();
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message,
+                               "Desculpe",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }
         }
-        public void CorrenteParaJson()
-        {
-            File.Delete(CaminhoCorrente);
-            using var file = File.AppendText(CaminhoCorrente);
-            var listaParaJson = JsonConvert.SerializeObject(LIstaDasCorrentes, Formatting.Indented);
 
-            file.WriteLine(listaParaJson);
-
-        }
     }
 }
