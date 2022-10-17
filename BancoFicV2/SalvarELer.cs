@@ -3,23 +3,22 @@ using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace BancoFicV2
 {
     class SalvarELer
     {
-        //ATENÇÃO Para o funcionamento correto do projeto é nescessario adaptar os caminhos dos arquivos.
-
         //Caminhos Para Local De Busca
-        internal const string CaminhoPoupanca = @"C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\DadosDosClientesPoupancas.json";
-        internal const string CaminhoCorrente = @"C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\DadosDosClientesCorrente.json";
+        internal string CaminhoPoupanca = "@" + ConfigurationManager.AppSettings["CaminhoPoupanca"];
+        internal string CaminhoCorrente = "@" + ConfigurationManager.AppSettings["CaminhoCorrente"];
 
         //Listas dos tipos de Conta
         public List<ContaPoupanca> LIstaDasPoupancas = new List<ContaPoupanca>();
         public List<ContaCorrente> LIstaDasCorrentes = new List<ContaCorrente>();
 
         //Metodos de Save e atualização de Conta
-        
+
         public void AtualizarDadosDeConta(TipoDeConta Tipo, Conta conta)
         {
             try
@@ -28,10 +27,10 @@ namespace BancoFicV2
                 {
                     case TipoDeConta.ContaPoupanca:
 
-                    if (LIstaDasPoupancas.Count == 0) 
+                    if (LIstaDasPoupancas.Count == 0)
                     {
-                        LerContas(TipoDeConta.ContaPoupanca); 
-                    } 
+                        LerContas(TipoDeConta.ContaPoupanca);
+                    }
                     if (LIstaDasPoupancas != null)
                     {
                         foreach (ContaPoupanca Conta in LIstaDasPoupancas)
@@ -92,7 +91,7 @@ namespace BancoFicV2
 
                     string JsonP = File.ReadAllText(CaminhoPoupanca);
                     LIstaDasPoupancas = JsonConvert.DeserializeObject<List<ContaPoupanca>>(JsonP);
-                                        
+
                     break;
 
                     case TipoDeConta.ContaCorrente:
@@ -123,11 +122,11 @@ namespace BancoFicV2
                     case TipoDeConta.ContaPoupanca:
 
                     fileC.Close();
-                                        
+
                     var listaPoupancaParaJson = JsonConvert.SerializeObject(LIstaDasPoupancas, Formatting.Indented);
                     fileP.WriteLine(listaPoupancaParaJson);
                     fileP.Close();
-                    
+
                     break;
 
                     case TipoDeConta.ContaCorrente:
