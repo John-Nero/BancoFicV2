@@ -38,6 +38,13 @@ namespace BancoFicV2
             this.Visible = false;
         }
 
+        private void BtTransferir_Click(object sender, EventArgs e)
+        {
+            Transferencia transferencia = new Transferencia(Conta, Limite);
+            transferencia.Show();
+            this.Dispose();
+        }
+
         private void BtEmprestimos_Click(object sender, EventArgs e)
         {
             try
@@ -65,5 +72,7 @@ namespace BancoFicV2
             poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 1);
             salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, poupanca);
         }
+
+        
     }
 }

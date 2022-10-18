@@ -40,6 +40,7 @@ namespace BancoFicV2
             this.ExibirNome = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ExbirLimite = new System.Windows.Forms.Label();
+            this.BtTransferir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +49,7 @@ namespace BancoFicV2
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.BtTransferir);
             this.groupBox1.Controls.Add(this.BtRender);
             this.groupBox1.Controls.Add(this.BtEmprestimo);
             this.groupBox1.Controls.Add(this.BtSacar);
@@ -56,7 +58,7 @@ namespace BancoFicV2
             this.groupBox1.Location = new System.Drawing.Point(303, 113);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(163, 190);
+            this.groupBox1.Size = new System.Drawing.Size(163, 218);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selecione uma opção";
@@ -69,7 +71,7 @@ namespace BancoFicV2
             this.BtRender.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtRender.Location = new System.Drawing.Point(6, 116);
             this.BtRender.Name = "BtRender";
-            this.BtRender.Size = new System.Drawing.Size(151, 52);
+            this.BtRender.Size = new System.Drawing.Size(151, 37);
             this.BtRender.TabIndex = 4;
             this.BtRender.Text = "Render";
             this.BtRender.UseVisualStyleBackColor = true;
@@ -80,7 +82,7 @@ namespace BancoFicV2
             this.BtEmprestimo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtEmprestimo.Location = new System.Drawing.Point(6, 116);
             this.BtEmprestimo.Name = "BtEmprestimo";
-            this.BtEmprestimo.Size = new System.Drawing.Size(151, 52);
+            this.BtEmprestimo.Size = new System.Drawing.Size(151, 37);
             this.BtEmprestimo.TabIndex = 3;
             this.BtEmprestimo.Text = "Emprestimo";
             this.BtEmprestimo.UseVisualStyleBackColor = true;
@@ -162,6 +164,17 @@ namespace BancoFicV2
             this.ExbirLimite.Size = new System.Drawing.Size(100, 23);
             this.ExbirLimite.TabIndex = 0;
             // 
+            // BtTransferir
+            // 
+            this.BtTransferir.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtTransferir.Location = new System.Drawing.Point(6, 159);
+            this.BtTransferir.Name = "BtTransferir";
+            this.BtTransferir.Size = new System.Drawing.Size(151, 37);
+            this.BtTransferir.TabIndex = 5;
+            this.BtTransferir.Text = "Transferir";
+            this.BtTransferir.UseVisualStyleBackColor = true;
+            this.BtTransferir.Click += new System.EventHandler(this.BtTransferir_Click);
+            // 
             // OpcoesDeConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -198,5 +211,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Label ExbirLimite;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button BtRender;
+        private System.Windows.Forms.Button BtTransferir;
     }
 }

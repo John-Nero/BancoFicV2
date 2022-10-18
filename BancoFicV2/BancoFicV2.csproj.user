@@ -28,5 +28,8 @@
     <Compile Update="Telas\Opções de conta\Saque.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Telas\Opções de conta\Transferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

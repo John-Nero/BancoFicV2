@@ -10,8 +10,8 @@ namespace BancoFicV2
     class SalvarELer
     {
         //Caminhos Para Local De Busca
-        internal string CaminhoPoupanca = "@" + ConfigurationManager.AppSettings["CaminhoPoupanca"];
-        internal string CaminhoCorrente = "@" + ConfigurationManager.AppSettings["CaminhoCorrente"];
+        internal string CaminhoPoupanca = @ConfigurationManager.AppSettings["CaminhoPoupanca"];
+        internal string CaminhoCorrente = @ConfigurationManager.AppSettings["CaminhoCorrente"];
 
         //Listas dos tipos de Conta
         public List<ContaPoupanca> LIstaDasPoupancas = new List<ContaPoupanca>();

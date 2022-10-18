@@ -117,3 +117,4 @@ C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\Banco Fic V2 Bac
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\GitUpdate\BancoFicV2\BancoFicV2\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\GitUpdate\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.csproj.CopyComplete
 C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\GitUpdate\BancoFicV2\BancoFicV2\bin\Debug\netcoreapp3.1\BancoFicV2.dll.config
+C:\Users\john.barros\OneDrive - Clearsale S.A\Área de Trabalho\GitUpdate\BancoFicV2\BancoFicV2\obj\Debug\netcoreapp3.1\BancoFicV2.Transferencia.resources
