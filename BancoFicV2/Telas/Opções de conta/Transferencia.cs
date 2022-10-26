@@ -32,12 +32,16 @@ namespace BancoFicV2
 
                     foreach (ContaPoupanca conta in Salvar.LIstaDasPoupancas)
                     {
-                        if (int.Parse(TxtAgencia.Text) == conta.Agencia && int.Parse(TxtNumero.Text) == conta.Numero)
+                        if (int.Parse(TxtAgencia.Text) == (int)conta.Agencia && int.Parse(TxtNumero.Text) == conta.Numero)
                         {
                             conta.Depositar(double.Parse(TxtValor.Text));
                             Poupanca.Sacar(double.Parse(TxtValor.Text));
                             Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, conta);
                             Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, Poupanca);
+                            MessageBox.Show($"Seu saldo atual é de {Poupanca.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
+                               "Deposito concluido",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.None);
                             break;
                         }
                     }
@@ -50,12 +54,16 @@ namespace BancoFicV2
 
                     foreach (ContaCorrente conta in Salvar.LIstaDasCorrentes)
                     {
-                        if (int.Parse(TxtAgencia.Text) == conta.Agencia && int.Parse(TxtNumero.Text) == conta.Numero)
+                        if (int.Parse(TxtAgencia.Text) == (int)conta.Agencia && int.Parse(TxtNumero.Text) == conta.Numero)
                         {
                             conta.Depositar(double.Parse(TxtValor.Text));
                             Corrente.Sacar(double.Parse(TxtValor.Text));
                             Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente, conta);
                             Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente, Corrente);
+                            MessageBox.Show($"Seu saldo atual é de {Corrente.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
+                               "Deposito concluido",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.None);
                             break;
                         }
                     }
@@ -92,6 +100,45 @@ namespace BancoFicV2
                 OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Corrente, Corrente.LimiteEmprestimo);
                 opcoesDeConta.Show();
                 this.Visible = false;
+            }
+        }
+
+        private void TxtAgencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int tecla = (int)e.KeyChar;
+            if (!char.IsDigit(e.KeyChar) && tecla != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                        "Digite apenas numeros",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+        }
+
+        private void TxtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int tecla = (int)e.KeyChar;
+            if (!char.IsDigit(e.KeyChar) && tecla != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                        "Digite apenas numeros",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+        }
+
+        private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int tecla = (int)e.KeyChar;
+            if (!char.IsDigit(e.KeyChar) && tecla != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                        "Digite apenas numeros",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
     }

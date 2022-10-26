@@ -19,12 +19,12 @@ namespace BancoFicV2
         {
             try
             {
-                if (double.Parse(txtValor.Text) <= Corrente.LimiteEmprestimo)
+                if (double.Parse(TxtValor.Text) <= Corrente.LimiteEmprestimo)
                 {
                     Corrente.SetConta(Corrente.Titular, Corrente.Agencia, Corrente.Numero, Corrente.Cpf, Corrente.Saldo,2);
-                    Corrente.SolicitarEmprestimo(double.Parse(txtValor.Text));
+                    Corrente.SolicitarEmprestimo(double.Parse(TxtValor.Text));
                     Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente,Corrente);
-                    MessageBox.Show("Clique em OK para retornar a tela de opções",
+                    MessageBox.Show($"Seu saldo atual é de {Corrente.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
                                "Deposito concluido",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.None);
@@ -56,6 +56,19 @@ namespace BancoFicV2
             opcoesDeConta.Show();
             this.Visible = false;
 
+        }
+
+        private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int tecla = (int)e.KeyChar;
+            if (!char.IsDigit(e.KeyChar) && tecla != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                        "Digite apenas numeros",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
         }
     }
 }

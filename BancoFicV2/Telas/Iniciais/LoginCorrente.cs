@@ -14,30 +14,44 @@ namespace BancoFicV2
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
-            Salvar.LerContas(TipoDeConta.ContaCorrente);
-            foreach (ContaCorrente conta in Salvar.LIstaDasCorrentes)
+            int confirmacao = 0;
+            Salvar.LerContas(TipoDeConta.ContaPoupanca);
+            foreach (ContaPoupanca conta in Salvar.LIstaDasPoupancas)
             {
-                if (conta.Agencia == numAgencia.Value && conta.Numero == int.Parse(txtNumerodeconta.Text))
+                try
                 {
-                    MessageBox.Show("Clique em OK para continuar",
-                               $"Seja Bem vindo {conta.Titular}",
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.None);
-                    conta.SetId(2);
 
-                    var opcoesdeconta = new OpcoesDeConta(conta, conta.LimiteEmprestimo);
-                    opcoesdeconta.Show();
-                    this.Visible = false;
-                    break;
+                    if ((int)conta.Agencia == NumAgencia.Value && conta.Numero == int.Parse(TxtNumerodeconta.Text))
+                    {
+                        confirmacao++;
+                        MessageBox.Show("Clique em OK para continuar",
+                                   $"Seja Bem vindo {conta.Titular}",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.None);
+                        conta.SetId(1);
+                        var opcoesdeconta = new OpcoesDeConta(conta, 0);
+                        opcoesdeconta.Show();
+                        this.Visible = false;
+                        break;
+
+                    }
                 }
-                else
+                catch (FormatException ex)
                 {
-                    MessageBox.Show("Verifique se digitou corretamente os dados",
+                    MessageBox.Show(ex.Message,
+                            $"Desculpe",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                    TxtNumerodeconta.Focus();
+                }
+            }
+            if (confirmacao == 0)
+            {
+                MessageBox.Show("Verifique se digitou corretamente os dados",
                              $"Agencia ou Numero de conta incorreto",
                              MessageBoxButtons.OK,
                              MessageBoxIcon.Error);
-                    txtNumerodeconta.Focus();
-                }
+                TxtNumerodeconta.Focus();
             }
         }
 
@@ -49,9 +63,9 @@ namespace BancoFicV2
         }
 
         //Personalização do campo de texto
-        private void txtNumerodeconta_Enter(object sender, EventArgs e) { txtNumerodeconta.BackColor = Color.LightBlue; }
+        private void txtNumerodeconta_Enter(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.LightBlue; }
        
-        private void txtNumerodeconta_Leave(object sender, EventArgs e) { txtNumerodeconta.BackColor = Color.White; }
+        private void txtNumerodeconta_Leave(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.White; }
 
         private void numAgencia_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -59,7 +73,10 @@ namespace BancoFicV2
             if (!char.IsDigit(e.KeyChar) && tecla != 8)
             {
                 e.Handled = true;
-                MessageBox.Show("Caracter invalido");
+                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                        "Digite apenas numeros",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 
@@ -69,7 +86,10 @@ namespace BancoFicV2
             if (!char.IsDigit(e.KeyChar) && tecla != 8)
             {
                 e.Handled = true;
-                MessageBox.Show("Caracter invalido");
+                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                        "Digite apenas numeros",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 

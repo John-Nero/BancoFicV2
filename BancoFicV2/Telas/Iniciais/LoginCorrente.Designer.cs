@@ -30,63 +30,64 @@ namespace BancoFicV2
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numAgencia = new System.Windows.Forms.NumericUpDown();
-            this.txtNumerodeconta = new System.Windows.Forms.TextBox();
+            this.NumAgencia = new System.Windows.Forms.NumericUpDown();
+            this.TxtNumerodeconta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtEntrar = new System.Windows.Forms.Button();
             this.BtVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numAgencia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumAgencia)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numAgencia);
-            this.groupBox1.Controls.Add(this.txtNumerodeconta);
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.NumAgencia);
+            this.groupBox1.Controls.Add(this.TxtNumerodeconta);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.BtEntrar);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(182, 142);
+            this.groupBox1.Location = new System.Drawing.Point(427, 151);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(362, 163);
+            this.groupBox1.Size = new System.Drawing.Size(362, 179);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login conta corrente";
             // 
-            // numAgencia
+            // NumAgencia
             // 
-            this.numAgencia.Location = new System.Drawing.Point(18, 42);
-            this.numAgencia.Maximum = new decimal(new int[] {
+            this.NumAgencia.Location = new System.Drawing.Point(18, 42);
+            this.NumAgencia.Maximum = new decimal(new int[] {
             6,
             0,
             0,
             0});
-            this.numAgencia.Minimum = new decimal(new int[] {
+            this.NumAgencia.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numAgencia.Name = "numAgencia";
-            this.numAgencia.Size = new System.Drawing.Size(120, 23);
-            this.numAgencia.TabIndex = 5;
-            this.numAgencia.Value = new decimal(new int[] {
+            this.NumAgencia.Name = "NumAgencia";
+            this.NumAgencia.Size = new System.Drawing.Size(120, 23);
+            this.NumAgencia.TabIndex = 5;
+            this.NumAgencia.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numAgencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numAgencia_KeyPress);
+            this.NumAgencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numAgencia_KeyPress);
             // 
-            // txtNumerodeconta
+            // TxtNumerodeconta
             // 
-            this.txtNumerodeconta.Location = new System.Drawing.Point(18, 105);
-            this.txtNumerodeconta.Name = "txtNumerodeconta";
-            this.txtNumerodeconta.Size = new System.Drawing.Size(338, 23);
-            this.txtNumerodeconta.TabIndex = 4;
-            this.txtNumerodeconta.Enter += new System.EventHandler(this.txtNumerodeconta_Enter);
-            this.txtNumerodeconta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerodeconta_KeyPress);
-            this.txtNumerodeconta.Leave += new System.EventHandler(this.txtNumerodeconta_Leave);
+            this.TxtNumerodeconta.Location = new System.Drawing.Point(18, 105);
+            this.TxtNumerodeconta.Name = "TxtNumerodeconta";
+            this.TxtNumerodeconta.Size = new System.Drawing.Size(338, 23);
+            this.TxtNumerodeconta.TabIndex = 4;
+            this.TxtNumerodeconta.Enter += new System.EventHandler(this.txtNumerodeconta_Enter);
+            this.TxtNumerodeconta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerodeconta_KeyPress);
+            this.TxtNumerodeconta.Leave += new System.EventHandler(this.txtNumerodeconta_Leave);
             // 
             // label2
             // 
@@ -102,9 +103,9 @@ namespace BancoFicV2
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 15);
+            this.label1.Size = new System.Drawing.Size(50, 15);
             this.label1.TabIndex = 2;
-            this.label1.Text = "agência";
+            this.label1.Text = "Agência";
             // 
             // BtEntrar
             // 
@@ -132,26 +133,27 @@ namespace BancoFicV2
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(754, 475);
+            this.ClientSize = new System.Drawing.Size(1139, 549);
             this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Name = "LoginCorrente";
             this.Text = "LoginCorrente";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numAgencia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumAgencia)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtNumerodeconta;
+        private System.Windows.Forms.TextBox TxtNumerodeconta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BTNntrar;
-        private System.Windows.Forms.NumericUpDown numAgencia;
+        private System.Windows.Forms.NumericUpDown NumAgencia;
         private System.Windows.Forms.Button BtEntrar;
         private System.Windows.Forms.Button BtVoltar;
     }

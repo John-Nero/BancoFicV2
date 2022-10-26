@@ -24,9 +24,9 @@ namespace BancoFicV2
                 try
                 {
                     Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 1);
-                    Poupanca.Depositar(double.Parse(txtValor.Text));
+                    Poupanca.Depositar(double.Parse(TxtValor.Text));
                     Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca,Poupanca);
-                    MessageBox.Show("Clique em OK para retornar a tela de opções",
+                    MessageBox.Show($"Seu saldo atual é de {Poupanca.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
                            "Deposito concluido",
                            MessageBoxButtons.OK,
                            MessageBoxIcon.None);
@@ -49,9 +49,9 @@ namespace BancoFicV2
                 {
                     Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Id);
                     Corrente.SetLimitEmprestimo(Limite);
-                    Corrente.Depositar(double.Parse(txtValor.Text));
+                    Corrente.Depositar(double.Parse(TxtValor.Text));
                     Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente,Corrente);
-                    MessageBox.Show("Clique em OK para retornar a tela de opções",
+                    MessageBox.Show($"Seu saldo atual é de {Corrente.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
                                "Deposito concluido",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.None);
@@ -85,6 +85,19 @@ namespace BancoFicV2
                 OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Corrente, Corrente.LimiteEmprestimo);
                 opcoesDeConta.Show();
                 this.Visible = false;
+            }
+        }
+
+        private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int tecla = (int)e.KeyChar;
+            if (!char.IsDigit(e.KeyChar) && tecla != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                        "Digite apenas numeros",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
     }

@@ -12,13 +12,18 @@ namespace BancoFicV2
         {
             Limite = limiteDeEmprestimo;
             Conta = conta1;
-            InitializeComponent();
+            Saque saque = new Saque(Conta, Limite);
+            saque.Show();
+            this.Visible = false;
+            
+            //InitializeComponent();
         }
 
         private void BtOpcoesDeConta_Load(object sender, EventArgs e)
         {
             ExibirNome.Text = $"Titular: {Conta.Titular}";
-            ExibirAgenciaENumero.Text = $"agencia e Nº de conta: {Conta.Agencia} - {Conta.Numero}";
+            ExibirAgênica.Text = $"Agencia: {(int)Conta.Agencia}  {Conta.Agencia.ToString().Replace("_"," ")}";
+            ExibirNumero.Text = $"Nº de conta: {Conta.Numero}";
             ExibirSaldo.Text = $"Saldo: {Conta.Saldo.ToString("F2")}";
             if (Conta.Id == 2) { BtRender.Visible = false; }
             else { BtEmprestimo.Visible = false; }
@@ -71,8 +76,6 @@ namespace BancoFicV2
             BtOpcoesDeConta_Load(sender, e);
             poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 1);
             salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, poupanca);
-        }
-
-        
+        }      
     }
 }

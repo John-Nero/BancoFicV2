@@ -6,7 +6,7 @@ namespace BancoFicV2
 {
     public partial class CriarContaCorrente : Form
     {
-        int Agencia;
+        Agencias Agencia;
         SalvarELer Salvar = new SalvarELer();
         ContaCorrente Corrente = new ContaCorrente();
 
@@ -19,10 +19,14 @@ namespace BancoFicV2
         {
             try
             {
+                int ValidaNome = 0;
+                int ValidaCpf = 0;
+                int ValidaAgencia = 0;
+                string menssagem = "Os campos: ";
                 Random random = new Random();
             retornarNumero:
                 int numero = random.Next(1000, 10000);
-                
+                Salvar.LerContas(TipoDeConta.ContaCorrente);
                 if (Salvar.LIstaDasCorrentes != null)
                 {
                     foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
@@ -35,34 +39,22 @@ namespace BancoFicV2
                     }
                 }
 
-                if (TxtNome.Text.Length < 3 || TxtNome.Text.Length >= 15)
+                if (TxtNome.Text.Length < 3 || TxtNome.Text.Length >= 15) { ValidaNome++; menssagem += "Nome, "; }
+                if (TxtCpf.Text.Length != 11) { ValidaCpf++; menssagem += "CPF, "; }
+                if (Agencia == 0) { ValidaAgencia++; menssagem += $"Estado "; }
+                if (ValidaNome == 1 || ValidaCpf == 1 || ValidaAgencia == 1)
                 {
-                    MessageBox.Show("Digite entre Três e quinze caracteres",
-                        "Nome muito curto ou muito longo",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                    menssagem += "estão com irregularidades, confirme os dados e reenvie o formulario";
+                    MessageBox.Show(menssagem,
+                              "Confirme se digitou corretamente os dados a seguir",
+                              MessageBoxButtons.OK,
+                              MessageBoxIcon.Warning);
                     goto avacoDeErro;
                 }
 
-                if (TxtCpf.Text.Length != 11)
-                {
-                    MessageBox.Show("Confirme se digitou seu CPF corretamente",
-                        "CPF invalido",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                    goto avacoDeErro;
-                }
-
-                if (Agencia == 0)
-                {
-                    MessageBox.Show("Selecione um estado para prosseguir",
-                                    $"Campo ESTADO vazio  ",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                    goto avacoDeErro;
-                }
                 foreach (ContaCorrente Conta in Salvar.LIstaDasCorrentes)
                 {
+
                     if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
                     {
                         MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
@@ -71,15 +63,16 @@ namespace BancoFicV2
                         MessageBoxIcon.Warning);
                         goto avacoDeErro;
                     }
+
                 }
 
-                Corrente.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 2);
+                Corrente.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 1);
                 Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente, Corrente);
 
                 MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
                             "Conta criada com sucesso!",
                         MessageBoxButtons.OK);
-                OpcoesDeConta Opcoes = new OpcoesDeConta(Corrente, 500);
+                OpcoesDeConta Opcoes = new OpcoesDeConta(Corrente, 0);
                 Opcoes.Show();
                 this.Visible = false;
 
@@ -96,30 +89,30 @@ namespace BancoFicV2
 
         private void SelecEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (SelecEstado.Text)
+            switch (ComboBoxSelecEstado.Text)
             {
                 case "São Paulo":
-                Agencia = 1;
+                Agencia = Agencias.São_Paulo;
                 break;
 
                 case "Rio de Janeiro":
-                Agencia = 2;
+                Agencia = Agencias.Rio_de_Janeiro;
                 break;
 
                 case "Bahia":
-                Agencia = 3;
+                Agencia = Agencias.Bahia;
                 break;
 
                 case "Ceará":
-                Agencia = 4;
+                Agencia = Agencias.Ceará;
                 break;
 
                 case "Rio Grande do Sul":
-                Agencia = 5;
+                Agencia = Agencias.Rio_Grande_do_Sul;
                 break;
 
                 case "Santa Catarina":
-                Agencia = 6;
+                Agencia = Agencias.Santa_Catarina;
                 break;
             }
         }
@@ -137,7 +130,10 @@ namespace BancoFicV2
             if (!char.IsDigit(e.KeyChar) && tecla != 8)
             {
                 e.Handled = true;
-                MessageBox.Show("Caracter invalido");
+                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                        "Digite apenas numeros",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 
@@ -147,7 +143,10 @@ namespace BancoFicV2
             if (!char.IsLetter(e.KeyChar) && tecla != 8)
             {
                 e.Handled = true;
-                MessageBox.Show("Caracter invalido, digite apenas letras");
+                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor Letras",
+                        "Digite apenas Letras",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 
