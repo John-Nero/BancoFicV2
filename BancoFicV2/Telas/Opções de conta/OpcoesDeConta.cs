@@ -12,20 +12,16 @@ namespace BancoFicV2
         {
             Limite = limiteDeEmprestimo;
             Conta = conta1;
-            Saque saque = new Saque(Conta, Limite);
-            saque.Show();
-            this.Visible = false;
-            
-            //InitializeComponent();
+            InitializeComponent();
         }
 
         private void BtOpcoesDeConta_Load(object sender, EventArgs e)
         {
             ExibirNome.Text = $"Titular: {Conta.Titular}";
-            ExibirAgênica.Text = $"Agencia: {(int)Conta.Agencia}  {Conta.Agencia.ToString().Replace("_"," ")}";
+            ExibirAgênica.Text = $"Agencia: {(int)Conta.Agencia}  {Conta.Agencia.ToString().Replace("_", " ")}";
             ExibirNumero.Text = $"Nº de conta: {Conta.Numero}";
             ExibirSaldo.Text = $"Saldo: {Conta.Saldo.ToString("F2")}";
-            if (Conta.Id == 2) { BtRender.Visible = false; }
+            if (Conta.Tipo == TipoDeConta.ContaCorrente) { BtRender.Visible = false; }
             else { BtEmprestimo.Visible = false; }
         }
 
@@ -54,7 +50,7 @@ namespace BancoFicV2
         {
             try
             {
-                ContaCorrente corrente = new ContaCorrente(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Id, Conta.Saldo, Limite);
+                ContaCorrente corrente = new ContaCorrente(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, TipoDeConta.ContaCorrente, Conta.Saldo, Limite);
                 Emprestimo Emprestimo = new Emprestimo(corrente);
                 Emprestimo.Show();
                 this.Visible = false;
@@ -74,8 +70,8 @@ namespace BancoFicV2
             SalvarELer salvar = new SalvarELer();
             Conta.Depositar(poupanca.Render(Conta.Saldo));
             BtOpcoesDeConta_Load(sender, e);
-            poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 1);
+            poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, TipoDeConta.ContaPoupanca);
             salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, poupanca);
-        }      
+        }
     }
 }

@@ -10,13 +10,16 @@ namespace BancoFicV2
         {
             InitializeComponent();
         }
+        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+
+        KeyPressEventArgs NumeroDeConta;
 
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
             int confirmacao = 0;
-            Salvar.LerContas(TipoDeConta.ContaPoupanca);
-            foreach (ContaPoupanca conta in Salvar.LIstaDasPoupancas)
+            Salvar.LerContas(TipoDeConta.ContaCorrente);
+            foreach (ContaCorrente conta in Salvar.LIstaDasCorrentes)
             {
                 try
                 {
@@ -28,8 +31,9 @@ namespace BancoFicV2
                                    $"Seja Bem vindo {conta.Titular}",
                                    MessageBoxButtons.OK,
                                    MessageBoxIcon.None);
-                        conta.SetId(1);
-                        var opcoesdeconta = new OpcoesDeConta(conta, 0);
+                        
+                        conta.SetTipo(TipoDeConta.ContaCorrente);
+                        var opcoesdeconta = new OpcoesDeConta(conta, conta.LimiteEmprestimo);
                         opcoesdeconta.Show();
                         this.Visible = false;
                         break;
@@ -64,36 +68,20 @@ namespace BancoFicV2
 
         //Personalização do campo de texto
         private void txtNumerodeconta_Enter(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.LightBlue; }
-       
+
         private void txtNumerodeconta_Leave(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.White; }
-
-        private void numAgencia_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            int tecla = (int)e.KeyChar;
-            if (!char.IsDigit(e.KeyChar) && tecla != 8)
-            {
-                e.Handled = true;
-                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
-                        "Digite apenas numeros",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
-        }
-
+                
         private void txtNumerodeconta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            int tecla = (int)e.KeyChar;
-            if (!char.IsDigit(e.KeyChar) && tecla != 8)
-            {
-                e.Handled = true;
-                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
-                        "Digite apenas numeros",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
+            NumeroDeConta = e;
         }
 
-        
+        private void TxtNumerodeconta_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { NumeroDeConta = null; }
+
+            TxtNumerodeconta.Text = Validacao.ValidarNumeros(NumeroDeConta);
+        }
     }
-    
+
 }

@@ -9,6 +9,10 @@ namespace BancoFicV2
         Agencias Agencia;
         SalvarELer Salvar = new SalvarELer();
         ContaPoupanca Poupanca = new ContaPoupanca();
+        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+
+        KeyPressEventArgs Letra;
+        KeyPressEventArgs Numero;
 
         public CriarContaPoupanca()
         {
@@ -51,22 +55,23 @@ namespace BancoFicV2
                               MessageBoxIcon.Warning);
                     goto avacoDeErro;
                 }
-                
-                foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
+                if (Salvar.LIstaDasPoupancas != null)
                 {
-
-                    if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
+                    foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
                     {
-                        MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
-                                        "Esse CPF já consta no sistema",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                        goto avacoDeErro;
+
+                        if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
+                        {
+                            MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
+                                            "Esse CPF já consta no sistema",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                            goto avacoDeErro;
+                        }
+
                     }
-
                 }
-
-                Poupanca.SetConta(TxtNome.Text, Agencia, numero, decimal.Parse(TxtCpf.Text), 0, 1);
+                Poupanca.SetConta(TxtNome.Text, Agencia, numero, long.Parse(TxtCpf.Text), 0, TipoDeConta.ContaPoupanca);
                 Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, Poupanca);
 
                 MessageBox.Show("Clique em OK para ser redirecionado ao Menu de opções de contas",
@@ -147,29 +152,21 @@ namespace BancoFicV2
         //Validação de tipo de caracter
         private void TxtCpf_KeyPress(object sender, KeyPressEventArgs e)
         {
-            int tecla = (int)e.KeyChar;
-            if (!char.IsDigit(e.KeyChar) && tecla != 8)
-            {
-                e.Handled = true;
-                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
-                        "Digite apenas numeros",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
+            Numero = e;
         }
         private void TxtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
-            int tecla = (int)e.KeyChar;
-            if (!char.IsLetter(e.KeyChar) && tecla != 8)
-            {
-                e.Handled = true;
-                MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor Letras",
-                        "Digite apenas Letras",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
+            Letra = e;
         }
 
+        private void TxtNome_KeyUp(object sender, KeyEventArgs e)
+        {
+            TxtNome.Text = Validacao.ValidarLetras(Letra);
+        }
 
+        private void TxtCpf_KeyUp(object sender, KeyEventArgs e)
+        {
+            TxtCpf.Text = Validacao.ValidarNumeros(Numero);
+        }
     }
 }

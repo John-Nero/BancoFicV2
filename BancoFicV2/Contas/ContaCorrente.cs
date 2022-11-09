@@ -9,7 +9,7 @@ namespace BancoFicV2
         public double LimiteEmprestimo { get; private set; } = 500;
         public ContaCorrente() { }
 
-        public ContaCorrente(string titular, Agencias agencia, int numero, decimal cpf, int id, double saldo, double limite) : base(titular, agencia, numero, cpf, id) { Saldo = saldo; LimiteEmprestimo = limite; }
+        public ContaCorrente(string titular, Agencias agencia, int numero, long cpf, TipoDeConta tipo, double saldo, double limite) : base(titular, agencia, numero, cpf, tipo) { Saldo = saldo; LimiteEmprestimo = limite; }
 
 
 

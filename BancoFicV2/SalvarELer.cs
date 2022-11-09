@@ -42,6 +42,7 @@ namespace BancoFicV2
                             }
                         }
                     }
+                    conta.Saldo = double.Parse(conta.Saldo.ToString("F2"));
                     LIstaDasPoupancas.Add((ContaPoupanca)conta);
                     File.Delete(CaminhoPoupanca);
                     ContaParaJson(TipoDeConta.ContaPoupanca);

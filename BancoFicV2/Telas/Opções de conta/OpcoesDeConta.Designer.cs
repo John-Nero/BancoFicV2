@@ -76,7 +76,7 @@ namespace BancoFicV2
             // 
             // BtRender
             // 
-            this.BtRender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BtRender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtRender.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BtRender.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -208,7 +208,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Label ExibirNumero;
         private System.Windows.Forms.Label ExibirNome;
         private System.Windows.Forms.Label ExbirLimite;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button BtRender;
         private System.Windows.Forms.Button BtTransferir;
         private System.Windows.Forms.Label ExibirAgênica;

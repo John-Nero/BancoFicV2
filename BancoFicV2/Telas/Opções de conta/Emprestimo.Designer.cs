@@ -58,6 +58,7 @@ namespace BancoFicV2
             this.TxtValor.Size = new System.Drawing.Size(214, 23);
             this.TxtValor.TabIndex = 2;
             this.TxtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValor_KeyPress);
+            this.TxtValor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtValor_KeyUp);
             // 
             // label1
             // 

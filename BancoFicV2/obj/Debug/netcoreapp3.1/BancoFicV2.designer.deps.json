@@ -6,6 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "CPFCNPJ/2.0.5": {
+        "runtime": {
+          "lib/netcoreapp3.1/CPFCNPJ.dll": {
+            "assemblyVersion": "2.0.5.0",
+            "fileVersion": "2.0.5.0"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -17,6 +25,13 @@
     }
   },
   "libraries": {
+    "CPFCNPJ/2.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pXpJZczdf0oJACwSwFgox1El3UrKyDdLNbDucs3natbvPCK1gQGGHPr9fIC5Iui2sWPHBSarIq/xZKoBHc6+SQ==",
+      "path": "cpfcnpj/2.0.5",
+      "hashPath": "cpfcnpj.2.0.5.nupkg.sha512"
+    },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",
       "serviceable": true,

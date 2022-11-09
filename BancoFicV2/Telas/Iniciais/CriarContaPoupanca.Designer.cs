@@ -59,6 +59,7 @@ namespace BancoFicV2
             this.TxtNome.TabIndex = 1;
             this.TxtNome.Enter += new System.EventHandler(this.TxtNome_Enter);
             this.TxtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNome_KeyPress);
+            this.TxtNome.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNome_KeyUp);
             this.TxtNome.Leave += new System.EventHandler(this.TxtNome_Leave);
             // 
             // groupBox1
@@ -124,6 +125,7 @@ namespace BancoFicV2
             this.TxtCpf.TabIndex = 4;
             this.TxtCpf.Enter += new System.EventHandler(this.TxtCpf_Enter);
             this.TxtCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCpf_KeyPress);
+            this.TxtCpf.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtCpf_KeyUp);
             this.TxtCpf.Leave += new System.EventHandler(this.TxtCpf_Leave);
             // 
             // LbCpf

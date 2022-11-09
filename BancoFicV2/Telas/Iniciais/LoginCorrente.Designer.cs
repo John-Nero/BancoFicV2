@@ -64,20 +64,10 @@ namespace BancoFicV2
             0,
             0,
             0});
-            this.NumAgencia.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.NumAgencia.Name = "NumAgencia";
+            this.NumAgencia.ReadOnly = true;
             this.NumAgencia.Size = new System.Drawing.Size(120, 23);
             this.NumAgencia.TabIndex = 5;
-            this.NumAgencia.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.NumAgencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numAgencia_KeyPress);
             // 
             // TxtNumerodeconta
             // 
@@ -87,6 +77,7 @@ namespace BancoFicV2
             this.TxtNumerodeconta.TabIndex = 4;
             this.TxtNumerodeconta.Enter += new System.EventHandler(this.txtNumerodeconta_Enter);
             this.TxtNumerodeconta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerodeconta_KeyPress);
+            this.TxtNumerodeconta.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNumerodeconta_KeyUp);
             this.TxtNumerodeconta.Leave += new System.EventHandler(this.txtNumerodeconta_Leave);
             // 
             // label2
@@ -152,7 +143,6 @@ namespace BancoFicV2
         private System.Windows.Forms.TextBox TxtNumerodeconta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button BTNntrar;
         private System.Windows.Forms.NumericUpDown NumAgencia;
         private System.Windows.Forms.Button BtEntrar;
         private System.Windows.Forms.Button BtVoltar;

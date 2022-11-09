@@ -104,6 +104,7 @@ namespace BancoFicV2
             this.TxtValor.Size = new System.Drawing.Size(223, 23);
             this.TxtValor.TabIndex = 10;
             this.TxtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValor_KeyPress);
+            this.TxtValor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtValor_KeyUp);
             // 
             // RadioPoupanca
             // 
@@ -134,6 +135,7 @@ namespace BancoFicV2
             this.TxtNumero.Size = new System.Drawing.Size(223, 23);
             this.TxtNumero.TabIndex = 8;
             this.TxtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumero_KeyPress);
+            this.TxtNumero.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNumero_KeyUp);
             // 
             // label1
             // 
@@ -164,6 +166,7 @@ namespace BancoFicV2
             this.TxtAgencia.Size = new System.Drawing.Size(223, 23);
             this.TxtAgencia.TabIndex = 6;
             this.TxtAgencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtAgencia_KeyPress);
+            this.TxtAgencia.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtAgencia_KeyUp);
             // 
             // Label4
             // 

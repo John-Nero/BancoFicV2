@@ -1,8 +1,8 @@
 ﻿namespace BancoFicV2
 {
-    enum TipoDeConta
+    public enum TipoDeConta
     {
-        ContaPoupanca,
+        ContaPoupanca = 1,
         ContaCorrente
     }
 }
