@@ -71,7 +71,7 @@ namespace BancoFicV2
                     }
                     else
                     {
-                        MessageBox.Show($"Seu saldo atual é de {Corrente.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
+                        MessageBox.Show($"Seu saldo atual é de {Corrente.Saldo.ToString("F2")}. Clique em OK para retornar a tela de opções",
                              "Deposito concluido",
                              MessageBoxButtons.OK,
                              MessageBoxIcon.None);
