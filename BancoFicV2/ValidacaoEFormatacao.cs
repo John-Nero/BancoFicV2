@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BancoFicV2
@@ -13,53 +11,52 @@ namespace BancoFicV2
         List<string> LetrasDigitadas = new List<string>();
         string ValorDeRetorno;
         string NomeDeRetorno;
-
+        string ValorTotalString = "";
 
         public string Formatar(string digito)
         {
             try
             {
-                string ValorTotalString = "";
+
                 double ValorTotalInt = 0;
                 string valor = "";
+                if (NumerosDigitados.Count == 5 || NumerosDigitados.Count == 6)
+                {
+                    ValorTotalString = ValorTotalString + digito;
+                    ValorTotalString = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
+
+                    if (float.Parse(ValorTotalString) > 5000)
+                    {
+
+                        MessageBox.Show($"O limite de tranfêrencia On-Line é de 5.000,00(Cinco mil reais), para transfêrencia maiores visite uma agência",
+                              "LIMITE DE TRANSFÊRENCIA ULTRAPASADO",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Warning);
+                        ValorTotalString = ValorTotalString.TrimEnd(char.Parse(digito));
+                        goto avanco;
+                    }
+
+                }
                 if (digito != null)
                 { NumerosDigitados.Add(digito); }
-
+            avanco:;
                 if (NumerosDigitados.Count == 0)
                 {
                     valor = "0,00";
                 }
                 else
                 {
-                    foreach (string numero in NumerosDigitados)
-                    {
-                        ValorTotalString += numero;
-                        valor = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
-                    }
-                    ValorTotalInt = double.Parse(valor);
-
-                }
-
-
-                if (ValorTotalInt > 5000)
-                {
-                    NumerosDigitados.Reverse();
-                    NumerosDigitados.RemoveRange(0, 1);
-                    NumerosDigitados.Reverse();
                     ValorTotalString = "";
                     foreach (string numero in NumerosDigitados)
                     {
                         ValorTotalString += numero;
-                        valor = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
                     }
+                    valor = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
 
-                    ValorTotalInt = double.Parse(valor.ToString(CultureInfo.InvariantCulture));
+                    ValorTotalInt = double.Parse(valor);
 
-                    MessageBox.Show($"O limite de tranfêrencia On-Line é de 5.000,00(Cinco mil reais), para transfêrencia maiores visite uma agência",
-                          "LIMITE DE TRANSFÊRENCIA ULTRAPASADO",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Warning);
                 }
+
                 if (NumerosDigitados.Count != 0)
                 {
                     valor = valor.TrimStart('0');

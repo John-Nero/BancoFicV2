@@ -11,14 +11,16 @@ namespace BancoFicV2
             InitializeComponent();
         }
         ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
-
         KeyPressEventArgs NumeroDeConta;
 
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
             int confirmacao = 0;
+            
+
             Salvar.LerContas(TipoDeConta.ContaCorrente);
+            
             foreach (ContaCorrente conta in Salvar.LIstaDasCorrentes)
             {
                 try
@@ -31,7 +33,7 @@ namespace BancoFicV2
                                    $"Seja Bem vindo {conta.Titular}",
                                    MessageBoxButtons.OK,
                                    MessageBoxIcon.None);
-                        
+
                         conta.SetTipo(TipoDeConta.ContaCorrente);
                         var opcoesdeconta = new OpcoesDeConta(conta, conta.LimiteEmprestimo);
                         opcoesdeconta.Show();
@@ -70,7 +72,7 @@ namespace BancoFicV2
         private void txtNumerodeconta_Enter(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.LightBlue; }
 
         private void txtNumerodeconta_Leave(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.White; }
-                
+
         private void txtNumerodeconta_KeyPress(object sender, KeyPressEventArgs e)
         {
             NumeroDeConta = e;
