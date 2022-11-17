@@ -30,17 +30,17 @@ namespace BancoFicV2
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtTransferir = new System.Windows.Forms.Button();
             this.BtRender = new System.Windows.Forms.Button();
             this.BtEmprestimo = new System.Windows.Forms.Button();
             this.BtSacar = new System.Windows.Forms.Button();
             this.BtDepositar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ExibirSaldo = new System.Windows.Forms.Label();
-            this.ExibirAgenciaENumero = new System.Windows.Forms.Label();
+            this.ExibirNumero = new System.Windows.Forms.Label();
             this.ExibirNome = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.ExbirLimite = new System.Windows.Forms.Label();
-            this.BtTransferir = new System.Windows.Forms.Button();
+            this.ExibirAgênica = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +55,7 @@ namespace BancoFicV2
             this.groupBox1.Controls.Add(this.BtSacar);
             this.groupBox1.Controls.Add(this.BtDepositar);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(303, 113);
+            this.groupBox1.Location = new System.Drawing.Point(427, 151);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(163, 218);
@@ -63,9 +63,20 @@ namespace BancoFicV2
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selecione uma opção";
             // 
+            // BtTransferir
+            // 
+            this.BtTransferir.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtTransferir.Location = new System.Drawing.Point(6, 159);
+            this.BtTransferir.Name = "BtTransferir";
+            this.BtTransferir.Size = new System.Drawing.Size(151, 37);
+            this.BtTransferir.TabIndex = 5;
+            this.BtTransferir.Text = "Transferir";
+            this.BtTransferir.UseVisualStyleBackColor = true;
+            this.BtTransferir.Click += new System.EventHandler(this.BtTransferir_Click);
+            // 
             // BtRender
             // 
-            this.BtRender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BtRender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtRender.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BtRender.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -113,33 +124,33 @@ namespace BancoFicV2
             // groupBox2
             // 
             this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.ExibirAgênica);
             this.groupBox2.Controls.Add(this.ExibirSaldo);
-            this.groupBox2.Controls.Add(this.ExibirAgenciaENumero);
+            this.groupBox2.Controls.Add(this.ExibirNumero);
             this.groupBox2.Controls.Add(this.ExibirNome);
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox2.Location = new System.Drawing.Point(581, 113);
+            this.groupBox2.Location = new System.Drawing.Point(699, 151);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(163, 168);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dados Bancarios";
+            this.groupBox2.Text = "Dados bancários";
             // 
             // ExibirSaldo
             // 
             this.ExibirSaldo.AutoSize = true;
-            this.ExibirSaldo.Location = new System.Drawing.Point(12, 70);
+            this.ExibirSaldo.Location = new System.Drawing.Point(12, 95);
             this.ExibirSaldo.Name = "ExibirSaldo";
             this.ExibirSaldo.Size = new System.Drawing.Size(0, 15);
             this.ExibirSaldo.TabIndex = 2;
             // 
-            // ExibirAgenciaENumero
+            // ExibirNumero
             // 
-            this.ExibirAgenciaENumero.AutoSize = true;
-            this.ExibirAgenciaENumero.Location = new System.Drawing.Point(12, 50);
-            this.ExibirAgenciaENumero.Name = "ExibirAgenciaENumero";
-            this.ExibirAgenciaENumero.Size = new System.Drawing.Size(0, 15);
-            this.ExibirAgenciaENumero.TabIndex = 1;
+            this.ExibirNumero.AutoSize = true;
+            this.ExibirNumero.Location = new System.Drawing.Point(12, 73);
+            this.ExibirNumero.Name = "ExibirNumero";
+            this.ExibirNumero.Size = new System.Drawing.Size(0, 15);
+            this.ExibirNumero.TabIndex = 1;
             // 
             // ExibirNome
             // 
@@ -149,14 +160,6 @@ namespace BancoFicV2
             this.ExibirNome.Size = new System.Drawing.Size(0, 15);
             this.ExibirNome.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 15);
-            this.label1.TabIndex = 3;
-            // 
             // ExbirLimite
             // 
             this.ExbirLimite.Location = new System.Drawing.Point(0, 0);
@@ -164,23 +167,20 @@ namespace BancoFicV2
             this.ExbirLimite.Size = new System.Drawing.Size(100, 23);
             this.ExbirLimite.TabIndex = 0;
             // 
-            // BtTransferir
+            // ExibirAgênica
             // 
-            this.BtTransferir.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtTransferir.Location = new System.Drawing.Point(6, 159);
-            this.BtTransferir.Name = "BtTransferir";
-            this.BtTransferir.Size = new System.Drawing.Size(151, 37);
-            this.BtTransferir.TabIndex = 5;
-            this.BtTransferir.Text = "Transferir";
-            this.BtTransferir.UseVisualStyleBackColor = true;
-            this.BtTransferir.Click += new System.EventHandler(this.BtTransferir_Click);
+            this.ExibirAgênica.AutoSize = true;
+            this.ExibirAgênica.Location = new System.Drawing.Point(12, 52);
+            this.ExibirAgênica.Name = "ExibirAgênica";
+            this.ExibirAgênica.Size = new System.Drawing.Size(0, 15);
+            this.ExibirAgênica.TabIndex = 3;
             // 
             // OpcoesDeConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(800, 473);
+            this.ClientSize = new System.Drawing.Size(1139, 549);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -205,12 +205,11 @@ namespace BancoFicV2
         private System.Windows.Forms.Button BtDepositar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label ExibirSaldo;
-        private System.Windows.Forms.Label ExibirAgenciaENumero;
+        private System.Windows.Forms.Label ExibirNumero;
         private System.Windows.Forms.Label ExibirNome;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label ExbirLimite;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button BtRender;
         private System.Windows.Forms.Button BtTransferir;
+        private System.Windows.Forms.Label ExibirAgênica;
     }
 }

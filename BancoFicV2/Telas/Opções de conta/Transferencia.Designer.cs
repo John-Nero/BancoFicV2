@@ -56,6 +56,7 @@ namespace BancoFicV2
             // 
             // groupBox1
             // 
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.RadioCorrente);
             this.groupBox1.Controls.Add(this.TxtValor);
@@ -67,31 +68,31 @@ namespace BancoFicV2
             this.groupBox1.Controls.Add(this.TxtAgencia);
             this.groupBox1.Controls.Add(this.Label4);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(286, 61);
+            this.groupBox1.Location = new System.Drawing.Point(427, 151);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(240, 326);
+            this.groupBox1.Size = new System.Drawing.Size(240, 330);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Realizando saque";
+            this.groupBox1.Text = "Realizando Transferência";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 202);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(223, 15);
+            this.label2.Size = new System.Drawing.Size(222, 15);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Selecione o tipo de conta do Destinatario";
+            this.label2.Text = "Selecione o tipo de conta do destinatario";
             // 
             // RadioCorrente
             // 
             this.RadioCorrente.AutoSize = true;
             this.RadioCorrente.Location = new System.Drawing.Point(17, 245);
             this.RadioCorrente.Name = "RadioCorrente";
-            this.RadioCorrente.Size = new System.Drawing.Size(106, 19);
+            this.RadioCorrente.Size = new System.Drawing.Size(104, 19);
             this.RadioCorrente.TabIndex = 7;
             this.RadioCorrente.TabStop = true;
-            this.RadioCorrente.Text = "Conta Corrente";
+            this.RadioCorrente.Text = "Conta corrente";
             this.RadioCorrente.UseVisualStyleBackColor = true;
             // 
             // TxtValor
@@ -102,6 +103,8 @@ namespace BancoFicV2
             this.TxtValor.Name = "TxtValor";
             this.TxtValor.Size = new System.Drawing.Size(223, 23);
             this.TxtValor.TabIndex = 10;
+            this.TxtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValor_KeyPress);
+            this.TxtValor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtValor_KeyUp);
             // 
             // RadioPoupanca
             // 
@@ -111,7 +114,7 @@ namespace BancoFicV2
             this.RadioPoupanca.Size = new System.Drawing.Size(113, 19);
             this.RadioPoupanca.TabIndex = 6;
             this.RadioPoupanca.TabStop = true;
-            this.RadioPoupanca.Text = "Conta Poupança";
+            this.RadioPoupanca.Text = "Conta poupança";
             this.RadioPoupanca.UseVisualStyleBackColor = true;
             // 
             // Label3
@@ -131,6 +134,8 @@ namespace BancoFicV2
             this.TxtNumero.Name = "TxtNumero";
             this.TxtNumero.Size = new System.Drawing.Size(223, 23);
             this.TxtNumero.TabIndex = 8;
+            this.TxtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumero_KeyPress);
+            this.TxtNumero.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNumero_KeyUp);
             // 
             // label1
             // 
@@ -160,6 +165,8 @@ namespace BancoFicV2
             this.TxtAgencia.Name = "TxtAgencia";
             this.TxtAgencia.Size = new System.Drawing.Size(223, 23);
             this.TxtAgencia.TabIndex = 6;
+            this.TxtAgencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtAgencia_KeyPress);
+            this.TxtAgencia.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtAgencia_KeyUp);
             // 
             // Label4
             // 
@@ -175,14 +182,16 @@ namespace BancoFicV2
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1139, 549);
             this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
+            this.Location = new System.Drawing.Point(290, 252);
             this.Name = "Transferencia";
             this.Text = "Transferencia";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

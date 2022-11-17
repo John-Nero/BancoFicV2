@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace BancoFicV2
@@ -6,12 +8,15 @@ namespace BancoFicV2
     public partial class Saque : Form
     {
         Conta Conta;
-        double Limite;
         ContaCorrente Corrente = new ContaCorrente();
         ContaPoupanca Poupanca = new ContaPoupanca();
         SalvarELer Salvar = new SalvarELer();
+        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
-        public Saque(Conta conta,double limite)
+        double Limite;
+        string digito;
+
+        public Saque(Conta conta, double limite)
         {
             Limite = limite;
             Conta = conta;
@@ -20,72 +25,86 @@ namespace BancoFicV2
 
         private void BtSacar_Click(object sender, EventArgs e)
         {
-            if (Conta.Id == 1)
+            try
             {
-                try
+                if (Conta.Tipo == TipoDeConta.ContaPoupanca)
                 {
-                    Poupanca.SetConta(Conta.Titular, Conta.Agencia,Conta.Numero , Conta.Cpf, Conta.Saldo, Conta.Id);
-                    Poupanca.Sacar(double.Parse(txtValor.Text));
-                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca,Poupanca);
-                    MessageBox.Show("Clique em OK para retornar a tela de opções",
+                    Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
+                    Poupanca.Sacar(double.Parse(TxtValor.Text));
+                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, Poupanca);
+                    MessageBox.Show($"Seu saldo atual é de {Poupanca.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
                            "Saque concluido",
                            MessageBoxButtons.OK,
                            MessageBoxIcon.None);
                     Conta = null;
-                    OpcoesDeConta opcoes = new OpcoesDeConta(Poupanca,0);
+                    OpcoesDeConta opcoes = new OpcoesDeConta(Poupanca, 0);
                     opcoes.Show();
                     this.Visible = false;
                 }
-                catch (Exception ex)
+
+                else if (Conta.Tipo == TipoDeConta.ContaCorrente)
                 {
-                    MessageBox.Show(ex.Message,
-                           "Desculpe",
-                           MessageBoxButtons.OK,
-                           MessageBoxIcon.Error);
-                }
-            }
-            else if (Conta.Id == 2)
-            {
-                try
-                {
-                    Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Id);
-                    Corrente.Sacar(double.Parse(txtValor.Text));
+                    Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
+                    Corrente.Sacar(double.Parse(TxtValor.Text));
                     Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente, Corrente);
-                    MessageBox.Show("Clique em OK para retornar a tela de opções",
+                    MessageBox.Show($"Seu saldo atual é de {Corrente.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
                                "Saque concluido",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.None);
                     Conta = null;
-                    OpcoesDeConta opcoes = new OpcoesDeConta(Corrente,Limite);
+                    OpcoesDeConta opcoes = new OpcoesDeConta(Corrente, Limite);
                     opcoes.Show();
                     this.Visible = false;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message,
-                           "Desculpe",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                       "Desculpe",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             }
         }
 
         private void BtVoltar_Click(object sender, EventArgs e)
         {
-            if (Conta.Id == 1)
+            try
             {
-                Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 1);
-                OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Poupanca, 0);
-                opcoesDeConta.Show();
-                this.Visible = false;
+                if (Conta.Tipo == TipoDeConta.ContaPoupanca)
+                {
+                    Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
+                    OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Poupanca, 0);
+                    opcoesDeConta.Show();
+                    this.Visible = false;
+                }
+                else
+                {
+                    Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
+                    OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Corrente, Corrente.LimiteEmprestimo);
+                    opcoesDeConta.Show();
+                    this.Visible = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 2);
-                OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Corrente, Corrente.LimiteEmprestimo);
-                opcoesDeConta.Show();
-                this.Visible = false;
+                MessageBox.Show(ex.Message,
+                       "Desculpe",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             }
+        }
+
+        private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            digito = Validacao.ValidarNumerosParaValoresMonetarios(e);
+
+        }
+
+        private void TxtValor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { digito = null; }
+
+            TxtValor.Text = Validacao.Formatar(digito);
         }
     }
 }

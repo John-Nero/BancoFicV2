@@ -10,46 +10,53 @@ namespace BancoFicV2
         {
             InitializeComponent();
         }
+        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+
+        KeyPressEventArgs NumeroDeConta;
 
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
+            int confirmacao = 0;
             Salvar.LerContas(TipoDeConta.ContaPoupanca);
             foreach (ContaPoupanca conta in Salvar.LIstaDasPoupancas)
             {
                 try
                 {
 
-                    if (conta.Agencia == numAgencia.Value && conta.Numero == int.Parse(txtNumerodeconta.Text))
+                    if ((int)conta.Agencia == NumAgencia.Value && conta.Numero == int.Parse(TxtNumerodeconta.Text))
                     {
+                        confirmacao++;
                         MessageBox.Show("Clique em OK para continuar",
                                    $"Seja Bem vindo {conta.Titular}",
                                    MessageBoxButtons.OK,
                                    MessageBoxIcon.None);
-                        conta.SetId(1);
+                        conta.SetTipo(TipoDeConta.ContaPoupanca);
                         var opcoesdeconta = new OpcoesDeConta(conta, 0);
                         opcoesdeconta.Show();
                         this.Visible = false;
                         break;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Verifique se digitou corretamente os dados",
-                                 $"Agencia ou Numero de conta incorreto",
-                                 MessageBoxButtons.OK,
-                                 MessageBoxIcon.Error);
-                        txtNumerodeconta.Focus();
+
                     }
                 }
                 catch (FormatException ex)
                 {
                     MessageBox.Show(ex.Message,
-                            $"Digite apenas numeros",
+                            $"Desculpe",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                    txtNumerodeconta.Focus();
+                    TxtNumerodeconta.Focus();
                 }
             }
+            if (confirmacao == 0)
+            {
+                MessageBox.Show("Verifique se digitou corretamente os dados",
+                             $"Agencia ou Numero de conta incorreto",
+                             MessageBoxButtons.OK,
+                             MessageBoxIcon.Error);
+                TxtNumerodeconta.Focus();
+            }
+
         }
 
         private void BtVoltar_Click(object sender, EventArgs e)
@@ -60,31 +67,21 @@ namespace BancoFicV2
         }
 
         //Personalização do campo de texto
-        private void txtNumerodeconta_Enter(object sender, EventArgs e) { txtNumerodeconta.BackColor = Color.LightBlue; }
-       
+        private void txtNumerodeconta_Enter(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.LightBlue; }
 
-        private void txtNumerodeconta_Leave(object sender, EventArgs e) { txtNumerodeconta.BackColor = Color.White; }
-                    
-        private void numAgencia_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            int tecla = (int)e.KeyChar;
-            if (!char.IsDigit(e.KeyChar) && tecla != 8)
-            {
-                e.Handled = true;
-                MessageBox.Show("Caracter invalido");
-            }
-        }
+        private void txtNumerodeconta_Leave(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.White; }
 
+        //Validação de Caracter
         private void txtNumerodeconta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            int tecla = (int)e.KeyChar;
-            if (!char.IsDigit(e.KeyChar) && tecla != 8)
-            {
-                e.Handled = true;
-                MessageBox.Show("Caracter invalido");
-            }
+            NumeroDeConta = e;
         }
 
-        
+        private void TxtNumerodeconta_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { NumeroDeConta = null; }
+
+            TxtNumerodeconta.Text = Validacao.ValidarNumeros(NumeroDeConta);
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace BancoFicV2
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtValor = new System.Windows.Forms.TextBox();
+            this.TxtValor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BtSacar = new System.Windows.Forms.Button();
             this.BtVoltar = new System.Windows.Forms.Button();
@@ -39,25 +39,30 @@ namespace BancoFicV2
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtValor);
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.TxtValor);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.BtSacar);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(287, 62);
+            this.groupBox1.Location = new System.Drawing.Point(427, 151);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(226, 326);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Realizando saque";
             // 
-            // txtValor
+            // TxtValor
             // 
-            this.txtValor.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.txtValor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtValor.Location = new System.Drawing.Point(6, 153);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(214, 23);
-            this.txtValor.TabIndex = 2;
+            this.TxtValor.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.TxtValor.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.TxtValor.Location = new System.Drawing.Point(6, 153);
+            this.TxtValor.Name = "TxtValor";
+            this.TxtValor.PlaceholderText = "0,00";
+            this.TxtValor.Size = new System.Drawing.Size(214, 23);
+            this.TxtValor.TabIndex = 2;
+            this.TxtValor.Text = "0,00";
+            this.TxtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValor_KeyPress);
+            this.TxtValor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtValor_KeyUp);
             // 
             // label1
             // 
@@ -94,7 +99,7 @@ namespace BancoFicV2
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1139, 549);
             this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Name = "Saque";
@@ -102,13 +107,14 @@ namespace BancoFicV2
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.TextBox TxtValor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtSacar;
         private System.Windows.Forms.Button BtVoltar;

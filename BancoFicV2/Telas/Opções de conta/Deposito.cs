@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace BancoFicV2
@@ -6,10 +8,13 @@ namespace BancoFicV2
     public partial class Deposito : Form
     {
         Conta Conta;
-        double Limite;
         ContaCorrente Corrente = new ContaCorrente();
         ContaPoupanca Poupanca = new ContaPoupanca();
         SalvarELer Salvar = new SalvarELer();
+        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+
+        double Limite;
+        string digito;
 
         public Deposito(Conta conta, double limite)
         {
@@ -17,16 +22,18 @@ namespace BancoFicV2
             Conta = conta;
             InitializeComponent();
         }
+
         private void BtDepositar_Click(object sender, EventArgs e)
         {
-            if (Conta.Id == 1)
+            if (Conta.Tipo == TipoDeConta.ContaPoupanca)
             {
+                
                 try
                 {
-                    Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 1);
-                    Poupanca.Depositar(double.Parse(txtValor.Text));
-                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca,Poupanca);
-                    MessageBox.Show("Clique em OK para retornar a tela de opções",
+                    Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
+                    Poupanca.Depositar(double.Parse(TxtValor.Text));
+                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, Poupanca);
+                    MessageBox.Show($"Seu saldo atual é de {Poupanca.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
                            "Deposito concluido",
                            MessageBoxButtons.OK,
                            MessageBoxIcon.None);
@@ -43,15 +50,15 @@ namespace BancoFicV2
                            MessageBoxIcon.Error);
                 }
             }
-            else if (Conta.Id == 2)
+            else if (Conta.Tipo == TipoDeConta.ContaCorrente)
             {
                 try
                 {
-                    Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Id);
+                    Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
                     Corrente.SetLimitEmprestimo(Limite);
-                    Corrente.Depositar(double.Parse(txtValor.Text));
-                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente,Corrente);
-                    MessageBox.Show("Clique em OK para retornar a tela de opções",
+                    Corrente.Depositar(double.Parse(TxtValor.Text));
+                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente, Corrente);
+                    MessageBox.Show($"Seu saldo atual é de {Corrente.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
                                "Deposito concluido",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.None);
@@ -72,20 +79,32 @@ namespace BancoFicV2
 
         private void BtVoltar_Click(object sender, EventArgs e)
         {
-            if (Conta.Id == 1)
+            if (Conta.Tipo == TipoDeConta.ContaPoupanca)
             {
-                Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 1);
+                                    Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
                 OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Poupanca, 0);
                 opcoesDeConta.Show();
                 this.Visible = false;
             }
             else
             {
-                Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, 2);
+                Corrente.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
                 OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Corrente, Corrente.LimiteEmprestimo);
                 opcoesDeConta.Show();
                 this.Visible = false;
             }
+        }
+
+        private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           digito = Validacao.ValidarNumerosParaValoresMonetarios(e);
+        }
+
+        private void TxtValor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { digito = null; }
+
+            TxtValor.Text = Validacao.Formatar(digito);
         }
     }
 }

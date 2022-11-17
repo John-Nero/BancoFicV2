@@ -32,9 +32,9 @@ namespace BancoFicV2
             this.LbNome = new System.Windows.Forms.Label();
             this.TxtNome = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Entrar = new System.Windows.Forms.Button();
+            this.BtEntrar = new System.Windows.Forms.Button();
             this.LbEstado = new System.Windows.Forms.Label();
-            this.SelecEstado = new System.Windows.Forms.ComboBox();
+            this.ComboBoxSelecEstado = new System.Windows.Forms.ComboBox();
             this.TxtCpf = new System.Windows.Forms.TextBox();
             this.LbCpf = new System.Windows.Forms.Label();
             this.BtVoltar = new System.Windows.Forms.Button();
@@ -54,39 +54,41 @@ namespace BancoFicV2
             // 
             this.TxtNome.Location = new System.Drawing.Point(6, 36);
             this.TxtNome.Name = "TxtNome";
+            this.TxtNome.PlaceholderText = "maximo de 15 caracteres e minimo de 3";
             this.TxtNome.Size = new System.Drawing.Size(233, 23);
             this.TxtNome.TabIndex = 1;
             this.TxtNome.Enter += new System.EventHandler(this.TxtNome_Enter);
             this.TxtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNome_KeyPress);
+            this.TxtNome.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNome_KeyUp);
             this.TxtNome.Leave += new System.EventHandler(this.TxtNome_Leave);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Entrar);
+            this.groupBox1.Controls.Add(this.BtEntrar);
             this.groupBox1.Controls.Add(this.LbEstado);
-            this.groupBox1.Controls.Add(this.SelecEstado);
+            this.groupBox1.Controls.Add(this.ComboBoxSelecEstado);
             this.groupBox1.Controls.Add(this.TxtCpf);
             this.groupBox1.Controls.Add(this.TxtNome);
             this.groupBox1.Controls.Add(this.LbCpf);
             this.groupBox1.Controls.Add(this.LbNome);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(243, 104);
+            this.groupBox1.Location = new System.Drawing.Point(427, 151);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(245, 239);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Criando sua conta poupança";
             // 
-            // Entrar
+            // BtEntrar
             // 
-            this.Entrar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Entrar.Location = new System.Drawing.Point(164, 210);
-            this.Entrar.Name = "Entrar";
-            this.Entrar.Size = new System.Drawing.Size(75, 23);
-            this.Entrar.TabIndex = 6;
-            this.Entrar.Text = "Entrar";
-            this.Entrar.UseVisualStyleBackColor = true;
-            this.Entrar.Click += new System.EventHandler(this.Entrar_Click);
+            this.BtEntrar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtEntrar.Location = new System.Drawing.Point(164, 210);
+            this.BtEntrar.Name = "BtEntrar";
+            this.BtEntrar.Size = new System.Drawing.Size(75, 23);
+            this.BtEntrar.TabIndex = 6;
+            this.BtEntrar.Text = "Entrar";
+            this.BtEntrar.UseVisualStyleBackColor = true;
+            this.BtEntrar.Click += new System.EventHandler(this.Entrar_Click);
             // 
             // LbEstado
             // 
@@ -97,31 +99,33 @@ namespace BancoFicV2
             this.LbEstado.TabIndex = 5;
             this.LbEstado.Text = "Estado";
             // 
-            // SelecEstado
+            // ComboBoxSelecEstado
             // 
-            this.SelecEstado.FormattingEnabled = true;
-            this.SelecEstado.Items.AddRange(new object[] {
+            this.ComboBoxSelecEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxSelecEstado.FormattingEnabled = true;
+            this.ComboBoxSelecEstado.Items.AddRange(new object[] {
             "São Paulo",
             "Rio de Janeiro",
             "Bahia",
             "Ceará",
             "Rio Grande do Sul",
             "Santa Catarina"});
-            this.SelecEstado.Location = new System.Drawing.Point(6, 160);
-            this.SelecEstado.Name = "SelecEstado";
-            this.SelecEstado.Size = new System.Drawing.Size(233, 23);
-            this.SelecEstado.TabIndex = 3;
-            this.SelecEstado.Text = "Selecione um Estado";
-            this.SelecEstado.SelectedIndexChanged += new System.EventHandler(this.SelecEstado_SelectedIndexChanged);
+            this.ComboBoxSelecEstado.Location = new System.Drawing.Point(6, 160);
+            this.ComboBoxSelecEstado.Name = "ComboBoxSelecEstado";
+            this.ComboBoxSelecEstado.Size = new System.Drawing.Size(233, 23);
+            this.ComboBoxSelecEstado.TabIndex = 3;
+            this.ComboBoxSelecEstado.SelectedIndexChanged += new System.EventHandler(this.SelecEstado_SelectedIndexChanged);
             // 
             // TxtCpf
             // 
             this.TxtCpf.Location = new System.Drawing.Point(6, 95);
             this.TxtCpf.Name = "TxtCpf";
+            this.TxtCpf.PlaceholderText = "Digite apenas os números, sem os pontos";
             this.TxtCpf.Size = new System.Drawing.Size(233, 23);
             this.TxtCpf.TabIndex = 4;
             this.TxtCpf.Enter += new System.EventHandler(this.TxtCpf_Enter);
             this.TxtCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCpf_KeyPress);
+            this.TxtCpf.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtCpf_KeyUp);
             this.TxtCpf.Leave += new System.EventHandler(this.TxtCpf_Leave);
             // 
             // LbCpf
@@ -147,8 +151,9 @@ namespace BancoFicV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(754, 475);
+            this.ClientSize = new System.Drawing.Size(1139, 549);
             this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Name = "CriarContaPoupanca";
@@ -167,8 +172,8 @@ namespace BancoFicV2
         private System.Windows.Forms.TextBox TxtCpf;
         private System.Windows.Forms.Label LbCpf;
         private System.Windows.Forms.Label LbEstado;
-        private System.Windows.Forms.ComboBox SelecEstado;
-        private System.Windows.Forms.Button Entrar;
+        private System.Windows.Forms.ComboBox ComboBoxSelecEstado;
+        private System.Windows.Forms.Button BtEntrar;
         private System.Windows.Forms.Button BtVoltar;
     }
 }

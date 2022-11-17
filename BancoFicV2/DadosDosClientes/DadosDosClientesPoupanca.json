@@ -1,0 +1,18 @@
+﻿[
+  {
+    "Titular": "john",
+    "Numero": 8210,
+    "Agencia": 5,
+    "Cpf": 64312389314,
+    "Saldo": 75.0,
+    "Tipo": 1
+  },
+  {
+    "Titular": "john",
+    "Numero": 8882,
+    "Agencia": 2,
+    "Cpf": 74458599348,
+    "Saldo": 6511.0,
+    "Tipo": 1
+  }
+]

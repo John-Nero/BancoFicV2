@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "CPFCNPJ/2.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/CPFCNPJ.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/CPFCNPJ.dll": {}
+        }
+      },
       "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
@@ -14,6 +23,20 @@
     }
   },
   "libraries": {
+    "CPFCNPJ/2.0.5": {
+      "sha512": "pXpJZczdf0oJACwSwFgox1El3UrKyDdLNbDucs3natbvPCK1gQGGHPr9fIC5Iui2sWPHBSarIq/xZKoBHc6+SQ==",
+      "type": "package",
+      "path": "cpfcnpj/2.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LGPL-2.0-only.txt",
+        "cpfcnpj.2.0.5.nupkg.sha512",
+        "cpfcnpj.nuspec",
+        "cpfcnpj.png",
+        "lib/netcoreapp3.1/CPFCNPJ.dll"
+      ]
+    },
     "Newtonsoft.Json/13.0.1": {
       "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
@@ -44,6 +67,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "CPFCNPJ >= 2.0.5",
       "Newtonsoft.Json >= 13.0.1"
     ]
   },
@@ -91,6 +115,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "CPFCNPJ": {
+            "target": "Package",
+            "version": "[2.0.5, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
