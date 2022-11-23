@@ -141,11 +141,12 @@ namespace BancoFicV2
             {
                 int tecla = (int)e.KeyChar;
 
-                if (char.IsLetter(e.KeyChar) || tecla == 8 && tecla == 46)
+               if (char.IsLetter(e.KeyChar) || tecla == 8 || tecla == 46)
                 {
                     if (tecla == 8 || tecla == 46) { DeletarLetra(); }
                     else
                     {
+                        
                         LetrasDigitadas.Add(e.KeyChar.ToString());
                     }
                     NomeDeRetorno = "";

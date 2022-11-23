@@ -76,14 +76,15 @@ namespace BancoFicV2
         private void txtNumerodeconta_KeyPress(object sender, KeyPressEventArgs e)
         {
             string valorFinal = Validacao.ValidarNumeros(e, 1);
-            if(valorFinal != null) { TxtNumerodeconta.Text = valorFinal; }
-            
+            TxtNumerodeconta.Text = valorFinal;
         }
 
         private void TxtNumerodeconta_KeyUp(object sender, KeyEventArgs e)
         {
-            if(TxtNumerodeconta.Text.Length != 0) {TxtNumerodeconta.Text = TxtNumerodeconta.Text.Remove(0, 1); }
-            
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                if (TxtNumerodeconta.Text.Length != 0) { TxtNumerodeconta.Text = TxtNumerodeconta.Text.Remove(0, 1); }
+            }
         }
     }
 

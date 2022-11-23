@@ -10,7 +10,7 @@ namespace BancoFicV2
         SalvarELer Salvar = new SalvarELer();
         ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
-        
+
 
         public Emprestimo(ContaCorrente corrente)
         {
@@ -71,7 +71,10 @@ namespace BancoFicV2
 
         private void TxtValor_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtValor.Text = TxtValor.Text.Remove(0, 1);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                if (TxtValor.Text.Length != 0) { TxtValor.Text = TxtValor.Text.Remove(0, 1); }
+            }
         }
     }
 }

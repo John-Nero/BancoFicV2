@@ -165,14 +165,14 @@ namespace BancoFicV2
         {
             string valorFinal = Validacao.ValidarNumeros(e, 1);
 
-            TxtValor.Text = valorFinal;
+            TxtAgencia.Text = valorFinal;
         }
 
         private void TxtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
             string valorFinal = Validacao.ValidarNumeros(e, 1);
 
-            TxtValor.Text = valorFinal;
+            TxtNumero.Text = valorFinal;
         }
 
         private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
@@ -184,17 +184,26 @@ namespace BancoFicV2
 
         private void TxtValor_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtValor.Text = TxtValor.Text.Remove(0, 1);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                if (TxtValor.Text.Length != 0) { TxtValor.Text = TxtValor.Text.Remove(0, 1); }
+            }
         }
 
         private void TxtAgencia_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtValor.Text = TxtValor.Text.Remove(0, 1);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                TxtAgencia.Text = TxtAgencia.Text.Remove(0, 1);
+            }
         }
 
         private void TxtNumero_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtValor.Text = TxtValor.Text.Remove(0, 1);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                TxtNumero.Text = TxtNumero.Text.Remove(0, 1);
+            }
         }
     }
 }

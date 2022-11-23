@@ -6,17 +6,21 @@ namespace BancoFicV2
 {
     public partial class LoginPoupanca : Form
     {
+        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+
         public LoginPoupanca()
         {
             InitializeComponent();
         }
-        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
             int confirmacao = 0;
+
+
             Salvar.LerContas(TipoDeConta.ContaPoupanca);
+
             foreach (ContaPoupanca conta in Salvar.LIstaDasPoupancas)
             {
                 try
@@ -29,6 +33,7 @@ namespace BancoFicV2
                                    $"Seja Bem vindo {conta.Titular}",
                                    MessageBoxButtons.OK,
                                    MessageBoxIcon.None);
+
                         conta.SetTipo(TipoDeConta.ContaPoupanca);
                         var opcoesdeconta = new OpcoesDeConta(conta, 0);
                         opcoesdeconta.Show();
@@ -54,7 +59,6 @@ namespace BancoFicV2
                              MessageBoxIcon.Error);
                 TxtNumerodeconta.Focus();
             }
-
         }
 
         private void BtVoltar_Click(object sender, EventArgs e)
@@ -69,17 +73,19 @@ namespace BancoFicV2
 
         private void txtNumerodeconta_Leave(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.White; }
 
-        //Validação de Caracter
         private void txtNumerodeconta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string valorFinal = Validacao.ValidarLetras(e);
-
+            string valorFinal = Validacao.ValidarNumeros(e, 1);
             TxtNumerodeconta.Text = valorFinal;
         }
 
         private void TxtNumerodeconta_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtNumerodeconta.Text = TxtNumerodeconta.Text.Remove(0, 1);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                if (TxtNumerodeconta.Text.Length != 0) { TxtNumerodeconta.Text = TxtNumerodeconta.Text.Remove(0, 1); }
+            }
         }
     }
+
 }

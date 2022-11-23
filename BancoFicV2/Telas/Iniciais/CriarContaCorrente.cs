@@ -169,17 +169,23 @@ namespace BancoFicV2
         {
             string valorFinal = Validacao.ValidarLetras(e);
 
-            TxtCpf.Text = valorFinal;
+            TxtNome.Text = valorFinal;
         }
 
         private void TxtNome_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtNome.Text = TxtNome.Text.Remove(0, 1);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                TxtNome.Text = TxtNome.Text.Remove(0, 1);
+            }
         }
 
         private void TxtCpf_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtCpf.Text = TxtCpf.Text.Remove(0, 1);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                TxtCpf.Text = TxtCpf.Text.Remove(0, 1);
+            }
         }
     }
 }
