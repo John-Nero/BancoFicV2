@@ -12,8 +12,6 @@ namespace BancoFicV2
         }
         ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
-        KeyPressEventArgs NumeroDeConta;
-
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
@@ -74,14 +72,14 @@ namespace BancoFicV2
         //Validação de Caracter
         private void txtNumerodeconta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumeroDeConta = e;
+            string valorFinal = Validacao.ValidarLetras(e);
+
+            TxtNumerodeconta.Text = valorFinal;
         }
 
         private void TxtNumerodeconta_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { NumeroDeConta = null; }
-
-            TxtNumerodeconta.Text = Validacao.ValidarNumeros(NumeroDeConta);
+            TxtNumerodeconta.Text = TxtNumerodeconta.Text.Remove(0, 1);
         }
     }
 }

@@ -6,21 +6,21 @@ namespace BancoFicV2
 {
     public partial class LoginCorrente : Form
     {
+        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+
         public LoginCorrente()
         {
             InitializeComponent();
         }
-        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
-        KeyPressEventArgs NumeroDeConta;
 
         private void BtEntrar_Click(object sender, EventArgs e)
         {
             SalvarELer Salvar = new SalvarELer();
             int confirmacao = 0;
-            
+
 
             Salvar.LerContas(TipoDeConta.ContaCorrente);
-            
+
             foreach (ContaCorrente conta in Salvar.LIstaDasCorrentes)
             {
                 try
@@ -75,14 +75,15 @@ namespace BancoFicV2
 
         private void txtNumerodeconta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumeroDeConta = e;
+            string valorFinal = Validacao.ValidarNumeros(e, 1);
+            if(valorFinal != null) { TxtNumerodeconta.Text = valorFinal; }
+            
         }
 
         private void TxtNumerodeconta_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { NumeroDeConta = null; }
-
-            TxtNumerodeconta.Text = Validacao.ValidarNumeros(NumeroDeConta);
+            if(TxtNumerodeconta.Text.Length != 0) {TxtNumerodeconta.Text = TxtNumerodeconta.Text.Remove(0, 1); }
+            
         }
     }
 

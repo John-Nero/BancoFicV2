@@ -10,7 +10,7 @@ namespace BancoFicV2
         SalvarELer Salvar = new SalvarELer();
         ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
-        string digito;
+        
 
         public Emprestimo(ContaCorrente corrente)
         {
@@ -26,7 +26,7 @@ namespace BancoFicV2
                 {
                     Corrente.SetConta(Corrente.Titular, Corrente.Agencia, Corrente.Numero, Corrente.Cpf, Corrente.Saldo, Corrente.Tipo);
                     Corrente.SolicitarEmprestimo(double.Parse(TxtValor.Text));
-                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente,Corrente);
+                    Salvar.AtualizarDadosDeConta(TipoDeConta.ContaCorrente, Corrente);
                     MessageBox.Show($"Seu saldo atual é de {Corrente.Saldo.ToString("F2")}, Clique em OK para retornar a tela de opções",
                                "Deposito concluido",
                                MessageBoxButtons.OK,
@@ -36,11 +36,12 @@ namespace BancoFicV2
                     opcoes.Show();
                     this.Visible = false;
                 }
-                else {
+                else
+                {
                     MessageBox.Show($"A quantidade que você deseja sacar é acima do seu limite atual de emprestimo.",
                        "Limite indisponivel",
                        MessageBoxButtons.OK,
-                       MessageBoxIcon.Error) ;
+                       MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -63,14 +64,14 @@ namespace BancoFicV2
 
         private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            digito = Validacao.ValidarNumerosParaValoresMonetarios(e);
+            string valorFinal = Validacao.ValidarNumeros(e, 2);
+
+            TxtValor.Text = valorFinal;
         }
 
         private void TxtValor_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { digito = null; }
-
-            TxtValor.Text = Validacao.Formatar(digito);
+            TxtValor.Text = TxtValor.Text.Remove(0, 1);
         }
     }
 }

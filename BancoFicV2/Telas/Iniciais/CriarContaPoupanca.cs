@@ -11,9 +11,6 @@ namespace BancoFicV2
         ContaPoupanca Poupanca = new ContaPoupanca();
         ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
-        KeyPressEventArgs Letra;
-        KeyPressEventArgs Numero;
-
         public CriarContaPoupanca()
         {
             InitializeComponent();
@@ -152,21 +149,25 @@ namespace BancoFicV2
         //Validação de tipo de caracter
         private void TxtCpf_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Numero = e;
+            string valorFinal = Validacao.ValidarNumeros(e, 1);
+
+            TxtCpf.Text = valorFinal;
         }
         private void TxtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Letra = e;
+            string valorFinal = Validacao.ValidarLetras(e);
+
+            TxtCpf.Text = valorFinal;
         }
 
         private void TxtNome_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtNome.Text = Validacao.ValidarLetras(Letra);
+            TxtNome.Text = TxtNome.Text.Remove(0, 1);
         }
 
         private void TxtCpf_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtCpf.Text = Validacao.ValidarNumeros(Numero);
+            TxtCpf.Text = TxtCpf.Text.Remove(0, 1);
         }
     }
 }
