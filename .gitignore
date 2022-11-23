@@ -34,7 +34,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
-
+.vs
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
