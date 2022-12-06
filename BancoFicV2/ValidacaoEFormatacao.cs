@@ -6,7 +6,7 @@ namespace BancoFicV2
 {
     public class ValidacaoEFormatacao
     {
-        
+
 
         internal List<string> NumerosMonetariosDigitados = new List<string>();
         internal List<string> NumerosDigitados = new List<string>();
@@ -27,10 +27,13 @@ namespace BancoFicV2
                     if (NumerosMonetariosDigitados.Count >= 5)
                     {
                         ValorTotalString = ValorTotalString + digito;
-                        ValorTotalString = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
-                        if (double.Parse(ValorTotalString) > 5000)
+                        string temporaria = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
+                        if (double.Parse(temporaria) > 5000)
                         {
-
+                            MessageBox.Show($"O limite de tranfêrencia On-Line é de 5.000,00(Cinco mil reais), para transfêrencia maiores visite uma agência",
+                              "LIMITE DE TRANSFÊRENCIA ULTRAPASADO",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Warning);
 
                             ValorTotalString = ValorTotalString.TrimEnd(char.Parse(digito));
                             return ValorDeRetorno;
@@ -43,7 +46,7 @@ namespace BancoFicV2
 
                 ValorDeRetorno = "";
                 ValorTotalString = "";
-                if(NumerosMonetariosDigitados.Count != 0) { foreach (string numero in NumerosMonetariosDigitados) { ValorTotalString += numero; } }
+                if (NumerosMonetariosDigitados.Count != 0) { foreach (string numero in NumerosMonetariosDigitados) { ValorTotalString += numero; } }
                 else { ValorTotalString = "0"; }
                 ValorDeRetorno = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
                 ValorDeRetorno = ValorDeRetorno.TrimStart('0');
@@ -68,7 +71,7 @@ namespace BancoFicV2
 
         public string ValidarNumeros(KeyPressEventArgs e, int TipoDeFormatacao)
         {
-             ;
+            ;
             try
             {
                 int tecla = (int)e.KeyChar;
@@ -76,51 +79,51 @@ namespace BancoFicV2
                 switch (TipoDeFormatacao)
                 {
                     case 1:
-                    
-                        if (char.IsDigit(e.KeyChar) || tecla == 8 || tecla == 46)
-                        {
-                            if (tecla == 8 || tecla == 46) { DeletarNumero(TipoDeFormatacao);}
-                            else
-                            {
-                            NumeroRetorno = "";
-                                NumerosDigitados.Add(e.KeyChar.ToString());
-                                foreach (string numero in NumerosDigitados)
-                                {
-                                NumeroRetorno += numero;
-                                }
-                                return NumeroRetorno;
-                            }
-                        }
+
+                    if (char.IsDigit(e.KeyChar) || tecla == 8 || tecla == 46)
+                    {
+                        if (tecla == 8 || tecla == 46) { DeletarNumero(TipoDeFormatacao); }
                         else
                         {
-                            e.Handled = true;
-                            MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
-                                    "Digite apenas numeros",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                        return NumeroRetorno;
+                            NumeroRetorno = "";
+                            NumerosDigitados.Add(e.KeyChar.ToString());
+                            foreach (string numero in NumerosDigitados)
+                            {
+                                NumeroRetorno += numero;
+                            }
+                            return NumeroRetorno;
                         }
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                        MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                                "Digite apenas numeros",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        return NumeroRetorno;
+                    }
                     return null;
-                    
+
 
                     case 2:
-                    
-                        if (char.IsDigit(e.KeyChar) || tecla == 8 || tecla == 46)
-                        {
-                            if (tecla == 8 || tecla == 46) { DeletarNumero(TipoDeFormatacao); return Formatar(null); }
-                            else { return Formatar(e.KeyChar.ToString()); }
-                        }
-                        else
-                        {
-                            e.Handled = true;
-                            MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
-                                    "Digite apenas numeros",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                            return null;
-                        }
 
-                    
+                    if (char.IsDigit(e.KeyChar) || tecla == 8 || tecla == 46)
+                    {
+                        if (tecla == 8 || tecla == 46) { DeletarNumero(TipoDeFormatacao); return ValorDeRetorno; }
+                        else { return Formatar(e.KeyChar.ToString()); }
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                        MessageBox.Show($"o caracter {e.KeyChar.ToString().ToUpper()} não é permitido. Por favor digite apenas numeros",
+                                "Digite apenas numeros",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        return null;
+                    }
+
+
                     default:
                     {
                         Console.WriteLine("OPÇÂO INVALIDA VERIFIQUE SE O TIPO DE FORMATAÇÂO ESTÁ CORRETO");
@@ -141,12 +144,12 @@ namespace BancoFicV2
             {
                 int tecla = (int)e.KeyChar;
 
-               if (char.IsLetter(e.KeyChar) || tecla == 8 || tecla == 46)
+                if (char.IsLetter(e.KeyChar) || tecla == 8 || tecla == 46)
                 {
                     if (tecla == 8 || tecla == 46) { DeletarLetra(); }
                     else
                     {
-                        
+
                         LetrasDigitadas.Add(e.KeyChar.ToString());
                     }
                     NomeDeRetorno = "";
@@ -200,7 +203,7 @@ namespace BancoFicV2
                 break;
             }
 
-            
+
         }
 
         public void DeletarLetra()
