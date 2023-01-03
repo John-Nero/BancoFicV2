@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace BancoFicV2
 {
-    public partial class Opcoesiniciais : Form
+    public partial class Login : Form
     {
-        public Opcoesiniciais()
+        public Login()
         {
             InitializeComponent();
         }

@@ -63,7 +63,7 @@ namespace BancoFicV2
 
         private void BtVoltar_Click(object sender, EventArgs e)
         {
-            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
+            Login opcoesiniciais = new Login();
             opcoesiniciais.Show();
             this.Visible = false;
         }

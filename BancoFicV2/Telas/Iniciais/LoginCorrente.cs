@@ -7,6 +7,7 @@ namespace BancoFicV2
     public partial class LoginCorrente : Form
     {
         ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+        SalvarELer Salvar = new SalvarELer();
 
         public LoginCorrente()
         {
@@ -15,7 +16,7 @@ namespace BancoFicV2
 
         private void BtEntrar_Click(object sender, EventArgs e)
         {
-            SalvarELer Salvar = new SalvarELer();
+            
             int confirmacao = 0;
 
 
@@ -63,7 +64,7 @@ namespace BancoFicV2
 
         private void BtVoltar_Click(object sender, EventArgs e)
         {
-            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
+            Login opcoesiniciais = new Login();
             opcoesiniciais.Show();
             this.Visible = false;
         }

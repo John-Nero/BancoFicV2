@@ -7,11 +7,11 @@ namespace BancoFicV2
 {
     public partial class Deposito : Form
     {
-        Conta Conta;
-        ContaCorrente Corrente = new ContaCorrente();
-        ContaPoupanca Poupanca = new ContaPoupanca();
-        SalvarELer Salvar = new SalvarELer();
-        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+        private Conta Conta;
+        private ContaCorrente Corrente = new ContaCorrente();
+        private ContaPoupanca Poupanca = new ContaPoupanca();
+        private SalvarELer Salvar = new SalvarELer();
+        private ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
         double Limite;
 

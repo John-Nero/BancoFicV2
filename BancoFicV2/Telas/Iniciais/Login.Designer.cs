@@ -1,7 +1,7 @@
 ﻿
 namespace BancoFicV2
 {
-    partial class Opcoesiniciais
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.

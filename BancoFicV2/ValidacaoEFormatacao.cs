@@ -13,8 +13,8 @@ namespace BancoFicV2
         internal List<string> LetrasDigitadas = new List<string>();
 
         internal string NomeDeRetorno;
-        string NumeroRetorno;
-        string ValorDeRetorno = "";
+        internal string NumeroRetorno;
+        internal string ValorDeRetorno = "";
         internal string ValorTotalString = "";
 
         private string Formatar(string digito)
@@ -30,12 +30,13 @@ namespace BancoFicV2
                         string temporaria = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
                         if (double.Parse(temporaria) > 5000)
                         {
-                            MessageBox.Show($"O limite de tranfêrencia On-Line é de 5.000,00(Cinco mil reais), para transfêrencia maiores visite uma agência",
-                              "LIMITE DE TRANSFÊRENCIA ULTRAPASADO",
-                          MessageBoxButtons.OK,
-                          MessageBoxIcon.Warning);
+                            //  MessageBox.Show($"O limite de tranfêrencia On-Line é de 5.000,00(Cinco mil reais), para transfêrencia maiores visite uma agência",
+                            //    "LIMITE DE TRANSFÊRENCIA ULTRAPASADO",
+                            //MessageBoxButtons.OK,
+                            //MessageBoxIcon.Warning);
 
-                            ValorTotalString = ValorTotalString.TrimEnd(char.Parse(digito));
+                            ValorTotalString = ValorTotalString.Remove(ValorTotalString.Length - 1);
+
                             return ValorDeRetorno;
                         }
                         else { NumerosMonetariosDigitados.Add(digito); }
@@ -54,7 +55,7 @@ namespace BancoFicV2
                 ValorDeRetorno = ValorDeRetorno.TrimStart('0');
 
 
-                if (ValorDeRetorno.Length == 3) { return "0" + ValorDeRetorno; }
+                if (ValorDeRetorno.Length == 3) { ValorDeRetorno = "0" + ValorDeRetorno; return ValorDeRetorno; }
                 else { return ValorDeRetorno; }
 
             }
@@ -138,7 +139,7 @@ namespace BancoFicV2
             }
         }
 
-        public string ValidarLetras(KeyPressEventArgs e)
+        public string ValidarLetra(KeyPressEventArgs e)
         {
             try
             {
@@ -195,11 +196,12 @@ namespace BancoFicV2
                     NumerosMonetariosDigitados.Reverse();
                     NumerosMonetariosDigitados.RemoveRange(0, 1);
                     NumerosMonetariosDigitados.Reverse();
+                    Formatar(null);
                 }
                 break;
 
                 default:
-                Console.WriteLine("CONFIRME SE SELECIONOU A PPÇÃO CERTA PARA DELETAR");
+                Console.WriteLine("CONFIRME SE SELECIONOU A OPÇÃO CERTA PARA DELETAR");
                 break;
             }
 

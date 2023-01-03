@@ -6,10 +6,10 @@ namespace BancoFicV2
 {
     public partial class CriarContaCorrente : Form
     {
-        Agencias Agencia;
-        SalvarELer Salvar = new SalvarELer();
-        ContaCorrente Corrente = new ContaCorrente();
-        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+        private Agencias Agencia;
+        private SalvarELer Salvar = new SalvarELer();
+        private ContaCorrente Corrente = new ContaCorrente();
+        private ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
         public CriarContaCorrente()
         {
@@ -117,7 +117,7 @@ namespace BancoFicV2
 
         private void BtVoltar_Click(object sender, EventArgs e)
         {
-            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
+            Login opcoesiniciais = new Login();
             opcoesiniciais.Show();
             this.Visible = false;
         }
@@ -167,7 +167,7 @@ namespace BancoFicV2
 
         private void TxtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string valorFinal = Validacao.ValidarLetras(e);
+            string valorFinal = Validacao.ValidarLetra(e);
 
             TxtNome.Text = valorFinal;
         }
