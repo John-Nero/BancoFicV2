@@ -38,5 +38,11 @@ namespace BancoFicV2
             this.Visible = false;
         }
 
+        private void BtLogin_Click(object sender, EventArgs e)
+        {
+            var LoginContas = new LoginContas();
+            LoginContas.Show();
+            this.Visible = false;
+        }
     }
 }

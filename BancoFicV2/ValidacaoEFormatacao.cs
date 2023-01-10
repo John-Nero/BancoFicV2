@@ -46,15 +46,14 @@ namespace BancoFicV2
 
 
                 ValorDeRetorno = "";
-                ValorTotalString = "";
-                if (NumerosMonetariosDigitados.Count != 0) { foreach (string numero in NumerosMonetariosDigitados) { ValorTotalString += numero; } }
-                else { ValorTotalString = "0"; }
-                ValorDeRetorno = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
+                if (NumerosMonetariosDigitados.Count != 0) { foreach (string numero in NumerosMonetariosDigitados) { ValorDeRetorno += numero; } }
+                else { ValorDeRetorno = "0"; }
+                ValorDeRetorno = Convert.ToInt32(ValorDeRetorno).ToString(@"0\.000\,00");
                 ValorDeRetorno = ValorDeRetorno.TrimStart('0');
                 ValorDeRetorno = ValorDeRetorno.Trim('.');
                 ValorDeRetorno = ValorDeRetorno.TrimStart('0');
 
-
+                
                 if (ValorDeRetorno.Length == 3) { ValorDeRetorno = "0" + ValorDeRetorno; return ValorDeRetorno; }
                 else { return ValorDeRetorno; }
 
@@ -72,7 +71,7 @@ namespace BancoFicV2
 
         public string ValidarNumeros(KeyPressEventArgs e, int TipoDeFormatacao)
         {
-            ;
+
             try
             {
                 int tecla = (int)e.KeyChar;
@@ -84,16 +83,14 @@ namespace BancoFicV2
                     if (char.IsDigit(e.KeyChar) || tecla == 8 || tecla == 46)
                     {
                         if (tecla == 8 || tecla == 46) { DeletarNumero(TipoDeFormatacao); }
-                        else
+                        else { NumerosDigitados.Add(e.KeyChar.ToString()); }
+
+                        NumeroRetorno = "";
+                        foreach (string numero in NumerosDigitados)
                         {
-                            NumeroRetorno = "";
-                            NumerosDigitados.Add(e.KeyChar.ToString());
-                            foreach (string numero in NumerosDigitados)
-                            {
-                                NumeroRetorno += numero;
-                            }
-                            return NumeroRetorno;
+                            NumeroRetorno += numero;
                         }
+                        return NumeroRetorno;
                     }
                     else
                     {
@@ -104,7 +101,7 @@ namespace BancoFicV2
                             MessageBoxIcon.Warning);
                         return NumeroRetorno;
                     }
-                    return null;
+
 
 
                     case 2:

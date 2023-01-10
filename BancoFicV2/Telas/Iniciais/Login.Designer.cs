@@ -30,6 +30,7 @@ namespace BancoFicV2
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtLogin = new System.Windows.Forms.Button();
             this.BtCriarCorrente = new System.Windows.Forms.Button();
             this.BtCriarPoupanca = new System.Windows.Forms.Button();
             this.BtLoginCorrente = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@ namespace BancoFicV2
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.BtLogin);
             this.groupBox1.Controls.Add(this.BtCriarCorrente);
             this.groupBox1.Controls.Add(this.BtCriarPoupanca);
             this.groupBox1.Controls.Add(this.BtLoginCorrente);
@@ -52,6 +54,17 @@ namespace BancoFicV2
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selecione uma opção para avançar";
+            // 
+            // BtLogin
+            // 
+            this.BtLogin.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.BtLogin.Location = new System.Drawing.Point(72, 51);
+            this.BtLogin.Name = "BtLogin";
+            this.BtLogin.Size = new System.Drawing.Size(148, 23);
+            this.BtLogin.TabIndex = 4;
+            this.BtLogin.Text = "Login";
+            this.BtLogin.UseVisualStyleBackColor = true;
+            this.BtLogin.Click += new System.EventHandler(this.BtLogin_Click);
             // 
             // BtCriarCorrente
             // 
@@ -97,7 +110,7 @@ namespace BancoFicV2
             this.BtLoginPoupanca.UseVisualStyleBackColor = true;
             this.BtLoginPoupanca.Click += new System.EventHandler(this.LoginPoupanca_Click);
             // 
-            // Opcoesiniciais
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -105,7 +118,7 @@ namespace BancoFicV2
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1139, 549);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Opcoesiniciais";
+            this.Name = "Login";
             this.RightToLeftLayout = true;
             this.Text = "Opcoesiniciais";
             this.groupBox1.ResumeLayout(false);
@@ -121,5 +134,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Button BtCriarPoupanca;
         private System.Windows.Forms.Button BtLoginCorrente;
         private System.Windows.Forms.Button BtLoginPoupanca;
+        private System.Windows.Forms.Button BtLogin;
     }
 }
