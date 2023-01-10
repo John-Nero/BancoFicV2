@@ -11,26 +11,24 @@ namespace BancoFicV2
         ContaPoupanca Poupanca = new ContaPoupanca();
         ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
+        KeyPressEventArgs Letra;
+        KeyPressEventArgs Numero;
+
         public CriarContaPoupanca()
         {
             InitializeComponent();
         }
 
-        private void BtEntrar_Click(object sender, EventArgs e)
+        private void Entrar_Click(object sender, EventArgs e)
         {
             try
             {
-                int ConfirmacaoDeTamanhoNome = 0;
-                int ConfirmacaoDeTamanhoCpf = 0;
+                int ValidaNome = 0;
+                int ValidaCpf = 0;
                 int ValidaAgencia = 0;
                 string menssagem = "Os campos: ";
-                bool CpfValido = false;
-
                 Random random = new Random();
-                CPFCNPJ.IMain ValidacaoDeCpf = new CPFCNPJ.Main();
-
             retornarNumero:
-
                 int numero = random.Next(1000, 10000);
                 Salvar.LerContas(TipoDeConta.ContaPoupanca);
                 if (Salvar.LIstaDasPoupancas != null)
@@ -45,32 +43,10 @@ namespace BancoFicV2
                     }
                 }
 
-                if (TxtNome.Text.Length < 3 || TxtNome.Text.Length >= 15)
-                {
-                    ConfirmacaoDeTamanhoNome++; menssagem += "Nome, ";
-                }
-
-                if (TxtCpf.Text.Length != 11)
-                {
-                    ConfirmacaoDeTamanhoCpf++; menssagem += "CPF, ";
-                }
-
-                if (TxtCpf.Text.Length == 11)
-                {
-                    CpfValido = ValidacaoDeCpf.IsValidCPFCNPJ(TxtCpf.Text);
-
-                    if (CpfValido == false)
-                    {
-                        menssagem += "CPF, ";
-                    }
-                }
-
-                if (Agencia == 0)
-                {
-                    ValidaAgencia++; menssagem += $"Estado ";
-                }
-
-                if (CpfValido == false || ConfirmacaoDeTamanhoNome == 1 || ConfirmacaoDeTamanhoCpf == 1 || ValidaAgencia == 1)
+                if (TxtNome.Text.Length < 3 || TxtNome.Text.Length >= 15) { ValidaNome++;menssagem += "Nome, "; }
+                if (TxtCpf.Text.Length != 11) { ValidaCpf++; menssagem += "CPF, "; }
+                if (Agencia == 0) { ValidaAgencia++;menssagem += $"Estado "; }
+                if(ValidaNome == 1 || ValidaCpf == 1 || ValidaAgencia == 1)
                 {
                     menssagem += "estão com irregularidades, confirme os dados e reenvie o formulario";
                     MessageBox.Show(menssagem,
@@ -79,21 +55,22 @@ namespace BancoFicV2
                               MessageBoxIcon.Warning);
                     goto avacoDeErro;
                 }
-
-                foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
+                if (Salvar.LIstaDasPoupancas != null)
                 {
-
-                    if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
+                    foreach (ContaPoupanca Conta in Salvar.LIstaDasPoupancas)
                     {
-                        MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
-                                        "Esse CPF já consta no sistema",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                        goto avacoDeErro;
+
+                        if (decimal.Parse(TxtCpf.Text) == Conta.Cpf)
+                        {
+                            MessageBox.Show("Para acessar uma conta já existente acesse a opção login na tela inicial",
+                                            "Esse CPF já consta no sistema",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                            goto avacoDeErro;
+                        }
+
                     }
-
                 }
-
                 Poupanca.SetConta(TxtNome.Text, Agencia, numero, long.Parse(TxtCpf.Text), 0, TipoDeConta.ContaPoupanca);
                 Salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, Poupanca);
 
@@ -113,14 +90,16 @@ namespace BancoFicV2
                            MessageBoxButtons.OK,
                            MessageBoxIcon.Error);
             }
+
         }
 
         private void BtVoltar_Click(object sender, EventArgs e)
         {
-            Login opcoesiniciais = new Login();
+            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
             opcoesiniciais.Show();
             this.Visible = false;
         }
+
 
         private void SelecEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -153,41 +132,41 @@ namespace BancoFicV2
         }
 
         //Personalização do campo de texto
-        private void TxtNome_Enter(object sender, EventArgs e) { TxtNome.BackColor = Color.LightBlue; }
-        private void TxtNome_Leave(object sender, EventArgs e) { TxtNome.BackColor = Color.White; }
-        private void TxtCpf_Enter(object sender, EventArgs e) { TxtCpf.BackColor = Color.LightBlue; }
-        private void TxtCpf_Leave(object sender, EventArgs e) { TxtCpf.BackColor = Color.White; }
+        private void TxtNome_Enter(object sender, EventArgs e)
+        {
+            TxtNome.BackColor = Color.LightBlue;
+        }
+        private void TxtNome_Leave(object sender, EventArgs e)
+        {
+            TxtNome.BackColor = Color.White;
+        }
+        private void TxtCpf_Enter(object sender, EventArgs e)
+        {
+            TxtCpf.BackColor = Color.LightBlue;
+        }
+        private void TxtCpf_Leave(object sender, EventArgs e)
+        {
+            TxtCpf.BackColor = Color.White;
+        }
 
         //Validação de tipo de caracter
         private void TxtCpf_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string valorFinal = Validacao.ValidarNumeros(e, 1);
-            TxtCpf.Text = valorFinal;
+            Numero = e;
         }
-
         private void TxtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string valorFinal = Validacao.ValidarLetra(e);
-
-            TxtNome.Text = valorFinal;
+            Letra = e;
         }
 
         private void TxtNome_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue != 8 && e.KeyValue != 46)
-            {
-                {
-                    if (TxtNome.Text.Length != 0) { TxtNome.Text = TxtNome.Text.Remove(0, 1); }
-                }
-            }
+            TxtNome.Text = Validacao.ValidarLetras(Letra);
         }
 
         private void TxtCpf_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue != 8 && e.KeyValue != 46)
-            {
-                if (TxtCpf.Text.Length != 0) { TxtCpf.Text = TxtCpf.Text.Remove(0, 1); }
-            }
+            TxtCpf.Text = Validacao.ValidarNumeros(Numero);
         }
     }
 }

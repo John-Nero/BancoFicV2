@@ -78,11 +78,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\john.barros\\OneDrive - Clearsale S.A\\Área de Trabalho\\BackupFicV2\\BancoFicV2\\BancoFicV2\\BancoFicV2.csproj",
+      "projectUniqueName": "C:\\Users\\john.barros\\OneDrive - Clearsale S.A\\Área de Trabalho\\GitUpdate\\BancoFicV2\\BancoFicV2\\BancoFicV2.csproj",
       "projectName": "BancoFicV2",
-      "projectPath": "C:\\Users\\john.barros\\OneDrive - Clearsale S.A\\Área de Trabalho\\BackupFicV2\\BancoFicV2\\BancoFicV2\\BancoFicV2.csproj",
+      "projectPath": "C:\\Users\\john.barros\\OneDrive - Clearsale S.A\\Área de Trabalho\\GitUpdate\\BancoFicV2\\BancoFicV2\\BancoFicV2.csproj",
       "packagesPath": "C:\\Users\\john.barros\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\john.barros\\OneDrive - Clearsale S.A\\Área de Trabalho\\BackupFicV2\\BancoFicV2\\BancoFicV2\\obj\\",
+      "outputPath": "C:\\Users\\john.barros\\OneDrive - Clearsale S.A\\Área de Trabalho\\GitUpdate\\BancoFicV2\\BancoFicV2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

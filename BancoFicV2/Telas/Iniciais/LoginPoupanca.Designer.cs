@@ -31,7 +31,7 @@ namespace BancoFicV2
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.NumAgencia = new System.Windows.Forms.NumericUpDown();
-            this.TxtNumeroDeConta = new System.Windows.Forms.TextBox();
+            this.TxtNumerodeconta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtEntrar = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@ namespace BancoFicV2
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.NumAgencia);
-            this.groupBox1.Controls.Add(this.TxtNumeroDeConta);
+            this.groupBox1.Controls.Add(this.TxtNumerodeconta);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.BtEntrar);
@@ -72,16 +72,16 @@ namespace BancoFicV2
             this.NumAgencia.Size = new System.Drawing.Size(120, 23);
             this.NumAgencia.TabIndex = 5;
             // 
-            // TxtNumeroDeConta
+            // TxtNumerodeconta
             // 
-            this.TxtNumeroDeConta.Location = new System.Drawing.Point(18, 105);
-            this.TxtNumeroDeConta.Name = "TxtNumeroDeConta";
-            this.TxtNumeroDeConta.Size = new System.Drawing.Size(338, 23);
-            this.TxtNumeroDeConta.TabIndex = 4;
-            this.TxtNumeroDeConta.Enter += new System.EventHandler(this.txtNumerodeconta_Enter);
-            this.TxtNumeroDeConta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerodeconta_KeyPress);
-            this.TxtNumeroDeConta.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNumerodeconta_KeyUp);
-            this.TxtNumeroDeConta.Leave += new System.EventHandler(this.txtNumerodeconta_Leave);
+            this.TxtNumerodeconta.Location = new System.Drawing.Point(18, 105);
+            this.TxtNumerodeconta.Name = "TxtNumerodeconta";
+            this.TxtNumerodeconta.Size = new System.Drawing.Size(338, 23);
+            this.TxtNumerodeconta.TabIndex = 4;
+            this.TxtNumerodeconta.Enter += new System.EventHandler(this.txtNumerodeconta_Enter);
+            this.TxtNumerodeconta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerodeconta_KeyPress);
+            this.TxtNumerodeconta.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNumerodeconta_KeyUp);
+            this.TxtNumerodeconta.Leave += new System.EventHandler(this.txtNumerodeconta_Leave);
             // 
             // label2
             // 
@@ -147,7 +147,7 @@ namespace BancoFicV2
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown NumAgencia;
-        private System.Windows.Forms.TextBox TxtNumeroDeConta;
+        private System.Windows.Forms.TextBox TxtNumerodeconta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtEntrar;
