@@ -1,4 +1,4 @@
-﻿# Created by https://www.toptal.com/developers/gitignore/api/vs
+# Created by https://www.toptal.com/developers/gitignore/api/vs
 # Edit at https://www.toptal.com/developers/gitignore?templates=vs
 
 ### vs ###
@@ -28,6 +28,8 @@ mono_crash.*
 [Rr]eleases/
 x64/
 x86/
+v16/
+DesignTimeBuild/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
