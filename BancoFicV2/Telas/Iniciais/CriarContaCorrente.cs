@@ -6,10 +6,13 @@ namespace BancoFicV2
 {
     public partial class CriarContaCorrente : Form
     {
-        private Agencias Agencia;
-        private SalvarELer Salvar = new SalvarELer();
-        private ContaCorrente Corrente = new ContaCorrente();
-        private ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+        Agencias Agencia;
+        SalvarELer Salvar = new SalvarELer();
+        ContaCorrente Corrente = new ContaCorrente();
+        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+
+        KeyPressEventArgs Letra;
+        KeyPressEventArgs Numero;
 
         public CriarContaCorrente()
         {
@@ -117,7 +120,7 @@ namespace BancoFicV2
 
         private void BtVoltar_Click(object sender, EventArgs e)
         {
-            Login opcoesiniciais = new Login();
+            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
             opcoesiniciais.Show();
             this.Visible = false;
         }
@@ -161,31 +164,23 @@ namespace BancoFicV2
         //Validação de tipo de caracter
         private void TxtCpf_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string valorFinal = Validacao.ValidarNumeros(e, 1);
-            TxtCpf.Text = valorFinal;
+            Numero = e;
         }
 
         private void TxtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string valorFinal = Validacao.ValidarLetra(e);
-
-            TxtNome.Text = valorFinal;
+            Letra = e;
         }
 
         private void TxtNome_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue != 8 && e.KeyValue != 46)
-            {
-                TxtNome.Text = TxtNome.Text.Remove(0, 1);
-            }
+            TxtNome.Text = Validacao.ValidarLetras(Letra);
+
         }
 
         private void TxtCpf_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue != 8 && e.KeyValue != 46)
-            {
-                TxtCpf.Text = TxtCpf.Text.Remove(0, 1);
-            }
+            TxtCpf.Text = Validacao.ValidarNumeros(Numero);
         }
     }
 }

@@ -55,11 +55,8 @@ namespace BancoFicV2
             // 
             this.TxtValor.Location = new System.Drawing.Point(6, 153);
             this.TxtValor.Name = "TxtValor";
-            this.TxtValor.PlaceholderText = "0,00";
-            this.TxtValor.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TxtValor.Size = new System.Drawing.Size(214, 23);
             this.TxtValor.TabIndex = 2;
-            this.TxtValor.WordWrap = false;
             this.TxtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValor_KeyPress);
             this.TxtValor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtValor_KeyUp);
             // 
@@ -102,7 +99,7 @@ namespace BancoFicV2
             this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Name = "Deposito";
-            this.Text = "112345";
+            this.Text = "Deposito";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

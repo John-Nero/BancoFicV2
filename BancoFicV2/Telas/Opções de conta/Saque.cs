@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace BancoFicV2
@@ -12,6 +14,7 @@ namespace BancoFicV2
         ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
         double Limite;
+        string digito;
 
         public Saque(Conta conta, double limite)
         {
@@ -93,17 +96,15 @@ namespace BancoFicV2
 
         private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string valorFinal = Validacao.ValidarNumeros(e, 2);
+            digito = Validacao.ValidarNumerosParaValoresMonetarios(e);
 
-            TxtValor.Text = valorFinal;
         }
 
         private void TxtValor_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue != 8 && e.KeyValue != 46)
-            {
-                if (TxtValor.Text.Length != 0) { TxtValor.Text = TxtValor.Text.Remove(0, 1); }
-            }
+            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { digito = null; }
+
+            TxtValor.Text = Validacao.Formatar(digito);
         }
     }
 }
