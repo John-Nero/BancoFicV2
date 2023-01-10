@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace BancoFicV2
 {
-    public partial class Opcoesiniciais : Form
+    public partial class Login : Form
     {
-        public Opcoesiniciais()
+        public Login()
         {
             InitializeComponent();
         }
@@ -38,5 +38,11 @@ namespace BancoFicV2
             this.Visible = false;
         }
 
+        private void BtLogin_Click(object sender, EventArgs e)
+        {
+            var LoginContas = new LoginContas();
+            LoginContas.Show();
+            this.Visible = false;
+        }
     }
 }

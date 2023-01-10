@@ -6,27 +6,28 @@ namespace BancoFicV2
 {
     public partial class LoginCorrente : Form
     {
+        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+        SalvarELer Salvar = new SalvarELer();
+
         public LoginCorrente()
         {
             InitializeComponent();
         }
-        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
-        KeyPressEventArgs NumeroDeConta;
 
         private void BtEntrar_Click(object sender, EventArgs e)
         {
-            SalvarELer Salvar = new SalvarELer();
-            int confirmacao = 0;
             
+            int confirmacao = 0;
+
 
             Salvar.LerContas(TipoDeConta.ContaCorrente);
-            
+
             foreach (ContaCorrente conta in Salvar.LIstaDasCorrentes)
             {
                 try
                 {
 
-                    if ((int)conta.Agencia == NumAgencia.Value && conta.Numero == int.Parse(TxtNumerodeconta.Text))
+                    if ((int)conta.Agencia == NumAgencia.Value && conta.Numero == int.Parse(TxtNumeroDeConta.Text))
                     {
                         confirmacao++;
                         MessageBox.Show("Clique em OK para continuar",
@@ -48,7 +49,7 @@ namespace BancoFicV2
                             $"Desculpe",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-                    TxtNumerodeconta.Focus();
+                    TxtNumeroDeConta.Focus();
                 }
             }
             if (confirmacao == 0)
@@ -57,32 +58,34 @@ namespace BancoFicV2
                              $"Agencia ou Numero de conta incorreto",
                              MessageBoxButtons.OK,
                              MessageBoxIcon.Error);
-                TxtNumerodeconta.Focus();
+                TxtNumeroDeConta.Focus();
             }
         }
 
         private void BtVoltar_Click(object sender, EventArgs e)
         {
-            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
+            Login opcoesiniciais = new Login();
             opcoesiniciais.Show();
             this.Visible = false;
         }
 
         //Personalização do campo de texto
-        private void txtNumerodeconta_Enter(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.LightBlue; }
+        private void txtNumerodeconta_Enter(object sender, EventArgs e) { TxtNumeroDeConta.BackColor = Color.LightBlue; }
 
-        private void txtNumerodeconta_Leave(object sender, EventArgs e) { TxtNumerodeconta.BackColor = Color.White; }
+        private void txtNumerodeconta_Leave(object sender, EventArgs e) { TxtNumeroDeConta.BackColor = Color.White; }
 
         private void txtNumerodeconta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumeroDeConta = e;
+            string valorFinal = Validacao.ValidarNumeros(e, 1);
+            TxtNumeroDeConta.Text = valorFinal;
         }
 
         private void TxtNumerodeconta_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { NumeroDeConta = null; }
-
-            TxtNumerodeconta.Text = Validacao.ValidarNumeros(NumeroDeConta);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                if (TxtNumeroDeConta.Text.Length != 0) { TxtNumeroDeConta.Text = TxtNumeroDeConta.Text.Remove(0, 1); }
+            }
         }
     }
 

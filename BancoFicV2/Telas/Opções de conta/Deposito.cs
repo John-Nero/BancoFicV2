@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Windows.Forms;
 
 namespace BancoFicV2
 {
     public partial class Deposito : Form
     {
-        Conta Conta;
-        ContaCorrente Corrente = new ContaCorrente();
-        ContaPoupanca Poupanca = new ContaPoupanca();
-        SalvarELer Salvar = new SalvarELer();
-        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
+        private Conta Conta;
+        private ContaCorrente Corrente = new ContaCorrente();
+        private ContaPoupanca Poupanca = new ContaPoupanca();
+        private SalvarELer Salvar = new SalvarELer();
+        private ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
         double Limite;
-        string digito;
 
         public Deposito(Conta conta, double limite)
         {
@@ -27,7 +24,7 @@ namespace BancoFicV2
         {
             if (Conta.Tipo == TipoDeConta.ContaPoupanca)
             {
-                
+
                 try
                 {
                     Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
@@ -81,7 +78,7 @@ namespace BancoFicV2
         {
             if (Conta.Tipo == TipoDeConta.ContaPoupanca)
             {
-                                    Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
+                Poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, Conta.Tipo);
                 OpcoesDeConta opcoesDeConta = new OpcoesDeConta(Poupanca, 0);
                 opcoesDeConta.Show();
                 this.Visible = false;
@@ -97,14 +94,19 @@ namespace BancoFicV2
 
         private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
-           digito = Validacao.ValidarNumerosParaValoresMonetarios(e);
+            string valorFinal = Validacao.ValidarNumeros(e, 2);
+
+            TxtValor.Text = valorFinal;
         }
 
         private void TxtValor_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { digito = null; }
-
-            TxtValor.Text = Validacao.Formatar(digito);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                if (TxtValor.Text.Length != 0) { TxtValor.Text = TxtValor.Text.Remove(0, 1); }
+            }
         }
+
     }
+
 }

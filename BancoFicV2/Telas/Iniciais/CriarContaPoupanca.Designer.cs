@@ -88,7 +88,7 @@ namespace BancoFicV2
             this.BtEntrar.TabIndex = 6;
             this.BtEntrar.Text = "Entrar";
             this.BtEntrar.UseVisualStyleBackColor = true;
-            this.BtEntrar.Click += new System.EventHandler(this.Entrar_Click);
+            this.BtEntrar.Click += new System.EventHandler(this.BtEntrar_Click);
             // 
             // LbEstado
             // 

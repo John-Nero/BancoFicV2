@@ -6,13 +6,10 @@ namespace BancoFicV2
 {
     public partial class CriarContaCorrente : Form
     {
-        Agencias Agencia;
-        SalvarELer Salvar = new SalvarELer();
-        ContaCorrente Corrente = new ContaCorrente();
-        ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
-
-        KeyPressEventArgs Letra;
-        KeyPressEventArgs Numero;
+        private Agencias Agencia;
+        private SalvarELer Salvar = new SalvarELer();
+        private ContaCorrente Corrente = new ContaCorrente();
+        private ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
 
         public CriarContaCorrente()
         {
@@ -120,7 +117,7 @@ namespace BancoFicV2
 
         private void BtVoltar_Click(object sender, EventArgs e)
         {
-            Opcoesiniciais opcoesiniciais = new Opcoesiniciais();
+            Login opcoesiniciais = new Login();
             opcoesiniciais.Show();
             this.Visible = false;
         }
@@ -164,23 +161,31 @@ namespace BancoFicV2
         //Validação de tipo de caracter
         private void TxtCpf_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Numero = e;
+            string valorFinal = Validacao.ValidarNumeros(e, 1);
+            TxtCpf.Text = valorFinal;
         }
 
         private void TxtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Letra = e;
+            string valorFinal = Validacao.ValidarLetra(e);
+
+            TxtNome.Text = valorFinal;
         }
 
         private void TxtNome_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtNome.Text = Validacao.ValidarLetras(Letra);
-
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                TxtNome.Text = TxtNome.Text.Remove(0, 1);
+            }
         }
 
         private void TxtCpf_KeyUp(object sender, KeyEventArgs e)
         {
-            TxtCpf.Text = Validacao.ValidarNumeros(Numero);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                TxtCpf.Text = TxtCpf.Text.Remove(0, 1);
+            }
         }
     }
 }
