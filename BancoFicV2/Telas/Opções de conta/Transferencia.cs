@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BancoFicV2
@@ -15,12 +10,6 @@ namespace BancoFicV2
         ContaPoupanca Poupanca = new ContaPoupanca();
         SalvarELer Salvar = new SalvarELer();
         ValidacaoEFormatacao Validacao = new ValidacaoEFormatacao();
-
-        string digito;
-        KeyPressEventArgs NumeroDeConta;
-        KeyPressEventArgs NumeroDeAgencia;
-        int ContadorDeagencia = 0;
-        int ContadorDeConta = 0;
 
         public Transferencia(Conta conta, double limite)
         {
@@ -169,45 +158,47 @@ namespace BancoFicV2
 
         private void TxtAgencia_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumeroDeAgencia = e;
+            string valorFinal = Validacao.ValidarNumeros(e, 1);
+
+            TxtAgencia.Text = valorFinal;
         }
 
         private void TxtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
-            NumeroDeConta = e;
+            string valorFinal = Validacao.ValidarNumeros(e, 1);
+
+            TxtNumero.Text = valorFinal;
         }
 
         private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            digito = Validacao.ValidarNumerosParaValoresMonetarios(e);
+            string valorFinal = Validacao.ValidarNumeros(e, 2);
+
+            TxtValor.Text = valorFinal;
         }
 
         private void TxtValor_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { digito = null; }
-            TxtValor.Text = Validacao.Formatar(digito);
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                if (TxtValor.Text.Length != 0) { TxtValor.Text = TxtValor.Text.Remove(0, 1); }
+            }
         }
 
         private void TxtAgencia_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { digito = null; }
-            if ((int)e.KeyCode == 8 || (int)e.KeyCode == 46) { ContadorDeagencia--; } else { ContadorDeagencia++; }
-
-            TxtAgencia.Text = Validacao.ValidarNumeros(NumeroDeAgencia);
-
-            if (ContadorDeagencia == 1) { Validacao.LimpaLista(); }
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                TxtAgencia.Text = TxtAgencia.Text.Remove(0, 1);
+            }
         }
 
         private void TxtNumero_KeyUp(object sender, KeyEventArgs e)
         {
-            if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { digito = null; }
-            if ((int)e.KeyCode == 8 || (int)e.KeyCode == 46) { ContadorDeConta--; } else { ContadorDeConta++; }
-
-            TxtNumero.Text = Validacao.ValidarNumeros(NumeroDeConta);
-
-            if (ContadorDeConta == 4) { Validacao.LimpaLista(); }
-
-
+            if (e.KeyValue != 8 && e.KeyValue != 46)
+            {
+                TxtNumero.Text = TxtNumero.Text.Remove(0, 1);
+            }
         }
     }
 }

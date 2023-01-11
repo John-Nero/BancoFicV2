@@ -82,7 +82,7 @@ namespace BancoFicV2
         {
             if ((int)e.KeyCode == 40 || (int)e.KeyCode == 37 || (int)e.KeyCode == 39 || (int)e.KeyCode == 38) { NumeroDeConta = null; }
 
-            TxtNumerodeconta.Text = Validacao.ValidarNumeros(NumeroDeConta);
+            TxtNumerodeconta.Text = Validacao.ValidarNumeros(NumeroDeConta,1);
         }
     }
 
