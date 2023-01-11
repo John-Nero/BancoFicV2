@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/t3Oa0QZBAOZ2udfTmwR+sCr8JWNFoBwK9I49IjIKaVsLE9z9C1XcPVVGS44PqTYcR5dD7JOt89Z8/cE5nKhWA==",
+  "dgSpecHash": "KpOZ1TSMd1u3Vk1qNPzw1Qgp6cHritb0K96KfPW6FKGhQ5tg5lhAw3rYvl3F6EcFls+/oS3Zu3qYe/J+si8dKw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\john.barros\\OneDrive - Clearsale S.A\\Área de Trabalho\\BackupFicV2\\BancoFicV2\\BancoFicV2\\BancoFicV2.csproj",
+  "projectFilePath": "C:\\Users\\john.barros\\OneDrive - Clearsale S.A\\Área de Trabalho\\atualizacao\\BancoFicV2\\BancoFicV2\\BancoFicV2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\john.barros\\.nuget\\packages\\cpfcnpj\\2.0.5\\cpfcnpj.2.0.5.nupkg.sha512",
     "C:\\Users\\john.barros\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
