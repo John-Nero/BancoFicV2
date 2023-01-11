@@ -46,9 +46,10 @@ namespace BancoFicV2
 
 
                 ValorDeRetorno = "";
-                if (NumerosMonetariosDigitados.Count != 0) { foreach (string numero in NumerosMonetariosDigitados) { ValorDeRetorno += numero; } }
-                else { ValorDeRetorno = "0"; }
-                ValorDeRetorno = Convert.ToInt32(ValorDeRetorno).ToString(@"0\.000\,00");
+                ValorTotalString = "";
+                if (NumerosMonetariosDigitados.Count != 0) { foreach (string numero in NumerosMonetariosDigitados) { ValorTotalString += numero; } }
+                else { ValorTotalString = "0"; }
+                ValorDeRetorno = Convert.ToInt32(ValorTotalString).ToString(@"0\.000\,00");
                 ValorDeRetorno = ValorDeRetorno.TrimStart('0');
                 ValorDeRetorno = ValorDeRetorno.Trim('.');
                 ValorDeRetorno = ValorDeRetorno.TrimStart('0');
