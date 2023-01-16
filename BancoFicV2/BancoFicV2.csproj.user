@@ -4,16 +4,10 @@
     <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Telas\Iniciais\CriarContaCorrente.cs">
+    <Compile Update="Telas\Iniciais\LoginContas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Telas\Iniciais\CriarContaPoupanca.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Telas\Iniciais\LoginCorrente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Telas\Iniciais\LoginPoupanca.cs">
+    <Compile Update="Telas\Iniciais\CriarConta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Telas\Iniciais\OpcoesIniciais.cs">

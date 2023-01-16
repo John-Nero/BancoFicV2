@@ -3,40 +3,25 @@ using System.Windows.Forms;
 
 namespace BancoFicV2
 {
-    public partial class Opcoesiniciais : Form
+    public partial class OpcoesIniciais : Form
     {
-        public Opcoesiniciais()
+        public OpcoesIniciais()
         {
             InitializeComponent();
         }
-             
-        private void LoginPoupanca_Click(object sender, EventArgs e)
+
+        private void BtLogin_Click(object sender, EventArgs e)
         {
-            var loginPoupanca = new LoginPoupanca();
-            loginPoupanca.Show();
+            var LoginContas = new LoginContas();
+            LoginContas.Show();
             this.Visible = false;
         }
 
-        private void LoginCorrente_Click(object sender, EventArgs e)
+        private void BtCriarConta_Click(object sender, EventArgs e)
         {
-            var loginCorrente = new LoginCorrente();
-            loginCorrente.Show();
+            var CriarConta = new CriarConta();
+            CriarConta.Show();
             this.Visible = false;
-        }
-
-        private void CriarPoupanca_Click(object sender, EventArgs e)
-        {
-            var criarPoupanca = new CriarContaPoupanca();
-            criarPoupanca.Show();
-            this.Visible = false;
-        }
-
-        private void CriarCorrente_Click(object sender, EventArgs e)
-        {
-            var criarCorrente = new CriarContaCorrente();
-            criarCorrente.Show();
-            this.Visible = false;
-        }
-
+        }       
     }
 }
