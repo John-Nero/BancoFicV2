@@ -1,7 +1,7 @@
 ﻿
 namespace BancoFicV2
 {
-    partial class LoginCorrente
+    partial class LoginContas
     {
         /// <summary>
         /// Required designer variable.
@@ -29,32 +29,79 @@ namespace BancoFicV2
         /// </summary>
         private void InitializeComponent()
         {
+            this.BtVoltar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.RadioCorrente = new System.Windows.Forms.RadioButton();
+            this.RadioPoupanca = new System.Windows.Forms.RadioButton();
             this.NumAgencia = new System.Windows.Forms.NumericUpDown();
-            this.TxtNumerodeconta = new System.Windows.Forms.TextBox();
+            this.TxtNumeroDeConta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtEntrar = new System.Windows.Forms.Button();
-            this.BtVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumAgencia)).BeginInit();
             this.SuspendLayout();
             // 
+            // BtVoltar
+            // 
+            this.BtVoltar.Location = new System.Drawing.Point(12, 12);
+            this.BtVoltar.Name = "BtVoltar";
+            this.BtVoltar.Size = new System.Drawing.Size(75, 23);
+            this.BtVoltar.TabIndex = 6;
+            this.BtVoltar.Text = "Voltar";
+            this.BtVoltar.UseVisualStyleBackColor = true;
+            this.BtVoltar.Click += new System.EventHandler(this.BtVoltar_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.RadioCorrente);
+            this.groupBox1.Controls.Add(this.RadioPoupanca);
             this.groupBox1.Controls.Add(this.NumAgencia);
-            this.groupBox1.Controls.Add(this.TxtNumerodeconta);
+            this.groupBox1.Controls.Add(this.TxtNumeroDeConta);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.BtEntrar);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(427, 151);
+            this.groupBox1.Location = new System.Drawing.Point(426, 150);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(362, 179);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.Size = new System.Drawing.Size(362, 267);
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Login conta corrente";
+            this.groupBox1.Text = "Preencha os dados abaixo";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 155);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(229, 15);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Selecione o tipo de conta que deseja logar";
+            // 
+            // RadioCorrente
+            // 
+            this.RadioCorrente.AutoSize = true;
+            this.RadioCorrente.Location = new System.Drawing.Point(29, 198);
+            this.RadioCorrente.Name = "RadioCorrente";
+            this.RadioCorrente.Size = new System.Drawing.Size(104, 19);
+            this.RadioCorrente.TabIndex = 13;
+            this.RadioCorrente.TabStop = true;
+            this.RadioCorrente.Text = "Conta corrente";
+            this.RadioCorrente.UseVisualStyleBackColor = true;
+            // 
+            // RadioPoupanca
+            // 
+            this.RadioPoupanca.AutoSize = true;
+            this.RadioPoupanca.Location = new System.Drawing.Point(29, 173);
+            this.RadioPoupanca.Name = "RadioPoupanca";
+            this.RadioPoupanca.Size = new System.Drawing.Size(113, 19);
+            this.RadioPoupanca.TabIndex = 12;
+            this.RadioPoupanca.TabStop = true;
+            this.RadioPoupanca.Text = "Conta poupança";
+            this.RadioPoupanca.UseVisualStyleBackColor = true;
             // 
             // NumAgencia
             // 
@@ -69,16 +116,16 @@ namespace BancoFicV2
             this.NumAgencia.Size = new System.Drawing.Size(120, 23);
             this.NumAgencia.TabIndex = 5;
             // 
-            // TxtNumerodeconta
+            // TxtNumeroDeConta
             // 
-            this.TxtNumerodeconta.Location = new System.Drawing.Point(18, 105);
-            this.TxtNumerodeconta.Name = "TxtNumerodeconta";
-            this.TxtNumerodeconta.Size = new System.Drawing.Size(338, 23);
-            this.TxtNumerodeconta.TabIndex = 4;
-            this.TxtNumerodeconta.Enter += new System.EventHandler(this.txtNumerodeconta_Enter);
-            this.TxtNumerodeconta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumerodeconta_KeyPress);
-            this.TxtNumerodeconta.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNumerodeconta_KeyUp);
-            this.TxtNumerodeconta.Leave += new System.EventHandler(this.txtNumerodeconta_Leave);
+            this.TxtNumeroDeConta.Location = new System.Drawing.Point(18, 105);
+            this.TxtNumeroDeConta.Name = "TxtNumeroDeConta";
+            this.TxtNumeroDeConta.Size = new System.Drawing.Size(338, 23);
+            this.TxtNumeroDeConta.TabIndex = 4;
+            this.TxtNumeroDeConta.Enter += new System.EventHandler(this.TxtNumeroDeConta_Enter);
+            this.TxtNumeroDeConta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumeroDeConta_KeyPress);
+            this.TxtNumeroDeConta.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNumeroDeConta_KeyUp);
+            this.TxtNumeroDeConta.Leave += new System.EventHandler(this.TxtNumeroDeConta_Leave);
             // 
             // label2
             // 
@@ -101,7 +148,7 @@ namespace BancoFicV2
             // BtEntrar
             // 
             this.BtEntrar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtEntrar.Location = new System.Drawing.Point(281, 134);
+            this.BtEntrar.Location = new System.Drawing.Point(281, 222);
             this.BtEntrar.Name = "BtEntrar";
             this.BtEntrar.Size = new System.Drawing.Size(75, 23);
             this.BtEntrar.TabIndex = 0;
@@ -109,17 +156,7 @@ namespace BancoFicV2
             this.BtEntrar.UseVisualStyleBackColor = true;
             this.BtEntrar.Click += new System.EventHandler(this.BtEntrar_Click);
             // 
-            // BtVoltar
-            // 
-            this.BtVoltar.Location = new System.Drawing.Point(13, 13);
-            this.BtVoltar.Name = "BtVoltar";
-            this.BtVoltar.Size = new System.Drawing.Size(75, 23);
-            this.BtVoltar.TabIndex = 2;
-            this.BtVoltar.Text = "Voltar";
-            this.BtVoltar.UseVisualStyleBackColor = true;
-            this.BtVoltar.Click += new System.EventHandler(this.BtVoltar_Click);
-            // 
-            // LoginCorrente
+            // LoginContas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -127,8 +164,8 @@ namespace BancoFicV2
             this.ClientSize = new System.Drawing.Size(1139, 549);
             this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "LoginCorrente";
-            this.Text = "LoginCorrente";
+            this.Name = "LoginContas";
+            this.Text = "LoginContas";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumAgencia)).EndInit();
@@ -139,12 +176,15 @@ namespace BancoFicV2
 
         #endregion
 
+        private System.Windows.Forms.Button BtVoltar;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox TxtNumerodeconta;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton RadioCorrente;
+        private System.Windows.Forms.RadioButton RadioPoupanca;
+        private System.Windows.Forms.NumericUpDown NumAgencia;
+        private System.Windows.Forms.TextBox TxtNumeroDeConta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown NumAgencia;
         private System.Windows.Forms.Button BtEntrar;
-        private System.Windows.Forms.Button BtVoltar;
     }
 }

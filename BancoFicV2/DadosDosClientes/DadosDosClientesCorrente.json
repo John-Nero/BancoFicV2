@@ -1,8 +1,8 @@
-﻿[
+[
   {
     "LimiteEmprestimo": 500.0,
     "Titular": "ADMIN",
-    "Numero": "0000",
+    "Numero": 1111,
     "Agencia": 0,
     "Cpf": 64312389314,
     "Saldo": 10.0,
@@ -24,6 +24,15 @@
     "Agencia": 1,
     "Cpf": 85993487445,
     "Saldo": 20.0,
+    "Tipo": 2
+  },
+  {
+    "LimiteEmprestimo": 500.0,
+    "Titular": "paulo",
+    "Numero": 4895,
+    "Agencia": 3,
+    "Cpf": 14643123893,
+    "Saldo": 0.0,
     "Tipo": 2
   }
 ]
