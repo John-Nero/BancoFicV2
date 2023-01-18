@@ -1,0 +1,115 @@
+ Program:
+ a classe program é executada quando a aplicação é inicializada. O método main será chamado, instanciando a classe OpcoesIniciais.
+_____________________________________________________________________________________________________________________________
+ OpcoesIniciais:
+
+ O que é?
+ É um Forms que quando chamado ativa um construtor que inicializa os processos para funcionamento.
+ 
+ O que faz?
+ Quando inicializado, o método construtor da classe executa o método InitializeComponents() criando a UI e disponibilizando
+ 2 botões que ficam no aguardo de um clique: Login e Criar Conta.
+ Cada botão possui seu próprio método que ao ser executado instanciará um Forms conforme o botão clicado assim tendo duas telas
+ disponiveis para o usuario.	
+_______________________________________________________________________________________________________________________________
+ Telas de login:
+
+ O que é?
+ É um Forms que quando chamado ativa o construtor que inicializa os processos para funcionamento para logar nas contas que já
+ foram criadas e registradas no sistema.
+ 
+ O que faz?
+ Quando inicializado o método construtor da classe executa o método InitializeComponents() criando a UI e disponibilizando
+ dois campos de texto e dois Radiobutton ,Os campos de texto servem para selecionar um numero de agencia e o outro  para digitar
+ o numero de conta do usuario, enquanto os radioButton's servem para selecionar o tipo de conta que o usuario ira acessar tendo
+ a opção de conta poupança ou conta corrente, também disponibiliza um botão para acessar a conta com os dados digitados nos campos
+ acima, o botão possui um método próprio que ira procurar no arquivo de clientes uma conta que corresponda com os dados digitados,
+ caso ele ache ira instanciar o Forms da próxima tela, caso contrario ira retornar uma mensagem de erro.
+ Se for selecionado o radioButton para poupança ele ira procurar os dados no arquivo DadosDosClientesPoupanca e ira passar
+ por parâmetro para o próximo Forms uma conta poupança. Mas se for para corrente ele ira procurar os dados no arquivo
+ DadosDosClientesCorrente e ira passar por parâmetro para o próximo Forms uma conta corrente.
+_______________________________________________________________________________________________________________________________
+
+ Tela para criação de conta:
+
+ O que é?
+ é um Forms que quando chamado ativa o construtor que inicializa os processos para funcionamento para criar uma conta nova que
+ não pode conter um CPF já existente no sistema.
+  
+ O que faz?
+ Quando inicializado o método construtor da classe executa o método InitializeComponents() criando a UI e disponibilizando
+ dois campos de texto, uma ComboBox e dois Radiobutton ,Os campos de texto servem para Digitar o titular da conta e o CPF do 
+ titular, A comboBox tem a função de disponibiliza uma lista de Estados que reprensentam a agencia da conta, no total existem 
+ seis estados para seleção,e os radioButton's servem para selecionar o tipo de conta que o usuario ira criar tendo
+ a opção de conta poupança ou conta corrente, também disponibiliza um botão para criar a conta com os dados digitados nos campos
+ acima, o botão possui um método próprio que ira procurar no arquivo de clientes uma conta que corresponda com o CPF digitado,
+ caso ele ache ira retornar uma mensagem de erro, caso contrario instanciara o Forms da próxima tela.
+ Se for selecionado o radioButton para poupança ele ira procurar os dados no arquivo DadosDosClientesPoupanca e ira passar
+ por parâmetro para o próximo Forms uma conta poupança. Mas se for para corrente ele ira procurar os dados no arquivo
+ DadosDosClientesCorrente e ira passar por parâmetro para o próximo Forms uma conta corrente.
+_______________________________________________________________________________________________________________________________
+ Tela de Opcoes De Conta:
+
+ O que é?
+ É um Forms que quando chamado ativa o construtor que inicializa os processos para funcionamento.
+ 
+ O que faz?
+ Quando inicializado, o método construtor da classe executa o método InitializeComponents() criando a UI e disponibilizando
+ 4 botões que ficam no aguardo de um clique: Deposito, Emprestimo, Saque e Transferencia.
+ Cada botão possui seu próprio método que ao ser executado instanciará um Forms conforme o botão clicado ao todo tendo 4 telas
+ disponíveis para acesso.
+______________________________________________________________________________________________________________________________
+ Deposito:
+
+ O que é?
+ É um Forms que quando chamado ativa o construtor que inicializa os processos para funcionamento e também as configurações
+ de estilo e formatação da caixa de texto para valores.
+ 
+ O que faz?
+ Quando inicializado o método construtor da classe executa o método InitializeComponents() criando a UI e disponibilizando 
+ um campo e um botão, o campo possui um bloqueio para letras e caracteres especiais que retorna um aviso caso seja digitado,
+ e também uma validação de valor digitado caso o usaurio tente digitar um valor acima de cinco mil o campo ira rejeitar o valor.
+ O botão ira confirmar o valor a ser depositado e ira somar o valor ao saldo atual da conta, após isso retorna o usuário a 
+ tela de opções. 
+______________________________________________________________________________________________________________________________
+ Emprestimo:
+
+ O que é?
+ É um Forms que quando chamado ativa o construtor que inicializa os processos para funcionamento e também as configurações
+ de estilo e formatação da caixa de texto para valores.
+ 
+ O que faz?
+ Quando inicializado o método construtor da classe executa o método InitializeComponents() criando a UI e disponibilizando 
+ um campo e um botão, o campo possui um bloqueio para letras e caracteres especiais que retorna um aviso caso seja digitado,
+ e também uma validação de valor digitado caso o usaurio tente digitar um valor acima de cinco mil o campo ira rejeitar o valor.
+ O botão ira confirmar o valor do empréstimo e caso ele seja menor ou igual ao valor de limite de empréstimo da conta ele 
+ ira retirar do limite e somar o valor ao saldo atual da conta, após isso retorna o usuário a tela de opções.
+______________________________________________________________________________________________________________________________
+ Saque:
+  
+ O que é?
+ É um Forms que quando chamado ativa o construtor que inicializa os processos para funcionamento e também as configurações
+ de estilo e formatação da caixa de texto para valores.
+ 
+ O que faz?
+ Quando inicializado o método construtor da classe executa o método InitializeComponents() criando a UI e disponibilizando 
+ um campo e um botão, o campo possui um bloqueio para letras e caracteres especiais que retorna um aviso caso seja digitado,
+ e também uma validação de valor digitado caso o usaurio tente digitar um valor acima de cinco mil o campo ira rejeitar o valor.
+ O botão ira confirmar o valor a ser sacado e ira subtrair o valor do saldo atual da conta, após isso retorna o usuário a 
+ tela de opções.
+______________________________________________________________________________________________________________________________
+ Transferencia:
+  
+ O que é?
+ É um Forms que quando chamado ativa o construtor que inicializa os processos para funcionamento e também as configurações
+ de estilo e formatação da caixa de texto para valores.
+ 
+ O que faz?
+ Quando inicializado o método construtor da classe executa o método InitializeComponents() criando a UI e disponibilizando 
+ três campo, um radioButton e um botão, nos campos o usuário deve digitar os dados da conta que deseja transferir sendo esses
+ dados: numero de agência, numero de conta e o valor para transferência. Após isso ele seleciona o tipo de conta no Radiobutton
+ sendo as opções de escolha: conta poupança e conta corrente, para finalizar o processo deve ser pressionado o botão de 
+ confirmação, caso os dados digitados não existirem no sistema ele ira retornar um erro para o usuário, do contrário o botão ira
+ confirmar o valor a ser transferido e ira subtrair o valor do saldo atual da conta e depositar o valor na conta desejada,
+ após isso retorna o usuário a tela de opções.
+______________________________________________________________________________________________________________________________
