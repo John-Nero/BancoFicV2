@@ -1,8 +1,9 @@
-﻿using System;
+﻿using BancoFicV2.Enums;
+using System;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace BancoFicV2
+namespace BancoFicV2.Contas
 {
     public class ContaCorrente : Conta
     {

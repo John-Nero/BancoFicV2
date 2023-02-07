@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace BancoFicV2
+namespace BancoFicV2.Agencia
 {
     class Agencia
     {

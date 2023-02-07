@@ -1,4 +1,4 @@
-﻿namespace BancoFicV2
+﻿namespace BancoFicV2.Enums
 {
     public enum TipoDeConta
     {
