@@ -1,6 +1,6 @@
-﻿
+﻿using BancoFicV2.Enums;
 
-namespace BancoFicV2
+namespace BancoFicV2.Contas
 {
     class ContaPoupanca : Conta
     {

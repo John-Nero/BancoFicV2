@@ -13,19 +13,19 @@
     <Compile Update="Telas\Iniciais\OpcoesIniciais.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Telas\Opções de conta\Deposito.cs">
+    <Compile Update="Telas\OpcoesDeConta\Deposito.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Telas\Opções de conta\Emprestimo.cs">
+    <Compile Update="Telas\OpcoesDeConta\Emprestimo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Telas\Opções de conta\OpcoesDeConta.cs">
+    <Compile Update="Telas\OpcoesDeConta\OpcoesDeConta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Telas\Opções de conta\Saque.cs">
+    <Compile Update="Telas\OpcoesDeConta\Saque.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Telas\Opções de conta\Transferencia.cs">
+    <Compile Update="Telas\OpcoesDeConta\Transferencia.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

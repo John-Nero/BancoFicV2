@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Windows.Forms;
 using System.Configuration;
+using BancoFicV2.Enums;
+using BancoFicV2.Contas;
 
 namespace BancoFicV2
 {

@@ -1,6 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using BancoFicV2.Enums;
+using System.Windows.Forms;
 
-namespace BancoFicV2
+namespace BancoFicV2.Contas
 {
     public abstract class Conta
     {
