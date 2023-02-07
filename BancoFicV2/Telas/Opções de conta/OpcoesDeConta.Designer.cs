@@ -42,6 +42,7 @@ namespace BancoFicV2
             this.ExibirNome = new System.Windows.Forms.Label();
             this.ExbirLimite = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.BtLogOff = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -186,6 +187,16 @@ namespace BancoFicV2
             this.label1.TabIndex = 4;
             this.label1.Text = "© BANCO FIC";
             // 
+            // BtLogOff
+            // 
+            this.BtLogOff.Location = new System.Drawing.Point(5, 5);
+            this.BtLogOff.Name = "BtLogOff";
+            this.BtLogOff.Size = new System.Drawing.Size(75, 23);
+            this.BtLogOff.TabIndex = 5;
+            this.BtLogOff.Text = "LogOff";
+            this.BtLogOff.UseVisualStyleBackColor = true;
+            this.BtLogOff.Click += new System.EventHandler(this.BtLogOff_Click);
+            // 
             // OpcoesDeConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -193,6 +204,7 @@ namespace BancoFicV2
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1139, 549);
             this.ControlBox = false;
+            this.Controls.Add(this.BtLogOff);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -224,5 +236,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Button BtTransferir;
         private System.Windows.Forms.Label ExibirAgênica;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BtLogOff;
     }
 }

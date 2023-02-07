@@ -25,6 +25,13 @@ namespace BancoFicV2
             else { BtEmprestimo.Visible = false; }
         }
 
+        private void BtLogOff_Click(object sender, EventArgs e)
+        {
+            OpcoesIniciais OpcoesIniciais = new OpcoesIniciais();
+            OpcoesIniciais.Show();
+            this.Visible = false;
+        }
+
         private void BtDepositar_Click(object sender, EventArgs e)
         {
             Deposito deposito = new Deposito(Conta, Limite);
@@ -73,5 +80,7 @@ namespace BancoFicV2
             poupanca.SetConta(Conta.Titular, Conta.Agencia, Conta.Numero, Conta.Cpf, Conta.Saldo, TipoDeConta.ContaPoupanca);
             salvar.AtualizarDadosDeConta(TipoDeConta.ContaPoupanca, poupanca);
         }
+
+        
     }
 }
