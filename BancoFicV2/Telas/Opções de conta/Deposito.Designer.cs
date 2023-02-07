@@ -34,6 +34,7 @@ namespace BancoFicV2
             this.label1 = new System.Windows.Forms.Label();
             this.BtDepositar = new System.Windows.Forms.Button();
             this.BtVoltar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,12 +91,23 @@ namespace BancoFicV2
             this.BtVoltar.UseVisualStyleBackColor = true;
             this.BtVoltar.Click += new System.EventHandler(this.BtVoltar_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(1045, 525);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 15);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "© BANCO FIC";
+            // 
             // Deposito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1139, 549);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Name = "Deposito";
@@ -114,5 +126,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtDepositar;
         private System.Windows.Forms.Button BtVoltar;
+        private System.Windows.Forms.Label label2;
     }
 }

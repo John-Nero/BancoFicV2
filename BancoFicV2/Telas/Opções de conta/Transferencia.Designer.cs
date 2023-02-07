@@ -41,6 +41,7 @@ namespace BancoFicV2
             this.BtTransferir = new System.Windows.Forms.Button();
             this.TxtAgencia = new System.Windows.Forms.TextBox();
             this.Label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,12 +178,23 @@ namespace BancoFicV2
             this.Label4.TabIndex = 5;
             this.Label4.Text = "Digite o numero de agência";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(1045, 525);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 15);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "© BANCO FIC";
+            // 
             // Transferencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1139, 549);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Location = new System.Drawing.Point(290, 252);
@@ -209,5 +221,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtAgencia;
         private System.Windows.Forms.Label Label4;
+        private System.Windows.Forms.Label label5;
     }
 }

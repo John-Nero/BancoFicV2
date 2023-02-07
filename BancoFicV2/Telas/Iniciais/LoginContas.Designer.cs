@@ -39,6 +39,7 @@ namespace BancoFicV2
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtEntrar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumAgencia)).BeginInit();
             this.SuspendLayout();
@@ -156,12 +157,23 @@ namespace BancoFicV2
             this.BtEntrar.UseVisualStyleBackColor = true;
             this.BtEntrar.Click += new System.EventHandler(this.BtEntrar_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(1045, 525);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "© BANCO FIC";
+            // 
             // LoginContas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1139, 549);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.BtVoltar);
             this.Controls.Add(this.groupBox1);
             this.Name = "LoginContas";
@@ -186,5 +198,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtEntrar;
+        private System.Windows.Forms.Label label4;
     }
 }

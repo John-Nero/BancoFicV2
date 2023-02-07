@@ -36,11 +36,12 @@ namespace BancoFicV2
             this.BtSacar = new System.Windows.Forms.Button();
             this.BtDepositar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ExibirAgênica = new System.Windows.Forms.Label();
             this.ExibirSaldo = new System.Windows.Forms.Label();
             this.ExibirNumero = new System.Windows.Forms.Label();
             this.ExibirNome = new System.Windows.Forms.Label();
             this.ExbirLimite = new System.Windows.Forms.Label();
-            this.ExibirAgênica = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +77,7 @@ namespace BancoFicV2
             // 
             // BtRender
             // 
-            this.BtRender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.BtRender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BtRender.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BtRender.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -136,6 +137,14 @@ namespace BancoFicV2
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados bancários";
             // 
+            // ExibirAgênica
+            // 
+            this.ExibirAgênica.AutoSize = true;
+            this.ExibirAgênica.Location = new System.Drawing.Point(12, 52);
+            this.ExibirAgênica.Name = "ExibirAgênica";
+            this.ExibirAgênica.Size = new System.Drawing.Size(0, 15);
+            this.ExibirAgênica.TabIndex = 3;
+            // 
             // ExibirSaldo
             // 
             this.ExibirSaldo.AutoSize = true;
@@ -167,13 +176,15 @@ namespace BancoFicV2
             this.ExbirLimite.Size = new System.Drawing.Size(100, 23);
             this.ExbirLimite.TabIndex = 0;
             // 
-            // ExibirAgênica
+            // label1
             // 
-            this.ExibirAgênica.AutoSize = true;
-            this.ExibirAgênica.Location = new System.Drawing.Point(12, 52);
-            this.ExibirAgênica.Name = "ExibirAgênica";
-            this.ExibirAgênica.Size = new System.Drawing.Size(0, 15);
-            this.ExibirAgênica.TabIndex = 3;
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(1053, 523);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "© BANCO FIC";
             // 
             // OpcoesDeConta
             // 
@@ -182,6 +193,7 @@ namespace BancoFicV2
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1139, 549);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(816, 489);
@@ -211,5 +223,6 @@ namespace BancoFicV2
         private System.Windows.Forms.Button BtRender;
         private System.Windows.Forms.Button BtTransferir;
         private System.Windows.Forms.Label ExibirAgênica;
+        private System.Windows.Forms.Label label1;
     }
 }
