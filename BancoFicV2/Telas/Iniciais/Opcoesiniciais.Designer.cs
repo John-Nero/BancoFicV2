@@ -32,6 +32,7 @@ namespace BancoFicV2
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BtCriarConta = new System.Windows.Forms.Button();
             this.BtLogin = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +72,16 @@ namespace BancoFicV2
             this.BtLogin.UseVisualStyleBackColor = true;
             this.BtLogin.Click += new System.EventHandler(this.BtLogin_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(1045, 525);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 15);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "© BANCO FIC";
+            // 
             // OpcoesIniciais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -78,6 +89,7 @@ namespace BancoFicV2
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(62)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1139, 549);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "OpcoesIniciais";
             this.RightToLeftLayout = true;
@@ -93,5 +105,6 @@ namespace BancoFicV2
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button BtCriarConta;
         private System.Windows.Forms.Button BtLogin;
+        private System.Windows.Forms.Label label1;
     }
 }
